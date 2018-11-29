@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -152,6 +153,8 @@
     <Content Include="app\pages\product\productController.js" />
     <Content Include="app\pages\product\productDetail.html" />
     <Content Include="app\pages\product\productDetailController.js" />
+    <Content Include="app\pages\project\projectCategory.html" />
+    <Content Include="app\pages\project\projectCategoryController.js" />
     <Content Include="app\pages\shared\alertModal\alert.html" />
     <Content Include="app\pages\shared\alertModal\confirm.html" />
     <Content Include="app\routing.js" />
@@ -374,6 +377,7 @@
     <Compile Include="Controllers\PAuthenticationController.cs" />
     <Compile Include="Controllers\PHomeController.cs" />
     <Compile Include="Controllers\PProductController.cs" />
+    <Compile Include="Controllers\PProjectController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />

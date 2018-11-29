@@ -1,7 +1,7 @@
 ﻿mainApp.lazy.controller('productCategoryController', ['$rootScope', '$scope', 'invokeServerService', 'arrayHelperFactory', 'messageFactory', 'cfpLoadingBar'
    , function ($rootScope, $scope, invokeServerService, arrayHelperFactory, messageFactory, cfpLoadingBar) {
        
-       $rootScope.pageTitle = 'مدیریت دسته بندی محصولات';
+       $rootScope.pageTitle = 'مدیریت دسته بندی پروژه ها';
 
        $scope.persianPattern = /^[\u0600-\u06FF\s]+$/;
        $scope.englishPattern = /^[a-z\u0590-\u05fe]+$/i;
@@ -14,9 +14,9 @@
 
        
 
-       $scope.addProductCategory = function () {
-           $scope.myPromise = invokeServerService.Post('/PProduct/AddProductCategory', { productCategory: $scope.productCategory }).success(function (result) {
-               
+       $scope.addProjectCategory = function () {
+           $scope.myPromise = invokeServerService.Post('/PProject/AddProjectCategory', { model: $scope.productCategory })
+               .success(function (result) {
                if (result.Success) {
                    messageFactory.showAlert(result.Message, 'success');
 
@@ -25,8 +25,6 @@
 
                    $("#tabRadiusTypeInformation").addClass("active");
                    $("#navRadiusTypeInformation").addClass("active");
-
-
                    gridDataSource.read();
 
                    $scope.productCategory = null;
@@ -37,19 +35,15 @@
            });
        }
 
-       $scope.updateProductCategory = function () {
-           $scope.myPromise = invokeServerService.Post('/PProduct/UpdateProductCategory', { productCategory: $scope.productCategory }).success(function (result) {
-
+       $scope.updateProjectCategory = function () {
+           $scope.myPromise = invokeServerService.Post('/PProject/UpdateProjectCategory', { model: $scope.productCategory })
+               .success(function (result) {
                if (result.Success) {
                    messageFactory.showAlert(result.Message, 'success');
-
                    $("#tabInsertUpdate").removeClass("active");
                    $("#navInsertUpdate").removeClass("active");
-
                    $("#tabRadiusTypeInformation").addClass("active");
                    $("#navRadiusTypeInformation").addClass("active");
-
-
                    gridDataSource.read();
                    $scope.isUpdate = false;
                    $scope.productCategory = null;
@@ -58,23 +52,24 @@
                    messageFactory.showAlert(result.Message, 'danger');
                }
            });
-       };
+       }
 
-       $scope.newProductCategory = function () {
+       $scope.newProductCategory = function()
+       {
            $scope.productCategory = null;
            $scope.isUpdate = false;
-       };
-
+       }
+       
        $scope.confirmDelete = function () {
 
        };
 
        var gridDataSource = new kendo.data.DataSource({
            transport: {
-               read: "/PProduct/GetProductCategoryList",
+               read: "/PProject/GetProjectCategoryList",
                parameterMap: function (data, type) {
                    
-                   if (type == "read") {
+                   if (type === "read") {
                        // send take as "$top" and skip as "$skip"                    
                        return {
                            //   documentDetail: angular.toJson($scope.document),
