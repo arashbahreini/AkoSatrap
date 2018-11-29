@@ -1,0 +1,12 @@
+C:\work\AkoSatrap\AkoSatrap\DomainDeriven\bin\Debug\DomainDeriven.dll.config
+C:\work\AkoSatrap\AkoSatrap\DomainDeriven\bin\Debug\DomainDeriven.dll
+C:\work\AkoSatrap\AkoSatrap\DomainDeriven\bin\Debug\DomainDeriven.pdb
+C:\work\AkoSatrap\AkoSatrap\DomainDeriven\bin\Debug\EntityFramework.dll
+C:\work\AkoSatrap\AkoSatrap\DomainDeriven\bin\Debug\EntityFramework.SqlServer.dll
+C:\work\AkoSatrap\AkoSatrap\DomainDeriven\bin\Debug\EntityFramework.xml
+C:\work\AkoSatrap\AkoSatrap\DomainDeriven\bin\Debug\EntityFramework.SqlServer.xml
+C:\work\AkoSatrap\AkoSatrap\DomainDeriven\obj\Debug\DomainDeriven.csprojAssemblyReference.cache
+C:\work\AkoSatrap\AkoSatrap\DomainDeriven\obj\Debug\DomainDeriven.csproj.CoreCompileInputs.cache
+C:\work\AkoSatrap\AkoSatrap\DomainDeriven\obj\Debug\DomainDeriven.csproj.CopyComplete
+C:\work\AkoSatrap\AkoSatrap\DomainDeriven\obj\Debug\DomainDeriven.dll
+C:\work\AkoSatrap\AkoSatrap\DomainDeriven\obj\Debug\DomainDeriven.pdb

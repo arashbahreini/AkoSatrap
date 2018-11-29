@@ -1,0 +1,956 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>آکو ساتراپ ایرانیان</title>
+    <!-- Main css -->
+    <link href="~/dist/css/style.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="new-sidebar animate-left" style="display:none" id="mySidebar">
+        <span class="bar-wrapper">
+            <button onclick="w3_close()" class="close-item">&times;</button>
+            <a href="" class="change-lang">english</a>
+        </span>
+        <a href="#" class="bar-button">آگهی ملک</a>
+        <button class="bar-button bar-block" onclick="myAccFunc()">
+            محصولات
+            <span class="glyphicon glyphicon-triangle-bottom"></span>
+        </button>
+        <div id="demoAcc" class=" bar-hide bar-white bar-card">
+            <a href="#" class="bar-button">نوع اول</a>
+            <a href="#" class="bar-button">نوع دوم</a>
+        </div>
+
+
+        <a href="#" class="bar-button">سفارش ملک</a>
+        <a href="#" class="bar-button">منو آیتم </a>
+    </div>
+
+    <div class="main-menu">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed pull-left main-menu-toggle" onclick="w3_open()">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <span class="navbar-brand" href="#">
+                        <div class="render-logo"></div>
+                    </span>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/public/Home/Index">صفحه نخست</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">املاک<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/public/publicEstate">لیست املاک</a></li>
+                                <li><a href="/public/publicEstate/NewRequest">درخواست ملک</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">پروژه ها<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/public/publicproject?type=1">پروژه های اجرا شده</a></li>
+                                <li><a href="/public/publicproject?type=2">پروژه های درحال اجرا</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">مزایده<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/public/publicBid">مزایده ها</a></li>
+                                <li><a href="/public/publicBid/Register">ثبت نام</a></li>
+                                <li><a href="/public/publicBid/Login">ورود</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/public/Home/About">درباره ما</a></li>
+                    </ul>
+
+                    <div class=" navbar-left">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li><a href="#">english</a></li>
+                        </ul>
+                        <p class="navbar-text navbar-left line">|</p>
+                        <p class="navbar-text navbar-left">
+                            <span class="glyphicon glyphicon-earphone"
+                                  style="color: #d6ba91;margin-left: 10px;"
+                                  aria-hidden="true"></span><span class="">مرکز تماس :</span>۰۲۱۶۲۰۵۹
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+    <div class="sub-nav-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="sub-nav tbl">
+                        <div class="sub-nav-blocks-wrapper tbl-row">
+                            <div class="sub-nav-block fmk-breadcrumb tbl-cell">
+                                <ol class="breadcrumb">
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">Library</a></li>
+                                    <li class="active">Data</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="tbl">
+                    <div class="tbl-row">
+
+                        <div class="tbl-cell main-content">
+
+                            <div class="loading-container loading">
+                                <div class="loading-wrapper">
+                                    <div class="cssload-loader-inner">
+                                        <div class="cssload-cssload-loader-line-wrap-wrap">
+                                            <div class="cssload-loader-line-wrap"></div>
+                                        </div>
+                                        <div class="cssload-cssload-loader-line-wrap-wrap">
+                                            <div class="cssload-loader-line-wrap"></div>
+                                        </div>
+                                        <div class="cssload-cssload-loader-line-wrap-wrap">
+                                            <div class="cssload-loader-line-wrap"></div>
+                                        </div>
+                                        <div class="cssload-cssload-loader-line-wrap-wrap">
+                                            <div class="cssload-loader-line-wrap"></div>
+                                        </div>
+                                        <div class="cssload-cssload-loader-line-wrap-wrap">
+                                            <div class="cssload-loader-line-wrap"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row min-height">
+                                    <div class="col-sm-6 ">
+                                        <div class="deal project">
+                                            <a href="" class="deal-blocks-wrapper">
+                                                <div class="deal-block deal-img">
+
+
+                                                    <div class="deal-labels">
+                                                        <ul>
+                                                            <li class="bold">در حال اجرا</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="img"
+                                                         style="background-image: url('../../dist/img/samples/slider-001.png')"></div>
+                                                    <div class="bottom-border"></div>
+                                                </div>
+                                                <div class="deal-block deal-txt">
+
+                                                    <div class="deal-detail project-name">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 deal-price-wrapper">
+                                                                <h4>
+                                                                    <span class="bottom-left-borders"></span><span class="top-right-borders"></span>برج اداری سامان فراز
+                                                                </h4>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tbl">
+                                                        <div class="tbl-row">
+                                                            <div class="tbl-cell detail-wrapper">
+                                                                <div class="deal-detail">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 facilities-wrapper">
+                                                                            <div class="txt-left-plus-icon">
+                                                                                <div class="icon-block">
+                                                                                    <div class="icon icon-i-017"></div>
+                                                                                </div>
+                                                                                <p>کارفرما: شرکت فلان</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xs-12 facilities-wrapper">
+                                                                            <div class="txt-left-plus-icon">
+                                                                                <div class="icon-block">
+                                                                                    <div class="icon icon-i-016"></div>
+                                                                                </div>
+                                                                                <p>استان: تهران</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xs-12 facilities-wrapper">
+                                                                            <div class="txt-left-plus-icon">
+                                                                                <div class="icon-block">
+                                                                                    <div class="icon icon-i-018"></div>
+                                                                                </div>
+                                                                                <p>زیربنای پروژه: 100000 متر</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tbl-cell gauge-wrapper">
+                                                                <div class="gauge">
+                                                                    <div class="tbl">
+                                                                        <div class="gauge-blocks-wrapper tbl-row">
+
+                                                                            <div class="gauge-block title tbl-cell">
+                                                                                <h5 class="txt-brand-color-lightviolet text-left">پیشرفت فیزیکی پروژه</h5>
+                                                                            </div>
+                                                                            <div class="gauge-block svg tbl-cell">
+                                                                                <div class="gauge" id="g5"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="deal-detail" style="border-top: 4px solid #f1f1f1;">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 facilities-wrapper">
+                                                                <div class="txt-left-plus-icon">
+                                                                    <div class="icon-block">
+                                                                        <div class="icon icon-i-020"></div>
+                                                                    </div>
+                                                                    <p>آدرس: خیابان هشتم بخارست خیابان هشتم بخارست</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 ">
+                                        <div class="deal project">
+                                            <a href="" class="deal-blocks-wrapper">
+                                                <div class="deal-block deal-img">
+
+
+                                                    <div class="deal-labels">
+                                                        <ul>
+                                                            <li class="bold">در حال اجرا</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="img"
+                                                         style="background-image: url('../../dist/img/samples/slider-001.png')"></div>
+                                                    <div class="bottom-border"></div>
+                                                </div>
+                                                <div class="deal-block deal-txt">
+
+                                                    <div class="deal-detail project-name">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 deal-price-wrapper">
+                                                                <h4>
+                                                                    <span class="bottom-left-borders"></span><span class="top-right-borders"></span>برج اداری سامان فراز
+                                                                </h4>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tbl">
+                                                        <div class="tbl-row">
+                                                            <div class="tbl-cell detail-wrapper">
+                                                                <div class="deal-detail">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 facilities-wrapper">
+                                                                            <div class="txt-left-plus-icon">
+                                                                                <div class="icon-block">
+                                                                                    <div class="icon icon-i-017"></div>
+                                                                                </div>
+                                                                                <p>کارفرما: شرکت فلان</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xs-12 facilities-wrapper">
+                                                                            <div class="txt-left-plus-icon">
+                                                                                <div class="icon-block">
+                                                                                    <div class="icon icon-i-016"></div>
+                                                                                </div>
+                                                                                <p>استان: تهران</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xs-12 facilities-wrapper">
+                                                                            <div class="txt-left-plus-icon">
+                                                                                <div class="icon-block">
+                                                                                    <div class="icon icon-i-018"></div>
+                                                                                </div>
+                                                                                <p>زیربنای پروژه: 100000 متر</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tbl-cell gauge-wrapper">
+                                                                <div class="gauge">
+                                                                    <div class="tbl">
+                                                                        <div class="gauge-blocks-wrapper tbl-row">
+
+                                                                            <div class="gauge-block title tbl-cell">
+                                                                                <h5 class="txt-brand-color-lightviolet text-left">پیشرفت فیزیکی پروژه</h5>
+                                                                            </div>
+                                                                            <div class="gauge-block svg tbl-cell">
+                                                                                <div class="gauge" id="g6"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="deal-detail" style="border-top: 4px solid #f1f1f1;">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 facilities-wrapper">
+                                                                <div class="txt-left-plus-icon">
+                                                                    <div class="icon-block">
+                                                                        <div class="icon icon-i-020"></div>
+                                                                    </div>
+                                                                    <p>آدرس: خیابان هشتم بخارست خیابان هشتم بخارست</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 ">
+                                        <div class="deal project">
+                                            <a href="" class="deal-blocks-wrapper">
+                                                <div class="deal-block deal-img">
+
+
+                                                    <div class="deal-labels">
+                                                        <ul>
+                                                            <li class="bold">در حال اجرا</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="img"
+                                                         style="background-image: url('../../dist/img/samples/slider-001.png')"></div>
+                                                    <div class="bottom-border"></div>
+                                                </div>
+                                                <div class="deal-block deal-txt">
+
+                                                    <div class="deal-detail project-name">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 deal-price-wrapper">
+                                                                <h4>
+                                                                    <span class="bottom-left-borders"></span><span class="top-right-borders"></span>برج اداری سامان فراز
+                                                                </h4>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tbl">
+                                                        <div class="tbl-row">
+                                                            <div class="tbl-cell detail-wrapper">
+                                                                <div class="deal-detail">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 facilities-wrapper">
+                                                                            <div class="txt-left-plus-icon">
+                                                                                <div class="icon-block">
+                                                                                    <div class="icon icon-i-017"></div>
+                                                                                </div>
+                                                                                <p>کارفرما: شرکت فلان</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xs-12 facilities-wrapper">
+                                                                            <div class="txt-left-plus-icon">
+                                                                                <div class="icon-block">
+                                                                                    <div class="icon icon-i-016"></div>
+                                                                                </div>
+                                                                                <p>استان: تهران</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xs-12 facilities-wrapper">
+                                                                            <div class="txt-left-plus-icon">
+                                                                                <div class="icon-block">
+                                                                                    <div class="icon icon-i-018"></div>
+                                                                                </div>
+                                                                                <p>زیربنای پروژه: 100000 متر</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tbl-cell gauge-wrapper">
+                                                                <div class="gauge">
+                                                                    <div class="tbl">
+                                                                        <div class="gauge-blocks-wrapper tbl-row">
+
+                                                                            <div class="gauge-block title tbl-cell">
+                                                                                <h5 class="txt-brand-color-lightviolet text-left">پیشرفت فیزیکی پروژه</h5>
+                                                                            </div>
+                                                                            <div class="gauge-block svg tbl-cell">
+                                                                                <div class="gauge" id="g7"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="deal-detail" style="border-top: 4px solid #f1f1f1;">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 facilities-wrapper">
+                                                                <div class="txt-left-plus-icon">
+                                                                    <div class="icon-block">
+                                                                        <div class="icon icon-i-020"></div>
+                                                                    </div>
+                                                                    <p>آدرس: خیابان هشتم بخارست خیابان هشتم بخارست</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 ">
+                                        <div class="deal project">
+                                            <a href="" class="deal-blocks-wrapper">
+                                                <div class="deal-block deal-img">
+
+
+                                                    <div class="deal-labels">
+                                                        <ul>
+                                                            <li class="bold">در حال اجرا</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="img"
+                                                         style="background-image: url('../../dist/img/samples/slider-001.png')"></div>
+                                                    <div class="bottom-border"></div>
+                                                </div>
+                                                <div class="deal-block deal-txt">
+
+                                                    <div class="deal-detail project-name">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 deal-price-wrapper">
+                                                                <h4>
+                                                                    <span class="bottom-left-borders"></span><span class="top-right-borders"></span>برج اداری سامان فراز
+                                                                </h4>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tbl">
+                                                        <div class="tbl-row">
+                                                            <div class="tbl-cell detail-wrapper">
+                                                                <div class="deal-detail">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 facilities-wrapper">
+                                                                            <div class="txt-left-plus-icon">
+                                                                                <div class="icon-block">
+                                                                                    <div class="icon icon-i-017"></div>
+                                                                                </div>
+                                                                                <p>کارفرما: شرکت فلان</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xs-12 facilities-wrapper">
+                                                                            <div class="txt-left-plus-icon">
+                                                                                <div class="icon-block">
+                                                                                    <div class="icon icon-i-016"></div>
+                                                                                </div>
+                                                                                <p>استان: تهران</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xs-12 facilities-wrapper">
+                                                                            <div class="txt-left-plus-icon">
+                                                                                <div class="icon-block">
+                                                                                    <div class="icon icon-i-018"></div>
+                                                                                </div>
+                                                                                <p>زیربنای پروژه: 100000 متر</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tbl-cell gauge-wrapper">
+                                                                <div class="gauge">
+                                                                    <div class="tbl">
+                                                                        <div class="gauge-blocks-wrapper tbl-row">
+
+                                                                            <div class="gauge-block title tbl-cell">
+                                                                                <h5 class="txt-brand-color-lightviolet text-left">پیشرفت فیزیکی پروژه</h5>
+                                                                            </div>
+                                                                            <div class="gauge-block svg tbl-cell">
+                                                                                <div class="gauge" id="g8"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="deal-detail" style="border-top: 4px solid #f1f1f1;">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 facilities-wrapper">
+                                                                <div class="txt-left-plus-icon">
+                                                                    <div class="icon-block">
+                                                                        <div class="icon icon-i-020"></div>
+                                                                    </div>
+                                                                    <p>آدرس: خیابان هشتم بخارست خیابان هشتم بخارست</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 ">
+                                        <div class="deal project">
+                                            <a href="" class="deal-blocks-wrapper">
+                                                <div class="deal-block deal-img">
+
+
+                                                    <div class="deal-labels">
+                                                        <ul>
+                                                            <li class="bold">در حال اجرا</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="img"
+                                                         style="background-image: url('../../dist/img/samples/slider-001.png')"></div>
+                                                    <div class="bottom-border"></div>
+                                                </div>
+                                                <div class="deal-block deal-txt">
+
+                                                    <div class="deal-detail project-name">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 deal-price-wrapper">
+                                                                <h4>
+                                                                    <span class="bottom-left-borders"></span><span class="top-right-borders"></span>برج اداری سامان فراز
+                                                                </h4>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tbl">
+                                                        <div class="tbl-row">
+                                                            <div class="tbl-cell detail-wrapper">
+                                                                <div class="deal-detail">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 facilities-wrapper">
+                                                                            <div class="txt-left-plus-icon">
+                                                                                <div class="icon-block">
+                                                                                    <div class="icon icon-i-017"></div>
+                                                                                </div>
+                                                                                <p>کارفرما: شرکت فلان</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xs-12 facilities-wrapper">
+                                                                            <div class="txt-left-plus-icon">
+                                                                                <div class="icon-block">
+                                                                                    <div class="icon icon-i-016"></div>
+                                                                                </div>
+                                                                                <p>استان: تهران</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xs-12 facilities-wrapper">
+                                                                            <div class="txt-left-plus-icon">
+                                                                                <div class="icon-block">
+                                                                                    <div class="icon icon-i-018"></div>
+                                                                                </div>
+                                                                                <p>زیربنای پروژه: 100000 متر</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tbl-cell gauge-wrapper">
+                                                                <div class="gauge">
+                                                                    <div class="tbl">
+                                                                        <div class="gauge-blocks-wrapper tbl-row">
+
+                                                                            <div class="gauge-block title tbl-cell">
+                                                                                <h5 class="txt-brand-color-lightviolet text-left">پیشرفت فیزیکی پروژه</h5>
+                                                                            </div>
+                                                                            <div class="gauge-block svg tbl-cell">
+                                                                                <div class="gauge" id="g9"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="deal-detail" style="border-top: 4px solid #f1f1f1;">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 facilities-wrapper">
+                                                                <div class="txt-left-plus-icon">
+                                                                    <div class="icon-block">
+                                                                        <div class="icon icon-i-020"></div>
+                                                                    </div>
+                                                                    <p>آدرس: خیابان هشتم بخارست خیابان هشتم بخارست</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 ">
+                                        <div class="deal project">
+                                            <a href="" class="deal-blocks-wrapper">
+                                                <div class="deal-block deal-img">
+
+
+                                                    <div class="deal-labels">
+                                                        <ul>
+                                                            <li class="bold">در حال اجرا</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="img"
+                                                         style="background-image: url('../../dist/img/samples/slider-001.png')"></div>
+                                                    <div class="bottom-border"></div>
+                                                </div>
+                                                <div class="deal-block deal-txt">
+
+                                                    <div class="deal-detail project-name">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 deal-price-wrapper">
+                                                                <h4>
+                                                                    <span class="bottom-left-borders"></span><span class="top-right-borders"></span>برج اداری سامان فراز
+                                                                </h4>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tbl">
+                                                        <div class="tbl-row">
+                                                            <div class="tbl-cell detail-wrapper">
+                                                                <div class="deal-detail">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 facilities-wrapper">
+                                                                            <div class="txt-left-plus-icon">
+                                                                                <div class="icon-block">
+                                                                                    <div class="icon icon-i-017"></div>
+                                                                                </div>
+                                                                                <p>کارفرما: شرکت فلان</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xs-12 facilities-wrapper">
+                                                                            <div class="txt-left-plus-icon">
+                                                                                <div class="icon-block">
+                                                                                    <div class="icon icon-i-016"></div>
+                                                                                </div>
+                                                                                <p>استان: تهران</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xs-12 facilities-wrapper">
+                                                                            <div class="txt-left-plus-icon">
+                                                                                <div class="icon-block">
+                                                                                    <div class="icon icon-i-018"></div>
+                                                                                </div>
+                                                                                <p>زیربنای پروژه: 100000 متر</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tbl-cell gauge-wrapper">
+                                                                <div class="gauge">
+                                                                    <div class="tbl">
+                                                                        <div class="gauge-blocks-wrapper tbl-row">
+
+                                                                            <div class="gauge-block title tbl-cell">
+                                                                                <h5 class="txt-brand-color-lightviolet text-left">پیشرفت فیزیکی پروژه</h5>
+                                                                            </div>
+                                                                            <div class="gauge-block svg tbl-cell">
+                                                                                <div class="gauge" id="g10"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="deal-detail" style="border-top: 4px solid #f1f1f1;">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 facilities-wrapper">
+                                                                <div class="txt-left-plus-icon">
+                                                                    <div class="icon-block">
+                                                                        <div class="icon icon-i-020"></div>
+                                                                    </div>
+                                                                    <p>آدرس: خیابان هشتم بخارست خیابان هشتم بخارست</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--footer-->
+    <div class="footer">
+        <div class="footer-blocks-wrapper tbl">
+            <div class="footer-block footer-links tbl-row">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class=" tbl-cell">
+                                <div class="footer-inner-block-right">
+                                    <div class="link">
+
+                                        <ul>
+                                            <li class="title">
+                                                دسترسی سریع
+                                            </li>
+                                            <li>
+                                                <a href="/public/publicEstate">
+                                                    املاک
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/public/publicBid">
+                                                    مزایده ها
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/public/publicproject?type=1">
+                                                    پروژه های درحال اجرا
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/public/publicproject?type=2">
+                                                    پروژه های اجرا شده
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="link">
+
+                                        <ul>
+                                            <li class="title">
+                                                تماس باما
+                                            </li>
+                                            <li>
+                                                آدرس: میدان ونک، خیابان خدامی، پلاک ۶۲، طبقه ۴
+                                            </li>
+                                            <li>
+                                                تلفن: ۸۸۲۰۸۷۷۲
+                                            </li>
+                                            <li>ایمیل: info@behnadbana.ir</li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class=" tbl-cell">
+                                <div class="footer-inner-block-left">
+                                    <div class="inner">
+                                        از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه گرفته شده‌است. از
+                                        آنجایی که طراحان عموما نویسنده متن نیستند و وظیفه رعایت حق تکثیر متون را ندارند و در
+                                        همان حال کار آنها به نوعی وابسته به متن می‌باشد آنها با استفاده از محتویات ساختگی،
+                                        صفحه گرافیکی خود را صفحه‌آرایی می‌کنند تا مرحله طراحی و صفحه‌بندی را به پایان برند.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-block footer-rights tbl-row">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class=" tbl-cell">
+                                <div class="footer-inner-block-right">
+                                    <div class="inner">
+                                        <span>کلیه حقوق متعلق به شرکت آکو ساتراپ می باشد.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" tbl-cell">
+                                <div class="footer-inner-block-left">
+                                    <div class="inner">
+                                        <span>Copyright © 2006 - 2017 &nbsp; &nbsp; akosatrap.com</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-block footer-logo">
+                <div class="icon-block-local">
+                    <div class="icon"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/footer-->
+    <!--libraries-->
+    <script src="~/dist/js/libraries/jquery.min.js"></script>
+    <script src="~/dist/js/libraries/raphael-2.1.4.min.js"></script>
+    <script src="~/dist/js/libraries/justgage.js"></script>
+    <script src="~/dist/js/libraries/nouislider.min.js"></script>
+
+    <!--Local-->
+    <script src="~/dist/js/general/script.min.js"></script>
+
+    <script>
+    $(document).ready(function () {
+        /*Function for Gauges*/
+        function createGauge(gaugeList) {
+            function customValue(val) {
+                if (val <= 10) {
+                    return '۱۰%';
+                } else if (val > 10 && val <= 20) {
+                    return '۲۰%';
+                } else if (val > 20 && val <= 30) {
+                    return '۳۰%';
+                } else if (val > 30 && val <= 40) {
+                    return '۴۰%';
+                } else if (val > 40 && val <= 50) {
+                    return '۵۰%';
+                } else if (val > 50 && val <= 60) {
+                    return '۶۰%';
+                }else if (val > 60 && val <= 70) {
+                    return '۷۰%';
+                }else if (val > 70 && val <= 80) {
+                    return '۸۰%';
+                }else if (val > 80 && val <= 90) {
+                    return '۹۰%';
+                }else if (val > 90 > 100) {
+                    return '۹۵%';
+                }else if (val = 100) {
+                    return '۱۰۰%';
+                }
+            }
+
+            $.each(gaugeList, function (i, e) {
+                var g = new JustGage({
+                    id: e.id,
+                    value: e.value,
+                    min: 0,
+                    max: 100,
+                    gaugeWidthScale: .5,
+                    donut: true,
+                    textRenderer: customValue,
+                    valueFontColor: "#894F8C",
+                    valueFontFamily: "WYekan",
+                    valueMinFontSize: 2,
+                    hideMinMax: true,
+                    hideInnerShadow: true,
+                    relativeGaugeSize: true,
+                    levelColors: ["#ff210f", "#39b7ff", "#6CD43A"],
+                    gaugeColor: "#d7d7d7"
+                });
+            });
+        }
+        var list = [
+            {id: "g5", value: 10},
+            {id: "g6", value: 90},
+            {id: "g7", value: 50},
+            {id: "g8", value: 100},
+            {id: "g9", value: 30},
+            {id: "g10", value: 70}
+        ];
+        createGauge(list);
+    });
+    </script>
+    <script>
+    function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+    }
+    function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+    }
+    function myAccFunc() {
+        var x = document.getElementById("demoAcc");
+        if (x.className.indexOf(" bar-show") == -1) {
+            x.className += " bar-show";
+            x.previousElementSibling.className += " bar-blue";
+        } else {
+            x.className = x.className.replace(" bar-show", "");
+            x.previousElementSibling.className =
+                x.previousElementSibling.className.replace(" bar-blue", "");
+        }
+    }
+    </script>
+</body>
+</html>

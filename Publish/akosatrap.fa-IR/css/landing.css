@@ -1,0 +1,101 @@
+html, body {
+    height: 100%;
+}
+.tbl {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+.tbl .tbl-row {
+    display: table-row;
+    height: inherit;
+    width: inherit;
+}
+.tbl .tbl-row .tbl-cell {
+    display: table-cell;
+    vertical-align: middle;
+    height: inherit;
+    width: inherit;
+}
+.left-part {
+    background: transparent url(../imgs/landing/mainbg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+.left-part .logo {
+
+}
+.right-part {
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='16' viewBox='0 0 12 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 .99C4 .445 4.444 0 5 0c.552 0 1 .45 1 .99v4.02C6 5.555 5.556 6 5 6c-.552 0-1-.45-1-.99V.99zm6 8c0-.546.444-.99 1-.99.552 0 1 .45 1 .99v4.02c0 .546-.444.99-1 .99-.552 0-1-.45-1-.99V8.99z' fill='%23d8d8d8' fill-opacity='0.43' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+.tbl .tbl-row .tbl-cell.left-part.mobile{
+    display: none;
+}
+.right-part .txt .title {
+    color: #c39f76;
+    margin-bottom: 60px;
+    margin-top: 50px;
+}
+.right-part .txt .address-wrapper {
+    width: 345px;
+    margin: 0 auto;
+}
+.right-part .txt .address-wrapper .glyphicon {
+    color: #c39f76;
+    margin-left: 12px;
+}
+.right-part .txt .address-wrapper a {
+    width: 26px;
+    height: 26px;
+    display: block;
+    float: left;
+}
+.right-part .txt .address-wrapper a img{
+  width: 100%;
+    height: 100%;
+}
+
+
+@media (max-width: 768px) {
+    .left-part .logo {
+        width: 120px;
+    }
+    .right-part h3{
+        font-size: 20px;
+    }
+    .right-part h2{
+        font-size: 20px;
+    }
+    .right-part .txt .address-wrapper {
+        width: 255px;
+    }
+}
+
+@media (max-width: 460px){
+
+    .tbl .tbl-row .tbl-cell.left-part{
+display: none;
+    }
+    .tbl .tbl-row .tbl-cell.left-part.mobile{
+        display: block;
+        height: 200px;
+    }
+    .tbl .tbl-row .tbl-cell.left-part.mobile .logo{
+        height: 90px;
+        margin-top: 60px;
+    }
+    .tbl .tbl-row .tbl-cell.right-part{
+        display: block ;
+        float: right;
+    }
+    .tbl .tbl-row .tbl-cell.right-part .txt .title{
+        margin-bottom: 30px;
+        margin-top: 20px;
+    }
+    .tbl .tbl-row .tbl-cell.right-part .txt p{
+        margin: 0 0 8px;
+    }
+}

@@ -1,0 +1,291 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>آکو ساتراپ ایرانیان</title>
+    <!-- Main css -->
+    <link href="~/dist/css/style.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+
+    <div class="new-sidebar animate-left" style="display:none;z-index:999;" id="mySidebar">
+        <span class="bar-wrapper">
+            <button onclick="w3_close()" class="close-item">&times;</button>
+            <a href="" class="change-lang">english</a>
+        </span>
+        @Html.ActionLink("صفحه نخست", "Index", new { controller = "Home" }, new { @class = "bar-button" })
+        @*<a href="#" class="bar-button">صفحه نخست</a>*@
+        <button class="bar-button bar-block" onclick="myAccFunc()">
+            درباره ما
+            <span class="glyphicon glyphicon-triangle-bottom"></span>
+        </button>
+        <div id="demoAcc" class=" bar-hide bar-white bar-card">
+            <a href="#" class="bar-button">پیام مدیرعامل</a>
+            <a href="#" class="bar-button">معرفی شرکت</a>
+            <a href="#" class="bar-button">صلاحیت ها</a>
+        </div>
+
+        <button class="bar-button bar-block" onclick="myAccFunc2()">
+            حوزه های فعالیت
+            <span class="glyphicon glyphicon-triangle-bottom"></span>
+        </button>
+        <div id="demoAcc2" class=" bar-hide bar-white bar-card">
+            <a href="#" class="bar-button">پیمانکاری</a>
+            <a href="#" class="bar-button">اتش نشانی</a>
+            <a href="#" class="bar-button">نظام مهندسی</a>
+        </div>
+
+        <button class="bar-button bar-block" onclick="myAccFunc3()">
+            پروژه ها
+            <span class="glyphicon glyphicon-triangle-bottom"></span>
+        </button>
+        <div id="demoAcc3" class=" bar-hide bar-white bar-card">
+            <a href="#" class="bar-button">درحال اجرا</a>
+            <a href="#" class="bar-button">اجرا شده</a>
+        </div>
+        <a href="@Url.Action("Index", "Product")" class="bar-button">محصولات</a>
+        @Html.ActionLink("ارسال به ما", "Index", new { controller = "SendUs" }, new { @class = "bar-button" })
+        @*<a href="#" class="bar-button">ارسال به ما</a>*@
+        <a href="#" class="bar-button">تماس با ما</a>
+    </div>
+
+    <div class="main-menu">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed pull-left main-menu-toggle" onclick="w3_open()">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <span class="navbar-brand" href="#">
+                        <div class="render-logo"></div>
+                    </span>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active">@Html.ActionLink("صفحه نخست", "Index", new { controller = "Home" })</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">درباره ما<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">پیام مدیرعامل</a></li>
+                                <li><a href="#">معرفی شرکت</a></li>
+                                <li><a href="#">صلاحیت ها</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">حوزه های فعالیت<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">پیمانکاری</a></li>
+                                <li><a href="#">آتش نشانی</a></li>
+                                <li><a href="#">نظام مهندسی</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">پروژه ها<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">پروژه های اجرا شده</a></li>
+                                <li><a href="#">پروژه های درحال اجرا</a></li>
+                            </ul>
+                        </li>
+                        <li class="active"><a href="@Url.Action("Index", "Product")">محصولات</a></li>
+                        <li class="active"><a href="@Url.Action("Index", "SendUs", new { seoName = "ارسال-به-ما" })">ارسال به ما</a></li>
+                        <li class="active"><a href="@Url.Action("ContactUs", "Home", new { seoName = "تماس-با-آکو-ساتراپ-ایرانیان" })">تماس با ما</a></li>
+                    </ul>
+
+                    <div class=" navbar-left">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li><a href="#">english</a></li>
+                        </ul>
+                        <p class="navbar-text navbar-left line">|</p>
+                        <p class="navbar-text navbar-left">
+                            <span class="glyphicon glyphicon-earphone"
+                                  style="color: #d6ba91;margin-left: 10px;"
+                                  aria-hidden="true"></span><span class=""> تماس : </span>۰۲۱۷۷۲۰۹۵۰۰
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="sub-nav-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="sub-nav tbl">
+                        <div class="sub-nav-blocks-wrapper tbl-row">
+                            <div class="sub-nav-block fmk-breadcrumb tbl-cell">
+                                <ol class="breadcrumb">
+                                    <li><a href="@Url.Action("Index", "Home")">صفحه نخست</a></li>
+                                    <li><a href="#">@RenderSection("PageName", false)</a></li>                                   
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+
+    <!--footer-->
+    <div class="footer">
+        <div class="footer-blocks-wrapper tbl">
+            <div class="footer-block footer-links tbl-row">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class=" tbl-cell">
+                                <div class="footer-inner-block-right">
+                                    <div class="link">
+
+                                        <ul>
+                                            <li class="title">
+                                                دسترسی سریع
+                                            </li>
+                                            <li>
+                                                <a href="/public/publicEstate">
+                                                    املاک
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/public/publicBid">
+                                                    مزایده ها
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/public/publicproject?type=1">
+                                                    پروژه های درحال اجرا
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/public/publicproject?type=2">
+                                                    پروژه های اجرا شده
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="link">
+
+                                        <ul>
+                                            <li class="title">
+                                                تماس باما
+                                            </li>
+                                            <li>
+                                                آدرس: تهران، بزرگراه رسالت، بعد از چهارراه سرسبز، پلاک ۶۰۰، طبقه سوم
+                                            </li>
+                                            <li>
+                                                تلفن: ۷۷۲۰۹۶۰۰ - ۷۷۲۰۹۵۰۰
+                                            </li>
+                                            <li>ایمیل: AkoSatrapIranian@mail.ir</li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class=" tbl-cell">
+                                <div class="footer-inner-block-left">
+                                    <div class="inner">
+                                        شرکت آکو ساتراپ ایرانیان
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-block footer-rights tbl-row">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class=" tbl-cell">
+                                <div class="footer-inner-block-right">
+                                    <div class="inner">
+                                        <span>کلیه حقوق متعلق به شرکت آکو ساتراپ می باشد.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" tbl-cell">
+                                <div class="footer-inner-block-left">
+                                    <div class="inner">
+                                        <span>Copyright © 2006 - 2017 &nbsp; &nbsp; akosatrap.com</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-block footer-logo">
+                <div class="icon-block-local">
+                    <div class="icon"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/footer-->
+    <!--libraries-->
+    <script src="~/dist/js/libraries/jquery.min.js"></script>
+
+    <!--Local-->
+    <script src="~/dist/js/general/script.min.js"></script>
+
+    @RenderSection("Scripts", false)
+
+    <script>
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+        }
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+        }
+        function myAccFunc() {
+            var x = document.getElementById("demoAcc");
+            if (x.className.indexOf(" bar-show") == -1) {
+                x.className += " bar-show";
+                x.previousElementSibling.className += " bar-blue";
+            } else {
+                x.className = x.className.replace(" bar-show", "");
+                x.previousElementSibling.className =
+                    x.previousElementSibling.className.replace(" bar-blue", "");
+            }
+        }
+        function myAccFunc2() {
+            var x = document.getElementById("demoAcc2");
+            if (x.className.indexOf(" bar-show") == -1) {
+                x.className += " bar-show";
+                x.previousElementSibling.className += " bar-blue";
+            } else {
+                x.className = x.className.replace(" bar-show", "");
+                x.previousElementSibling.className =
+                    x.previousElementSibling.className.replace(" bar-blue", "");
+            }
+        }
+        function myAccFunc3() {
+            var x = document.getElementById("demoAcc");
+            if (x.className.indexOf(" bar-show") == -1) {
+                x.className += " bar-show";
+                x.previousElementSibling.className += " bar-blue";
+            } else {
+                x.className = x.className.replace(" bar-show", "");
+                x.previousElementSibling.className =
+                    x.previousElementSibling.className.replace(" bar-blue", "");
+            }
+        }
+    </script>
+</body>
+</html>

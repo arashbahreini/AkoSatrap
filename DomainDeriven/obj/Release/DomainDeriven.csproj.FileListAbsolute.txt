@@ -1,0 +1,10 @@
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\DomainDeriven\bin\Release\DomainDeriven.dll.config
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\DomainDeriven\bin\Release\DomainDeriven.dll
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\DomainDeriven\bin\Release\DomainDeriven.pdb
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\DomainDeriven\bin\Release\EntityFramework.dll
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\DomainDeriven\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\DomainDeriven\bin\Release\EntityFramework.xml
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\DomainDeriven\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\DomainDeriven\obj\Release\DomainDeriven.dll
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\DomainDeriven\obj\Release\DomainDeriven.pdb
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\DomainDeriven\obj\Release\DomainDeriven.csprojResolveAssemblyReference.cache

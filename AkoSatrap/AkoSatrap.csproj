@@ -1,0 +1,529 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8C2533BC-26E4-4664-AAD6-FA029489D9A6}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AkoSatrap</RootNamespace>
+    <AssemblyName>AkoSatrap</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="akosatrap.fa-IR\build\css\bootstrap-rtl.min.css" />
+    <Content Include="akosatrap.fa-IR\build\css\bootstrap.css" />
+    <Content Include="akosatrap.fa-IR\css\landing.css" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\dist\css\bootstrap-theme.css" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\dist\css\bootstrap-theme.min.css" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\dist\css\bootstrap.css" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\dist\css\bootstrap.min.css" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\dist\js\bootstrap.js" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\dist\js\bootstrap.min.js" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\dist\js\ie10-viewport-bug-workaround.js" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\dist\js\npm.js" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="akosatrap.fa-IR\imgs\landing\logo.png" />
+    <Content Include="akosatrap.fa-IR\imgs\landing\mainbg.jpg" />
+    <Content Include="akosatrap.fa-IR\imgs\landing\telegram.png" />
+    <Content Include="akosatrap.fa-IR\lib\jquery-1.11.2.min.js" />
+    <Content Include="app\app.js" />
+    <Content Include="app\config.js" />
+    <Content Include="app\directive\fileUploaderDirective.js" />
+    <Content Include="app\directive\nationalCode.js" />
+    <Content Include="app\directive\persianDateDirective.js" />
+    <Content Include="app\directive\validationDirective.js" />
+    <Content Include="app\factory\arrayHelperFactory.js" />
+    <Content Include="app\factory\messageFactory.js" />
+    <Content Include="app\factory\stateCityRegionFactory.js" />
+    <Content Include="app\factory\validationFactory.js" />
+    <Content Include="app\pages\download\download.html" />
+    <Content Include="app\pages\download\downloadController.js" />
+    <Content Include="app\pages\driver\driver.html" />
+    <Content Include="app\pages\driver\driverController.js" />
+    <Content Include="app\pages\home\home.html" />
+    <Content Include="app\pages\home\homeController.js" />
+    <Content Include="app\pages\product\product.html" />
+    <Content Include="app\pages\product\productCategory.html" />
+    <Content Include="app\pages\product\productCategoryController.js" />
+    <Content Include="app\pages\product\productController.js" />
+    <Content Include="app\pages\product\productDetail.html" />
+    <Content Include="app\pages\product\productDetailController.js" />
+    <Content Include="app\pages\shared\alertModal\alert.html" />
+    <Content Include="app\pages\shared\alertModal\confirm.html" />
+    <Content Include="app\routing.js" />
+    <Content Include="app\service\fileUploaderService.js" />
+    <Content Include="app\service\postService.js" />
+    <Content Include="app\sharedController.js" />
+    <Content Include="Core\angular-ui-date.js" />
+    <Content Include="Core\Angular\angular-animate.js" />
+    <Content Include="Core\Angular\angular-animate.min.js" />
+    <Content Include="Core\Angular\angular-aria.js" />
+    <Content Include="Core\Angular\angular-aria.min.js" />
+    <Content Include="Core\Angular\angular-cookies.js" />
+    <Content Include="Core\Angular\angular-cookies.min.js" />
+    <Content Include="Core\Angular\angular-csp.css" />
+    <Content Include="Core\Angular\angular-loader.js" />
+    <Content Include="Core\Angular\angular-loader.min.js" />
+    <Content Include="Core\Angular\angular-message-format.js" />
+    <Content Include="Core\Angular\angular-message-format.min.js" />
+    <Content Include="Core\Angular\angular-messages.js" />
+    <Content Include="Core\Angular\angular-messages.min.js" />
+    <Content Include="Core\Angular\angular-mocks.js" />
+    <Content Include="Core\Angular\angular-resource.js" />
+    <Content Include="Core\Angular\angular-resource.min.js" />
+    <Content Include="Core\Angular\angular-route.js" />
+    <Content Include="Core\Angular\angular-route.min.js" />
+    <Content Include="Core\Angular\angular-sanitize.js" />
+    <Content Include="Core\Angular\angular-sanitize.min.js" />
+    <Content Include="Core\Angular\angular-scenario.js" />
+    <Content Include="Core\Angular\angular-touch.js" />
+    <Content Include="Core\Angular\angular-touch.min.js" />
+    <Content Include="Core\Angular\angular-ui-ieshiv.min.js" />
+    <Content Include="Core\Angular\angular-ui-router.min.js" />
+    <Content Include="Core\Angular\angular-ui-utils.min.js" />
+    <Content Include="Core\Angular\angular-ui.min.js" />
+    <Content Include="Core\Angular\angular.js" />
+    <Content Include="Core\Angular\angular.min.js" />
+    <Content Include="Core\Angular\ocLazyLoad.min.js" />
+    <Content Include="Core\Angular\script.min.js" />
+    <Content Include="Core\JQuery\jQuery-2.2.0.min.js" />
+    <Content Include="Core\JQuery\modernizr.js" />
+    <Content Include="Core\other\bootstrap-tpl\ui-bootstrap-tpls-0.11.0.js" />
+    <Content Include="Core\other\busy\angular-busy.min.css" />
+    <Content Include="Core\other\busy\angular-busy.min.js" />
+    <Content Include="Core\other\loadbar\loading-bar.css" />
+    <Content Include="Core\other\loadbar\loading-bar.js" />
+    <Content Include="Core\other\PersianDate\bootstrap-datepicker.css" />
+    <Content Include="Core\other\PersianDate\bootstrap-datepicker.fa.js" />
+    <Content Include="Core\other\PersianDate\bootstrap-datepicker.js" />
+    <Content Include="Core\other\ui-bootstrap-tpls-2.5.0.min.js" />
+    <Content Include="Core\SiteCore\css\bootstrap.min.css" />
+    <Content Include="Core\SiteCore\fonts\farsi\YekanWeb-Bold.svg" />
+    <Content Include="Core\SiteCore\fonts\farsi\YekanWeb-Regular.svg" />
+    <Content Include="Core\SiteCore\fonts\font-awesome\fontawesome-webfont.svg" />
+    <Content Include="Core\SiteCore\img\captcha.png" />
+    <Content Include="Core\SiteCore\img\login-img.png" />
+    <Content Include="Core\SiteCore\img\logo-inverse.png" />
+    <Content Include="Core\SiteCore\img\nobody_profile.jpg" />
+    <Content Include="Core\SiteCore\js\bootstrap.min.js" />
+    <Content Include="Core\SiteCore\js\jquery.min.js" />
+    <Content Include="Core\SiteCore\js\main.js" />
+    <Content Include="Core\SiteCore\js\tether.min.js" />
+    <Content Include="Core\Telerik\Bootstrap\editor.png" />
+    <Content Include="Core\Telerik\Bootstrap\imagebrowser.png" />
+    <Content Include="Core\Telerik\Bootstrap\indeterminate.gif" />
+    <Content Include="Core\Telerik\Bootstrap\loading-image.gif" />
+    <Content Include="Core\Telerik\Bootstrap\loading.gif" />
+    <Content Include="Core\Telerik\Bootstrap\loading_2x.gif" />
+    <Content Include="Core\Telerik\Bootstrap\markers.png" />
+    <Content Include="Core\Telerik\Bootstrap\markers_2x.png" />
+    <Content Include="Core\Telerik\Bootstrap\slider-h.gif" />
+    <Content Include="Core\Telerik\Bootstrap\slider-v.gif" />
+    <Content Include="Core\Telerik\Bootstrap\sprite.png" />
+    <Content Include="Core\Telerik\Bootstrap\sprite_2x.png" />
+    <Content Include="Core\Telerik\Bootstrap\sprite_kpi.png" />
+    <Content Include="Core\Telerik\Bootstrap\sprite_kpi_2x.png" />
+    <Content Include="Core\Telerik\js\jszip.min.js" />
+    <Content Include="Core\Telerik\js\kendo.all.min.js" />
+    <Content Include="Core\Telerik\js\kendo.angular.min.js" />
+    <Content Include="Core\Telerik\kendo.all.min.js" />
+    <Content Include="Core\Telerik\kendo.angular.min.js" />
+    <Content Include="Core\Telerik\kendo.bootstrap.min.css" />
+    <Content Include="Core\Telerik\kendo.common.core.min.css" />
+    <Content Include="Core\Telerik\kendo.common.min.css" />
+    <Content Include="Core\Telerik\Material\editor.png" />
+    <Content Include="Core\Telerik\Material\imagebrowser.png" />
+    <Content Include="Core\Telerik\Material\indeterminate.gif" />
+    <Content Include="Core\Telerik\Material\loading-image.gif" />
+    <Content Include="Core\Telerik\Material\loading.gif" />
+    <Content Include="Core\Telerik\Material\loading_2x.gif" />
+    <Content Include="Core\Telerik\Material\markers.png" />
+    <Content Include="Core\Telerik\Material\markers_2x.png" />
+    <Content Include="Core\Telerik\Material\slider-h.gif" />
+    <Content Include="Core\Telerik\Material\slider-v.gif" />
+    <Content Include="Core\Telerik\Material\sprite.png" />
+    <Content Include="Core\Telerik\Material\sprite_2x.png" />
+    <Content Include="Core\Telerik\Material\sprite_kpi.png" />
+    <Content Include="Core\Telerik\Material\sprite_kpi_2x.png" />
+    <Content Include="Core\Telerik\styles\Bootstrap\editor.png" />
+    <Content Include="Core\Telerik\styles\Bootstrap\imagebrowser.png" />
+    <Content Include="Core\Telerik\styles\Bootstrap\indeterminate.gif" />
+    <Content Include="Core\Telerik\styles\Bootstrap\loading-image.gif" />
+    <Content Include="Core\Telerik\styles\Bootstrap\loading.gif" />
+    <Content Include="Core\Telerik\styles\Bootstrap\loading_2x.gif" />
+    <Content Include="Core\Telerik\styles\Bootstrap\markers.png" />
+    <Content Include="Core\Telerik\styles\Bootstrap\markers_2x.png" />
+    <Content Include="Core\Telerik\styles\Bootstrap\slider-h.gif" />
+    <Content Include="Core\Telerik\styles\Bootstrap\slider-v.gif" />
+    <Content Include="Core\Telerik\styles\Bootstrap\sprite.png" />
+    <Content Include="Core\Telerik\styles\Bootstrap\sprite_2x.png" />
+    <Content Include="Core\Telerik\styles\Bootstrap\sprite_kpi.png" />
+    <Content Include="Core\Telerik\styles\Bootstrap\sprite_kpi_2x.png" />
+    <Content Include="Core\Telerik\styles\images\back.png" />
+    <Content Include="Core\Telerik\styles\images\kendoui.svg" />
+    <Content Include="Core\Telerik\styles\images\wp8_icons.png" />
+    <Content Include="Core\Telerik\styles\images\wp8_inverseicons.png" />
+    <Content Include="Core\Telerik\styles\kendo.bootstrap.min.css" />
+    <Content Include="Core\Telerik\styles\kendo.bootstrap.mobile.min.css" />
+    <Content Include="Core\Telerik\styles\kendo.common-bootstrap.core.min.css" />
+    <Content Include="Core\Telerik\styles\kendo.common-material.core.min.css" />
+    <Content Include="Core\Telerik\styles\kendo.common.core.min.css" />
+    <Content Include="Core\Telerik\styles\kendo.common.min.css" />
+    <Content Include="Core\Telerik\styles\kendo.material.min.css" />
+    <Content Include="Core\Telerik\styles\kendo.rtl.min.css" />
+    <Content Include="Core\Telerik\styles\Material\editor.png" />
+    <Content Include="Core\Telerik\styles\Material\imagebrowser.png" />
+    <Content Include="Core\Telerik\styles\Material\indeterminate.gif" />
+    <Content Include="Core\Telerik\styles\Material\loading-image.gif" />
+    <Content Include="Core\Telerik\styles\Material\loading.gif" />
+    <Content Include="Core\Telerik\styles\Material\loading_2x.gif" />
+    <Content Include="Core\Telerik\styles\Material\markers.png" />
+    <Content Include="Core\Telerik\styles\Material\markers_2x.png" />
+    <Content Include="Core\Telerik\styles\Material\slider-h.gif" />
+    <Content Include="Core\Telerik\styles\Material\slider-v.gif" />
+    <Content Include="Core\Telerik\styles\Material\sprite.png" />
+    <Content Include="Core\Telerik\styles\Material\sprite_2x.png" />
+    <Content Include="Core\Telerik\styles\Material\sprite_kpi.png" />
+    <Content Include="Core\Telerik\styles\Material\sprite_kpi_2x.png" />
+    <Content Include="dist\css\style.min.css" />
+    <Content Include="dist\font\glyphicons-halflings-regular.eot" />
+    <Content Include="dist\font\glyphicons-halflings-regular.svg" />
+    <Content Include="dist\font\glyphicons-halflings-regular.ttf" />
+    <Content Include="dist\font\glyphicons-halflings-regular.woff" />
+    <Content Include="dist\font\glyphicons-halflings-regular.woff2" />
+    <Content Include="dist\font\YekanWeb-Bold.eot" />
+    <Content Include="dist\font\YekanWeb-Bold.svg" />
+    <Content Include="dist\font\YekanWeb-Bold.ttf" />
+    <Content Include="dist\font\YekanWeb-Bold.woff" />
+    <Content Include="dist\font\YekanWeb-Bold.woff2" />
+    <Content Include="dist\font\YekanWeb-Regular.eot" />
+    <Content Include="dist\font\YekanWeb-Regular.svg" />
+    <Content Include="dist\font\YekanWeb-Regular.ttf" />
+    <Content Include="dist\font\YekanWeb-Regular.woff" />
+    <Content Include="dist\font\YekanWeb-Regular.woff2" />
+    <Content Include="dist\img\ako\index-001.png" />
+    <Content Include="dist\img\ako\index-002.png" />
+    <Content Include="dist\img\ako\index-about-us.png" />
+    <Content Include="dist\img\customers-logos\01.png" />
+    <Content Include="dist\img\customers-logos\02.png" />
+    <Content Include="dist\img\customers-logos\03.png" />
+    <Content Include="dist\img\highres\img-group-icons-2.png" />
+    <Content Include="dist\img\highres\img-group-icons.png" />
+    <Content Include="dist\img\img-group-icons-2.png" />
+    <Content Include="dist\img\img-group-icons.png" />
+    <Content Include="dist\img\loading.gif" />
+    <Content Include="dist\img\logo-light.png" />
+    <Content Include="dist\img\logo.png" />
+    <Content Include="dist\img\logo2.png" />
+    <Content Include="dist\js\general\script.min.js" />
+    <Content Include="dist\js\libraries\jquery.min.js" />
+    <Content Include="dist\js\libraries\justgage.js" />
+    <Content Include="dist\js\libraries\nouislider.min.js" />
+    <Content Include="dist\js\libraries\raphael-2.1.4.min.js" />
+    <Content Include="fa-IR\ako-index.html" />
+    <Content Include="fa-IR\data6\images\banner1.jpg" />
+    <Content Include="fa-IR\data6\images\banner2.jpg" />
+    <Content Include="fa-IR\data6\images\banner3.jpg" />
+    <Content Include="fa-IR\data6\tooltips\banner1.png" />
+    <Content Include="fa-IR\data6\tooltips\banner2.png" />
+    <Content Include="fa-IR\data6\tooltips\banner3.png" />
+    <Content Include="fa-IR\engine6\arrows.png" />
+    <Content Include="fa-IR\engine6\bullet.png" />
+    <Content Include="fa-IR\engine6\jquery.js" />
+    <Content Include="fa-IR\engine6\loading.gif" />
+    <Content Include="fa-IR\engine6\pause.png" />
+    <Content Include="fa-IR\engine6\play.png" />
+    <Content Include="fa-IR\engine6\script.js" />
+    <Content Include="fa-IR\engine6\style.css" />
+    <Content Include="fa-IR\engine6\style.mod.css" />
+    <Content Include="fa-IR\engine6\wowslider.js" />
+    <Content Include="fa-IR\engine6\wowslider.mod.js" />
+    <Content Include="Global.asax" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <None Include="Scripts\jquery-1.8.0.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.0.js" />
+    <Content Include="Scripts\jquery-1.8.0.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AuthData\AuthAttribute.cs" />
+    <Compile Include="AuthData\CustomPrincipal.cs" />
+    <Compile Include="Controllers\AboutUsController.cs" />
+    <Compile Include="Controllers\ActivitiesController.cs" />
+    <Compile Include="Controllers\Default1Controller.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Login.cs" />
+    <Compile Include="Controllers\PAuthenticationController.cs" />
+    <Compile Include="Controllers\PHomeController.cs" />
+    <Compile Include="Controllers\PProductController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Controllers\SendUsController.cs" />
+    <Compile Include="ErrorData\ErrorAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIHelper\Captcha\CacheManager.cs" />
+    <Compile Include="UIHelper\Captcha\CaptchaHelpers.cs" />
+    <Compile Include="UIHelper\Captcha\CaptchaImageResult.cs" />
+    <Compile Include="UIHelper\Captcha\HumanReadableInteger.cs" />
+    <Compile Include="UIHelper\Captcha\LogOnModel.cs" />
+    <Compile Include="UIHelper\Captcha\NoBrowserCache.cs" />
+    <Compile Include="UIHelper\Captcha\SecurityExtensions.cs" />
+    <Compile Include="UIHelper\Captcha\ValidateCaptchaAttribute.cs" />
+    <Compile Include="UIHelper\EnumExtention.cs" />
+    <Compile Include="UIHelper\FileAttachment.cs" />
+    <Compile Include="UIHelper\GridResult.cs" />
+    <Compile Include="UIHelper\UploadFileModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="akosatrap.fa-IR\fonts\YekanWeb-Bold.woff" />
+    <Content Include="akosatrap.fa-IR\fonts\YekanWeb-Regular.woff" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\dist\css\bootstrap-theme.css.map" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\dist\css\bootstrap.css.map" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="akosatrap.fa-IR\frameworks\bootstrap-3.3.2\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Core\Angular\angular-animate.min.js.map" />
+    <Content Include="Core\Angular\angular-aria.min.js.map" />
+    <Content Include="Core\Angular\angular-cookies.min.js.map" />
+    <Content Include="Core\Angular\angular-loader.min.js.map" />
+    <Content Include="Core\Angular\angular-message-format.min.js.map" />
+    <Content Include="Core\Angular\angular-messages.min.js.map" />
+    <Content Include="Core\Angular\angular-resource.min.js.map" />
+    <Content Include="Core\Angular\angular-route.min.js.map" />
+    <Content Include="Core\Angular\angular-sanitize.min.js.map" />
+    <Content Include="Core\Angular\angular-touch.min.js.map" />
+    <Content Include="Core\Angular\angular.min.js.map" />
+    <Content Include="Core\SiteCore\fonts\farsi\YekanWeb-Bold.eot" />
+    <Content Include="Core\SiteCore\fonts\farsi\YekanWeb-Bold.ttf" />
+    <Content Include="Core\SiteCore\fonts\farsi\YekanWeb-Bold.woff" />
+    <Content Include="Core\SiteCore\fonts\farsi\YekanWeb-Bold.woff2" />
+    <Content Include="Core\SiteCore\fonts\farsi\YekanWeb-Regular.eot" />
+    <Content Include="Core\SiteCore\fonts\farsi\YekanWeb-Regular.ttf" />
+    <Content Include="Core\SiteCore\fonts\farsi\YekanWeb-Regular.woff" />
+    <Content Include="Core\SiteCore\fonts\farsi\YekanWeb-Regular.woff2" />
+    <Content Include="Core\SiteCore\fonts\font-awesome\fontawesome-webfont.eot" />
+    <Content Include="Core\SiteCore\fonts\font-awesome\fontawesome-webfont.ttf" />
+    <Content Include="Core\SiteCore\fonts\font-awesome\fontawesome-webfont.woff" />
+    <Content Include="Core\SiteCore\fonts\font-awesome\fontawesome-webfont.woff2" />
+    <Content Include="Core\SiteCore\fonts\font-awesome\FontAwesome.otf" />
+    <Content Include="Core\Telerik\styles\images\kendoui.ttf" />
+    <Content Include="Core\Telerik\styles\images\kendoui.woff" />
+    <None Include="Properties\PublishProfiles\akosatrapPublish.pubxml" />
+    <Content Include="Views\Shared\_PanelLayout.cshtml" />
+    <Content Include="Views\PHome\Index.cshtml" />
+    <Content Include="Views\PAuthentication\Login.cshtml" />
+    <Content Include="Views\Home\TestProjects.cshtml" />
+    <Content Include="Views\Home\TestProject.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\underConstractionIndex.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Product.cshtml" />
+    <Content Include="Views\SendUs\Result.cshtml" />
+    <Content Include="Views\SendUs\Index.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\AboutUs\CeoMessage.cshtml" />
+    <Content Include="Views\AboutUs\Abilities.cshtml" />
+    <Content Include="Views\AboutUs\AboutCompany.cshtml" />
+    <Content Include="Views\Activities\Contracting.cshtml" />
+    <Content Include="Views\Activities\FireStations.cshtml" />
+    <Content Include="Views\Activities\Engineeringsystem.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\Project\ProjectRunning.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AkoSatrapImages\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="obj\" />
+    <Folder Include="UploadFile\" />
+    <Folder Include="Views\Default1\" />
+    <Folder Include="Views\Security\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{475a5f48-c70c-4187-a4ff-a3cf844250cd}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+      <Project>{2bf9dd9f-821a-4e3f-a6ea-131266e286b2}</Project>
+      <Name>ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>27329</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:27329/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

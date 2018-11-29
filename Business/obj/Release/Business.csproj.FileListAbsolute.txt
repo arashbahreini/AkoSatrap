@@ -1,0 +1,11 @@
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\Business\bin\Release\Business.dll
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\Business\bin\Release\Business.pdb
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\Business\bin\Release\DomainDeriven.dll
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\Business\bin\Release\EntityFramework.dll
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\Business\bin\Release\ViewModel.dll
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\Business\bin\Release\DomainDeriven.pdb
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\Business\bin\Release\ViewModel.pdb
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\Business\bin\Release\EntityFramework.xml
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\Business\obj\Release\Business.csprojResolveAssemblyReference.cache
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\Business\obj\Release\Business.dll
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\Business\obj\Release\Business.pdb

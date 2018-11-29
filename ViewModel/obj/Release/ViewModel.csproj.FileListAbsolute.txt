@@ -1,0 +1,5 @@
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\ViewModel\bin\Release\ViewModel.dll
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\ViewModel\bin\Release\ViewModel.pdb
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\ViewModel\obj\Release\ViewModel.csprojResolveAssemblyReference.cache
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\ViewModel\obj\Release\ViewModel.dll
+C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\ViewModel\obj\Release\ViewModel.pdb

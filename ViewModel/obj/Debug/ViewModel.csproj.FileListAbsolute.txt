@@ -1,0 +1,6 @@
+C:\work\AkoSatrap\AkoSatrap\ViewModel\bin\Debug\ViewModel.dll
+C:\work\AkoSatrap\AkoSatrap\ViewModel\bin\Debug\ViewModel.pdb
+C:\work\AkoSatrap\AkoSatrap\ViewModel\obj\Debug\ViewModel.csprojAssemblyReference.cache
+C:\work\AkoSatrap\AkoSatrap\ViewModel\obj\Debug\ViewModel.csproj.CoreCompileInputs.cache
+C:\work\AkoSatrap\AkoSatrap\ViewModel\obj\Debug\ViewModel.dll
+C:\work\AkoSatrap\AkoSatrap\ViewModel\obj\Debug\ViewModel.pdb
