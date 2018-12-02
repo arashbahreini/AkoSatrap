@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ViewModel
 {
-    public class ProjectCategory
+    public  class ProductCategotyModel
     {
         public int Id { get; set; }
 
@@ -15,5 +15,7 @@ namespace ViewModel
         public string Title { get; set; }
 
         public string EnTitle { get; set; }
+
+
     }
 }

@@ -4,7 +4,7 @@
        $rootScope.pageTitle = 'مدیریت دسته بندی پروژه ها';
 
        $scope.persianPattern = /^[\u0600-\u06FF\s]+$/;
-       $scope.englishPattern = /^[a-z\u0590-\u05fe]+$/i;
+       $scope.englishPattern = /^[a-z\u0590-\u05fe\s]+$/i;
        $scope.numberPattern = /^\+?\d+$/;
        $scope.phonePattern = /^[0-9-]*$/;
        $scope.englishWithNumber = /^[a-zA-Z0-9]*$/;

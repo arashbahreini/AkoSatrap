@@ -153,6 +153,8 @@
     <Content Include="app\pages\product\productController.js" />
     <Content Include="app\pages\product\productDetail.html" />
     <Content Include="app\pages\product\productDetailController.js" />
+    <Content Include="app\pages\project\project.html" />
+    <Content Include="app\pages\project\projectController.js" />
     <Content Include="app\pages\project\projectCategory.html" />
     <Content Include="app\pages\project\projectCategoryController.js" />
     <Content Include="app\pages\shared\alertModal\alert.html" />

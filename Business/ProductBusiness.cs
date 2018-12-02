@@ -10,7 +10,7 @@ namespace Business
     public class ProductBusiness
     {
         #region ProductCategory
-        public ViewModel.ReturnResult<bool> AddProductCategory(ViewModel.ProductCategoty productCategory)
+        public ViewModel.ReturnResult<bool> AddProductCategory(ViewModel.ProductCategotyModel productCategory)
         {
             ViewModel.ReturnResult<bool> returnResult = new ViewModel.ReturnResult<bool>();
             try
@@ -36,23 +36,23 @@ namespace Business
             return returnResult;
         }
 
-        public List<ViewModel.ProductCategoty> GetAllProductCategory()
+        public List<ViewModel.ProductCategotyModel> GetAllProductCategory()
         {
             DomainDeriven.AkoSatrapDb context = new DomainDeriven.AkoSatrapDb();
             var a = context.ProductCategories.Include("ProductCategory2").Where(r => r.IsEnglish == false)
-                .Select(r => new ViewModel.ProductCategoty { Title = r.Title, EnTitle = r.ProductCategory2.Title, Id = r.Id, EnId = r.EnId.Value }).ToList();
+                .Select(r => new ViewModel.ProductCategotyModel { Title = r.Title, EnTitle = r.ProductCategory2.Title, Id = r.Id, EnId = r.EnId.Value }).ToList();
             return a;
         }
 
-        public ViewModel.ProductCategoty GetProductCategory(int id)
+        public ViewModel.ProductCategotyModel GetProductCategory(int id)
         {
             DomainDeriven.AkoSatrapDb context = new DomainDeriven.AkoSatrapDb();
             return context.ProductCategories.Include("ProductCategory2").Where(r => r.Id == id)
-                .Select(r => new ViewModel.ProductCategoty { Title = r.Title, EnTitle = r.ProductCategory2.Title, Id = r.Id, EnId = r.EnId.Value }).FirstOrDefault();
+                .Select(r => new ViewModel.ProductCategotyModel { Title = r.Title, EnTitle = r.ProductCategory2.Title, Id = r.Id, EnId = r.EnId.Value }).FirstOrDefault();
 
         }
 
-        public ViewModel.ReturnResult<bool> UpdateProductCategory(ViewModel.ProductCategoty productCategory)
+        public ViewModel.ReturnResult<bool> UpdateProductCategory(ViewModel.ProductCategotyModel productCategory)
         {
             ViewModel.ReturnResult<bool> returnResult = new ViewModel.ReturnResult<bool>();
             try
@@ -85,7 +85,7 @@ namespace Business
         #endregion
 
         #region product
-        public ViewModel.ReturnResult<bool> AddProduct(ViewModel.Product product)
+        public ViewModel.ReturnResult<bool> AddProduct(ViewModel.ProductModel product)
         {
             ViewModel.ReturnResult<bool> returnResult = new ViewModel.ReturnResult<bool>();
 
@@ -131,14 +131,14 @@ namespace Business
             return returnResult;
         }
 
-        public List<ViewModel.Product> GetAllProduct()
+        public List<ViewModel.ProductModel> GetAllProduct()
         {
             DomainDeriven.AkoSatrapDb context = new DomainDeriven.AkoSatrapDb();
 
             var products = context.Products.Include("Product2").Include("ProductCategory").Where(r => r.IsEnglish == false)
-                .Select(r => new ViewModel.Product
+                .Select(r => new ViewModel.ProductModel
                 {
-                    Category = new ViewModel.ProductCategoty
+                    Category = new ViewModel.ProductCategotyModel
                     {
                         Title = r.ProductCategory.Title,
                         Id = r.ProductCategory.Id,
@@ -176,16 +176,16 @@ namespace Business
             return products;
         }
 
-        public ViewModel.Product GetProduct(int id)
+        public ViewModel.ProductModel GetProduct(int id)
         {
             DomainDeriven.AkoSatrapDb context = new DomainDeriven.AkoSatrapDb();
-            var productView = new ViewModel.Product();
+            var productView = new ViewModel.ProductModel();
             var product = context.Products.Include("ProductCategory").Include("ProductFeatures").FirstOrDefault(r => r.Id == id);
             if (product != null)
             {
-                productView = new ViewModel.Product
+                productView = new ViewModel.ProductModel
                 {
-                    Category = new ViewModel.ProductCategoty
+                    Category = new ViewModel.ProductCategotyModel
                     {
                         Title = product.ProductCategory.Title,
                         Id = product.ProductCategory.Id,
@@ -203,23 +203,23 @@ namespace Business
                     CategoryId = product.ProductCategoryId.Value,
                     Description = product.Description
                 };
-                productView.ProductFeature = new List<ViewModel.ProductFeature>();
+                productView.ProductFeature = new List<ViewModel.ProductFeatureModel>();
                 product.ProductFeatures.ToList().ForEach(feature => {
-                    productView.ProductFeature.Add(new ViewModel.ProductFeature { Title = feature.Title, Id = feature.Id, Description = feature.Description });
+                    productView.ProductFeature.Add(new ViewModel.ProductFeatureModel { Title = feature.Title, Id = feature.Id, Description = feature.Description });
                 });
             }
 
             return productView;
         }
 
-        public List<ViewModel.Product> GetAllProduct(bool isEnglish)
+        public List<ViewModel.ProductModel> GetAllProduct(bool isEnglish)
         {
             DomainDeriven.AkoSatrapDb context = new DomainDeriven.AkoSatrapDb();
 
             var products = context.Products.Include("ProductCategory").Where(r => r.IsEnglish == isEnglish)
-                .Select(r => new ViewModel.Product
+                .Select(r => new ViewModel.ProductModel
                 {
-                    Category = new ViewModel.ProductCategoty
+                    Category = new ViewModel.ProductCategotyModel
                     {
                         Title = r.ProductCategory.Title,
                         Id = r.ProductCategory.Id,
@@ -241,7 +241,7 @@ namespace Business
             return products;
         }
 
-        public ViewModel.ReturnResult<bool> UpdateProduct(ViewModel.Product product)
+        public ViewModel.ReturnResult<bool> UpdateProduct(ViewModel.ProductModel product)
         {
             ViewModel.ReturnResult<bool> returnResult = new ViewModel.ReturnResult<bool>();
             try
@@ -283,13 +283,13 @@ namespace Business
             return returnResult;
         }
 
-        public ViewModel.Product GetProductById(int id)
+        public ViewModel.ProductModel GetProductById(int id)
         {
             DomainDeriven.AkoSatrapDb context = new DomainDeriven.AkoSatrapDb();
 
             var product = context.Products.FirstOrDefault(r => r.Id == id);
 
-            var productViewModel = new ViewModel.Product
+            var productViewModel = new ViewModel.ProductModel
             {
                 Id = product.Id,
                 Brand = product.Brand,
@@ -305,7 +305,7 @@ namespace Business
 
         #region productDetail
 
-        public ViewModel.ReturnResult<bool> AddProductDetail(ViewModel.ProductFeature productFeature)
+        public ViewModel.ReturnResult<bool> AddProductDetail(ViewModel.ProductFeatureModel productFeature)
         {
             ViewModel.ReturnResult<bool> returnResult = new ViewModel.ReturnResult<bool>();
             try
@@ -352,11 +352,11 @@ namespace Business
             return returnResult;
         }
 
-        public List<ViewModel.ProductFeature> GetAllProductDetail(int productId)
+        public List<ViewModel.ProductFeatureModel> GetAllProductDetail(int productId)
         {
             DomainDeriven.AkoSatrapDb context = new DomainDeriven.AkoSatrapDb();
             var productFeatureList = context.ProductFeatures.Include("ProductFeatures2").Where(r => !r.IsEnglish.Value && r.ProductId == productId)
-                .Select(r => new ViewModel.ProductFeature
+                .Select(r => new ViewModel.ProductFeatureModel
                 {
                     Title = r.Title,
                     EnTitle = r.ProductFeature2.Title,
@@ -371,7 +371,7 @@ namespace Business
             return productFeatureList;
         }
 
-        public ViewModel.ReturnResult<bool> UpdateProductFeature(ViewModel.ProductFeature productFeature)
+        public ViewModel.ReturnResult<bool> UpdateProductFeature(ViewModel.ProductFeatureModel productFeature)
         {
             ViewModel.ReturnResult<bool> returnResult = new ViewModel.ReturnResult<bool>();
             try

@@ -89,5 +89,22 @@
                     return deferred.promise;
                 }]
             }
+        }).state('project', {
+            url: '/project',
+            templateUrl: '../app/pages/project/project.html',
+            resolve: {
+                fileDeps: ['$q', '$rootScope', function ($q, $rootScope) {
+                    var deferred = $q.defer();
+                    var deps = [
+                        '../app/pages/project/projectController.js',
+                    ];
+                    $script(deps, function () {
+                        $rootScope.$apply(function () {
+                            deferred.resolve();
+                        });
+                    });
+                    return deferred.promise;
+                }]
+            }
         });
 }]);

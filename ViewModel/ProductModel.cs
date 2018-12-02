@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace ViewModel
 {
-    public class Product
+    public class ProductModel
     {
         public int Id { get; set; }
         public int EnId { get; set; }
         public int CategoryId { get; set; }
-        public ProductCategoty Category { get; set; }
+        public ProductCategotyModel Category { get; set; }
 
-        public List<ProductFeature> ProductFeature { get; set; }
+        public List<ProductFeatureModel> ProductFeature { get; set; }
         public string Brand { get; set; }
         public string EnBrand { get; set; }
         public string Title { get; set; }
