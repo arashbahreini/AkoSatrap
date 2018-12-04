@@ -111,7 +111,7 @@
         </button>
         <div id="demoAcc3" class=" bar-hide bar-white bar-card">
             <a href="@Url.Action("ProjectRunning", "Project")" class="bar-button">درحال اجرا</a>
-            <a href="@Url.Action("Index", "Project")" class="bar-button">اجرا شده</a>
+            <a href="@Url.Action("ProjectDone", "Project")" class="bar-button">اجرا شده</a>
         </div>
         <a href="@Url.Action("Index", "Product")" class="bar-button">محصولات</a>
         @Html.ActionLink("ارسال به ما", "Index", new { controller = "SendUs" }, new { @class = "bar-button" })
@@ -158,8 +158,8 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">پروژه ها<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("ProjectRunning", "Project")">پروژه های اجرا شده</a></li>
-                                <li><a href="@Url.Action("Index", "Project")">پروژه های درحال اجرا</a></li>
+                                <li><a href="@Url.Action("ProjectDone", "Project")">پروژه های اجرا شده</a></li>
+                                <li><a href="@Url.Action("ProjectRunning", "Project")">پروژه های درحال اجرا</a></li>
                             </ul>
                         </li>
                         <li class="active"><a href="@Url.Action("Index", "Product")">محصولات</a></li>
@@ -443,7 +443,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="@Url.Action("Index", "Project")">
+                                                <a href="@Url.Action("ProjectDone", "Project")">
                                                     پروژه های اجرا شده
                                                 </a>
                                             </li>

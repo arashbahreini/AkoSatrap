@@ -141,6 +141,10 @@
     <Content Include="app\factory\messageFactory.js" />
     <Content Include="app\factory\stateCityRegionFactory.js" />
     <Content Include="app\factory\validationFactory.js" />
+    <Content Include="app\other\persianDate\bootstrap-datepicker.css" />
+    <Content Include="app\other\persianDate\bootstrap-datepicker.fa.js" />
+    <Content Include="app\other\persianDate\bootstrap-datepicker.js" />
+    <Content Include="app\pages\directive\persianDateDirective.js" />
     <Content Include="app\pages\download\download.html" />
     <Content Include="app\pages\download\downloadController.js" />
     <Content Include="app\pages\driver\driver.html" />
@@ -328,6 +332,7 @@
     <Content Include="dist\js\libraries\jquery.min.js" />
     <Content Include="dist\js\libraries\justgage.js" />
     <Content Include="dist\js\libraries\nouislider.min.js" />
+    <Content Include="dist\js\libraries\project-raphael-2.1.4.min.js" />
     <Content Include="dist\js\libraries\raphael-2.1.4.min.js" />
     <Content Include="fa-IR\ako-index.html" />
     <Content Include="fa-IR\data6\images\banner1.jpg" />
@@ -465,7 +470,7 @@
     <Content Include="Views\Activities\Contracting.cshtml" />
     <Content Include="Views\Activities\FireStations.cshtml" />
     <Content Include="Views\Activities\Engineeringsystem.cshtml" />
-    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\Project\ProjectDone.cshtml" />
     <Content Include="Views\Project\ProjectRunning.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

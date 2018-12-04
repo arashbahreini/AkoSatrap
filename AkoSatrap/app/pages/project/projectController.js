@@ -63,6 +63,16 @@
            });
        };
 
+       $scope.editProject = function (item) {
+           $("#tabInsertUpdate").addClass("active");
+           $("#navInsertUpdate").addClass("active");
+           $scope.isUpdate = true;
+           $("#tabAllProduct").removeClass("active");
+           $("#navAllProduct").removeClass("active");
+           $scope.project = item;
+           console.log(item);
+       }
+
        $scope.newProduct = function () {
            $scope.project = null;
            $scope.isUpdate = false;
@@ -83,7 +93,7 @@
        $scope.getProjects();
       
        $scope.uploadFile = function () {
-           $scope.myPromise = fileUploaderService.uploadFileToUrl($scope.fileAttachment, '/PProduct/AddImage', $scope.project.Id)
+           $scope.myPromise = fileUploaderService.uploadFileToUrl($scope.fileAttachment, '/PProject/AddImage', $scope.project.Id)
                .then(function (result) {
                    if (result.Success) {
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -30,10 +31,10 @@ namespace Business
                 enDbProject.Province = project.EnProvince;
                 enDbProject.City = project.EnCity;
                 enDbProject.CreateDate = DateTime.Now;
-                enDbProject.StartDate = project.StartDate;
-                enDbProject.EndDate = project.EndDate;
+                enDbProject.StartDate = ConvertPersianDateToGregorian(project.StartDate);
+                enDbProject.EndDate = ConvertPersianDateToGregorian(project.EndDate);
                 enDbProject.CompletionPercentage = project.CompletionPercentage;
-                enDbProject.ProjectCategoryId = project.ProjectCategory.EnId;
+                enDbProject.ProjectCategoryId = project.ProjectCategory != null? project.ProjectCategory.EnId : 0;
                 enDbProject.IsEnglish = true;
                 enDbProject.ImageFolderName = Guid.NewGuid().ToString();
 
@@ -42,10 +43,10 @@ namespace Business
                 dbProject.Province = project.Province;
                 dbProject.City = project.City;
                 dbProject.CreateDate = DateTime.Now;
-                dbProject.StartDate = project.StartDate;
-                dbProject.EndDate = project.EndDate;
+                dbProject.StartDate =ConvertPersianDateToGregorian(project.StartDate);
+                dbProject.EndDate = ConvertPersianDateToGregorian(project.EndDate);
                 dbProject.CompletionPercentage = project.CompletionPercentage;
-                dbProject.ProjectCategoryId = project.ProjectCategory.Id;
+                dbProject.ProjectCategoryId = project.ProjectCategory != null ? project.ProjectCategory.Id : 0;
                 dbProject.IsEnglish = false;
                 dbProject.ImageFolderName = Guid.NewGuid().ToString();
                 dbProject.Project2 = enDbProject;
@@ -61,11 +62,39 @@ namespace Business
             return returnResult;
         }
 
-        public List<ViewModel.ProjectModel> GetAllProject()
+        public DateTime? ConvertPersianDateToGregorian(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return null;
+            }
+            var result = new DateTime(
+                int.Parse(input.Substring(0, 4)),
+                int.Parse(input.Substring(4, 2)),
+                int.Parse(input.Substring(6, 2)),
+                new PersianCalendar());
+
+            return result;
+        }
+
+        public static string ConvertGregorianToPersianDate(DateTime? input)
+        {
+            if (!input.HasValue)
+            {
+                return "";
+            };
+            var month = new PersianCalendar().GetMonth(input.Value).ToString().Length == 1 ? 0 + new PersianCalendar().GetMonth(input.Value).ToString() : new PersianCalendar().GetMonth(input.Value).ToString();
+            var day = new PersianCalendar().GetDayOfMonth(input.Value).ToString().Length == 1 ? 0 + new PersianCalendar().GetDayOfMonth(input.Value).ToString() : new PersianCalendar().GetDayOfMonth(input.Value).ToString();
+            var result = new PersianCalendar().GetYear(input.Value) + "/" + month + "/" + day;
+            return result;
+        }
+
+        public List<ViewModel.ProjectModel> GetAllProject(bool isEnglish)
         {
             var context = new DomainDeriven.AkoSatrapDb();
 
-            var projects = context.Projects.Include("Project2").Include("ProjectCategory").Where(r => r.IsEnglish == false)
+            var projects = context.Projects.Include("Project2").Include("ProjectCategory").Where(r => r.IsEnglish == isEnglish)
+                .ToList()
                 .Select(r => new ViewModel.ProjectModel
                 {
                     ProjectCategory = new ViewModel.ProjectCategoryModel
@@ -78,7 +107,7 @@ namespace Business
                     IsEnglish = r.IsEnglish,
                     ProjectCategoryId = r.ProjectCategoryId,
                     Title = r.Title,
-                    StartDate = r.StartDate,
+                    StartDate = ConvertGregorianToPersianDate(r.StartDate),
                     Province = r.Province,
                     master = r.master,
                     ImageFolderName = r.ImageFolderName,
@@ -87,8 +116,12 @@ namespace Business
                     CreateDate  = r.CreateDate,
                     CompletionPercentage = r.CompletionPercentage,
                     City = r.City,
-                    EndDate = r.EndDate,
+                    EndDate = ConvertGregorianToPersianDate(r.EndDate),
                     EnId = r.EnId,
+                    EnCity = r.Project2.City,
+                    EnDescription = r.Project2.Description,
+                    EnProvince = r.Project2.Province,
+                    EnTitle = r.Project2.Title,
                 }).ToList();
 
             projects.ForEach(item =>
@@ -100,6 +133,20 @@ namespace Business
                 }
             });
             return projects;
+        }
+
+        public ViewModel.ProjectModel GetProjectById(int id)
+        {
+            var context = new DomainDeriven.AkoSatrapDb();
+            var project = context.Projects.FirstOrDefault(r => r.Id == id);
+            var projectViewModel = new ViewModel.ProjectModel
+            {
+                Id = project.Id,
+                ProjectCategoryId = project.ProjectCategoryId.Value,
+                Description = project.Description,
+                ImageFolderName = project.ImageFolderName
+            };
+            return projectViewModel;
         }
 
         public ViewModel.ReturnResult<bool> AddProjectCategory(ViewModel.ProjectCategoryModel projectCategory)

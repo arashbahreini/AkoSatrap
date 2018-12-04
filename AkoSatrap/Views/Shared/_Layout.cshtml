@@ -7,7 +7,7 @@
     <title>آکو ساتراپ ایرانیان</title>
     <!-- Main css -->
     <link href="~/dist/css/style.min.css?id=111" rel="stylesheet">
-    
+
 
     <style>
         /* Paste this css to your style sheet file or under head tag */
@@ -38,9 +38,9 @@
 
 
     <script>
-	//paste this code under head tag or in a seperate js file.
-	// Wait for window load
-	
+        //paste this code under head tag or in a seperate js file.
+        // Wait for window load
+
     </script>
 
 
@@ -92,7 +92,7 @@
         </button>
         <div id="demoAcc3" class=" bar-hide bar-white bar-card">
             <a href="@Url.Action("ProjectRunning", "Project")" class="bar-button">درحال اجرا</a>
-            <a href="@Url.Action("Index", "Project")" class="bar-button">اجرا شده</a>
+            <a href="@Url.Action("ProjectDone", "Project")" class="bar-button">اجرا شده</a>
         </div>
         <a href="@Url.Action("Index", "Product")" class="bar-button">محصولات</a>
         @Html.ActionLink("ارسال به ما", "Index", new { controller = "SendUs" }, new { @class = "bar-button" })
@@ -139,8 +139,8 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">پروژه ها<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("ProjectRunning", "Project")">پروژه های اجرا شده</a></li>
-                                <li><a href="@Url.Action("Index", "Project")">پروژه های درحال اجرا</a></li>
+                                <li><a href="@Url.Action("ProjectDone", "Project")">پروژه های اجرا شده</a></li>
+                                <li><a href="@Url.Action("ProjectRunning", "Project")">پروژه های درحال اجرا</a></li>
                             </ul>
                         </li>
                         <li class="active"><a href="@Url.Action("Index", "Product")">محصولات</a></li>
@@ -175,7 +175,7 @@
                             <div class="sub-nav-block fmk-breadcrumb tbl-cell">
                                 <ol class="breadcrumb">
                                     <li><a href="@Url.Action("Index", "Home")">صفحه نخست</a></li>
-                                    <li><a href="#">@RenderSection("PageName", false)</a></li>                                   
+                                    <li><a href="#">@RenderSection("PageName", false)</a></li>
                                 </ol>
                             </div>
                         </div>
@@ -218,7 +218,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="@Url.Action("Index", "Project")">
+                                                <a href="@Url.Action("ProjectDone", "Project")">
                                                     پروژه های اجرا شده
                                                 </a>
                                             </li>
@@ -286,7 +286,9 @@
     <!--/footer-->
     <!--libraries-->
     <script src="~/dist/js/libraries/jquery.min.js"></script>
-
+    <script src="~/dist/js/libraries/raphael-2.1.4.min.js"></script>
+    <script src="~/dist/js/libraries/justgage.js"></script>
+    <script src="~/dist/js/libraries/nouislider.min.js"></script>
     <!--Local-->
     <script src="~/dist/js/general/script.min.js"></script>
 
@@ -299,7 +301,7 @@
 
         $(window).load(function () {
             // Animate loader off screen
-            
+
             $(".se-pre-con").delay(2000).fadeOut("slow");;
         });
 
@@ -333,6 +335,93 @@
         }
         function myAccFunc3() {
             var x = document.getElementById("demoAcc3");
+            if (x.className.indexOf(" bar-show") == -1) {
+                x.className += " bar-show";
+                x.previousElementSibling.className += " bar-blue";
+            } else {
+                x.className = x.className.replace(" bar-show", "");
+                x.previousElementSibling.className =
+                    x.previousElementSibling.className.replace(" bar-blue", "");
+            }
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            /*Function for Gauges*/
+            function createGauge(gaugeList) {
+                function customValue(val) {
+                    if (val <= 10) {
+                        return '۱۰%';
+                    } else if (val > 10 && val <= 20) {
+                        return '۲۰%';
+                    } else if (val > 20 && val <= 30) {
+                        return '۳۰%';
+                    } else if (val > 30 && val <= 40) {
+                        return '۴۰%';
+                    } else if (val > 40 && val <= 50) {
+                        return '۵۰%';
+                    } else if (val > 50 && val <= 60) {
+                        return '۶۰%';
+                    } else if (val > 60 && val <= 70) {
+                        return '۷۰%';
+                    } else if (val > 70 && val <= 80) {
+                        return '۸۰%';
+                    } else if (val > 80 && val <= 90) {
+                        return '۹۰%';
+                    } else if (val > 90 > 100) {
+                        return '۹۵%';
+                    } else if (val = 100) {
+                        return '۱۰۰%';
+                    }
+                }
+
+                $.each(gaugeList, function (i, e) {
+                    var g = new JustGage({
+                        id: e.id,
+                        value: e.value,
+                        min: 0,
+                        max: 100,
+                        gaugeWidthScale: .5,
+                        donut: true,
+                        textRenderer: customValue,
+                        valueFontColor: "#894F8C",
+                        valueFontFamily: "WYekan",
+                        valueMinFontSize: 2,
+                        hideMinMax: true,
+                        hideInnerShadow: true,
+                        relativeGaugeSize: true,
+                        levelColors: ["#ff210f", "#39b7ff", "#6CD43A"],
+                        gaugeColor: "#d7d7d7"
+                    });
+                });
+            }
+            var list = [];
+            function foo() {
+                var projects = document.getElementsByClassName('projectPercetage');
+                for (var i = 0; i < projects.length; i++) {
+                    list.push({
+                        id: +projects[i].id,
+                        value: +projects[i].innerHTML 
+                    })
+                }
+            };
+            foo();
+
+
+            createGauge(list);
+        });
+    </script>
+
+    <script>
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+        }
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+        }
+        function myAccFunc() {
+            var x = document.getElementById("demoAcc");
             if (x.className.indexOf(" bar-show") == -1) {
                 x.className += " bar-show";
                 x.previousElementSibling.className += " bar-blue";

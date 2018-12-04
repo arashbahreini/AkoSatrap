@@ -15,6 +15,7 @@
         cursor: pointer;
     }
 </style>
+<link href="~/app/other/persianDate/bootstrap-datepicker.css" rel="stylesheet" />
 
 <div ng-controller="projectController" ng-form="formProject">
     <div cg-busy="{promise:myPromise,message:'لطفا تا بارگذاری کامل صفحه شکیبا باشید',backdrop:true,delay:300,minDuration:700}">
@@ -79,7 +80,7 @@
                                         <td>{{project.CompletionPercentage}}</td>
                                         <td style="text-align:center">
                                             <a class="fa fa-trash" style="margin-left:5px;"></a>
-                                            <a class="fa fa-pencil"></a>
+                                            <a class="fa fa-pencil" ng-click="editProject(project)"></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -237,8 +238,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="StartDate" class="form-control-label">تاریخ شروع </label>
-                                    <input id="StartDate" name="StartDate" ng-model="project.StartDate" class="form-control form-control-sm" type="text"
-                                           placeholder="تاریخ شروع پروژه" required>
+                                    <input date-p ui-mask="9999/99/99" id="StartDate" name="StartDate" ng-model="project.StartDate" class="form-control form-control-sm" type="text"
+                                           required>
                                     <div class="has-danger" ng-messages="formProject.StartDate.$error">
                                         <small ng-message="required">تاریخ شروع اجباری می باشد</small>
                                     </div>
@@ -248,8 +249,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="EndDate" class="form-control-label">تاریخ پایان </label>
-                                    <input id="EndDate" name="EndDatw" ng-model="project.EndDate" class="form-control form-control-sm" type="text"
-                                           placeholder="تاریخ پایان پروژه">
+                                    <input date-p ui-mask="9999/99/99" id="EndDate" name="EndDatw" ng-model="project.EndDate" class="form-control form-control-sm" type="text">
                                 </div>
                             </div>
                         </div>
@@ -258,8 +258,10 @@
 
                         <div class="row mt-2 mb-2 text-left">
                             <div class="col-12">
+                                <!--<input type="button" value="ثبت" class="btn btn-sm btn-success mb-3"
+                                ng-disabled="formProject.$invalid" ng-click="addProject()" ng-show="!isUpdate" />-->
                                 <input type="button" value="ثبت" class="btn btn-sm btn-success mb-3"
-                                       ng-disabled="formProject.$invalid" ng-click="addProduct()" ng-show="!isUpdate" />
+                                       ng-click="addProject()" ng-show="!isUpdate" />
                                 <input type="button" value="بروزرسانی" class="btn btn-sm btn-success mb-3"
                                        ng-disabled="formProject.$invalid" ng-click="updateProduct()" ng-show="isUpdate" />
                                 <input type="button" value="دسته بندی جدید" class="btn btn-sm btn-info mb-3"

@@ -31,9 +31,9 @@ namespace ViewModel
 
         public DateTime? CreateDate { get; set; }
 
-        public DateTime? StartDate { get; set; }
+        public string StartDate { get; set; }
 
-        public DateTime? EndDate { get; set; }
+        public string EndDate { get; set; }
 
         public double? CompletionPercentage { get; set; }
 
@@ -56,5 +56,7 @@ namespace ViewModel
         public string EnDescription { get; set; }
         public string EnCity { get; set; }
         public List<string> Images { get; set; }
+        public string GridStartDate { get; set; }
+        public string GridEndDate { get; set; }
     }
 }

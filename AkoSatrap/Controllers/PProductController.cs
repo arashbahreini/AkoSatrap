@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.IO;
+using ViewModel;
 
 namespace AkoSatrap.Controllers
 {
@@ -60,13 +61,10 @@ namespace AkoSatrap.Controllers
         [HttpGet]
         public JsonResult GetProductList()
         {
-            int pageNumber = Convert.ToInt32(Request.QueryString["page"]);
-            int pageSize = Convert.ToInt32(Request.QueryString["pageSize"]);
-
             GridResult<ViewModel.ProductModel> gridResult = new GridResult<ViewModel.ProductModel>();
             var allProduct = new Business.ProductBusiness().GetAllProduct();
 
-            gridResult.Data = allProduct.OrderByDescending(r => r.Id).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            gridResult.Data = allProduct.OrderByDescending(r => r.Id).ToList();
             gridResult.Total = allProduct.Count;
 
             return Json(gridResult, JsonRequestBehavior.AllowGet);
@@ -123,23 +121,25 @@ namespace AkoSatrap.Controllers
         [HttpPost]
         public JsonResult GetProductListForDropDown()
         {
-
-            var allProduct = new Business.ProductBusiness().GetAllProduct();
-
+            var allProduct = new List<ProductModel>();
+            allProduct.Add(new ProductModel
+            {
+                Title = "",
+                Id = 0
+            });
+            allProduct.AddRange(new Business.ProductBusiness().GetAllProduct());
             return Json(allProduct, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
-        public JsonResult GetProductDetail()
+        [HttpPost]
+        public JsonResult GetProductDetail(int productId)
         {
-            int pageNumber = Convert.ToInt32(Request.QueryString["page"]);
-            int pageSize = Convert.ToInt32(Request.QueryString["pageSize"]);
-            var productId = Convert.ToInt32(Request.QueryString["productId"]);
+            //var productId = Convert.ToInt32(Request.QueryString["productId"]);
 
             GridResult<ViewModel.ProductFeatureModel> gridResult = new GridResult<ViewModel.ProductFeatureModel>();
             var allDetail = new Business.ProductBusiness().GetAllProductDetail(productId);
 
-            gridResult.Data = allDetail.OrderByDescending(r => r.Id).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            gridResult.Data = allDetail.OrderByDescending(r => r.Id).ToList();
             gridResult.Total = allDetail.Count;
 
             return Json(gridResult, JsonRequestBehavior.AllowGet);

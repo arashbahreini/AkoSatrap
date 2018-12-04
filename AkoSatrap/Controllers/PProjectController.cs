@@ -28,12 +28,30 @@ namespace AkoSatrap.Controllers
         public JsonResult GetProjectList()
         {
             var gridResult = new GridResult<ViewModel.ProjectModel>();
-            var allProjects = new Business.ProjectBusiness().GetAllProject();
+            var allProjects = new Business.ProjectBusiness().GetAllProject(false);
 
             gridResult.Data = allProjects.OrderByDescending(r => r.Id).ToList();
             gridResult.Total = allProjects.Count;
 
             return Json(gridResult, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult AddImage(FileAttachment fileAttachment, int id)
+        {
+            ViewModel.ReturnResult<bool> returnResult = new ViewModel.ReturnResult<bool>();
+            var business = new Business.ProjectBusiness();
+            var project = business.GetProjectById(id);
+            var path = Server.MapPath($"~/AkoSatrapImages/{project.ImageFolderName}/");
+            if (!System.IO.Directory.Exists(path))
+            {
+                System.IO.Directory.CreateDirectory(path);
+            }
+
+            fileAttachment.Attachment.SaveAs($"{path}/{Guid.NewGuid()}.{fileAttachment.Attachment.FileName.Split('.')[1].ToString()}");
+
+            return Json(returnResult);
+
         }
 
         [HttpPost]
