@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DomainDeriven;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,18 +12,33 @@ namespace AkoSatrap.Controllers
         // GET: AboutUs
         public ActionResult AboutCompany()
         {
-            return View();
+            using (var dbContext = new AkoSatrapDb())
+            {
+                var result = dbContext.SiteContents.Where(x => x.PageId == 5).FirstOrDefault();
+                if (result == null) return View(new SiteContent { Body = "با عرض پوزش، صفحه در حال بروزرسانی می باشد" });
+                return View(result);
+            }
         }
 
         public ActionResult CeoMessage()
         {
-            return View();
+            using (var dbContext = new AkoSatrapDb())
+            {
+                var result = dbContext.SiteContents.Where(x => x.PageId == 4).FirstOrDefault();
+                if (result == null) return View(new SiteContent { Body = "با عرض پوزش، صفحه در حال بروزرسانی می باشد" });
+                return View(result);
+            }
         }
 
         
         public ActionResult Abilities()
         {
-            return View();
+            using (var dbContext = new AkoSatrapDb())
+            {
+                var result = dbContext.SiteContents.Where(x => x.PageId == 6).FirstOrDefault();
+                if (result == null) return View(new SiteContent { Body = "با عرض پوزش، صفحه در حال بروزرسانی می باشد" });
+                return View(result);
+            }
         }
     }
 }

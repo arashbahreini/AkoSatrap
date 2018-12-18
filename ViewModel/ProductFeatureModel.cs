@@ -19,7 +19,6 @@ namespace ViewModel
         public string EnTitle { get; set; }
 
         public string EnDescription { get; set; }
-
         public byte Order { get; set; }
         public int ProductId { get; set; }
     }

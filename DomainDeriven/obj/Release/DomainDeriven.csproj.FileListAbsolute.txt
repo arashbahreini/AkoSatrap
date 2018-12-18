@@ -8,3 +8,15 @@ C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\DomainDeriven\bin\
 C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\DomainDeriven\obj\Release\DomainDeriven.dll
 C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\DomainDeriven\obj\Release\DomainDeriven.pdb
 C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\DomainDeriven\obj\Release\DomainDeriven.csprojResolveAssemblyReference.cache
+C:\work\AkoSatrap\DomainDeriven\bin\Release\DomainDeriven.dll.config
+C:\work\AkoSatrap\DomainDeriven\bin\Release\DomainDeriven.dll
+C:\work\AkoSatrap\DomainDeriven\bin\Release\DomainDeriven.pdb
+C:\work\AkoSatrap\DomainDeriven\bin\Release\EntityFramework.dll
+C:\work\AkoSatrap\DomainDeriven\bin\Release\EntityFramework.SqlServer.dll
+C:\work\AkoSatrap\DomainDeriven\bin\Release\EntityFramework.xml
+C:\work\AkoSatrap\DomainDeriven\bin\Release\EntityFramework.SqlServer.xml
+C:\work\AkoSatrap\DomainDeriven\obj\Release\DomainDeriven.csprojAssemblyReference.cache
+C:\work\AkoSatrap\DomainDeriven\obj\Release\DomainDeriven.csproj.CoreCompileInputs.cache
+C:\work\AkoSatrap\DomainDeriven\obj\Release\DomainDeriven.csproj.CopyComplete
+C:\work\AkoSatrap\DomainDeriven\obj\Release\DomainDeriven.dll
+C:\work\AkoSatrap\DomainDeriven\obj\Release\DomainDeriven.pdb

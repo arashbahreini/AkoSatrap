@@ -1,0 +1,277 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="property">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="tbl">
+                    <div class="tbl-row">
+                        <div class="tbl-cell main-content">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="main-detail">
+
+                                        <div class="main-detail-blocks-wrapper">
+
+                                            @*<div class="main-detail-block main-detail-header">
+                                                    <ul>
+                                                        <li>
+                                                            کدپروژه:  <span>۱۲۵۲۳</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>*@
+
+                                            <div class="main-detail-block main-detail-body">
+                                                <div class="txt">
+                                                    <h4 class="txt-brand-color-lightviolet">@Model.Title</h4>
+                                                    <dl class="dl-horizontal">
+                                                        <dt>استان</dt>
+                                                        <dd>@Model.Province</dd>
+                                                        <dt>شهر</dt>
+                                                        <dd>@Model.City</dd>
+                                                        <dt>تاریخ شروع</dt>
+                                                        <dd>@Model.StartDate</dd>
+                                                        <dt>تاریخ پایان</dt>
+                                                        <dd>@Model.EndDate</dd>
+                                                    </dl>
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="gallery">
+                                        <div class="gallery-blocks-wrapper">
+                                            <div class="gallery-block gallery-img">
+                                                <div class="img"
+                                                     style="background-image: url('@Url.Content(Model.Images[0])')"
+                                                     data-toggle="modal"></div>
+                                            </div>
+                                            <div class="gallery-block gallery-thumbnail">
+                                                <div class="row">
+                                                    <div class="col-xs-3">
+                                                        <div class="img"
+                                                             style="background-image: url('@Url.Content(Model.Images[0])')"></div>
+                                                    </div>
+                                                    <div class="col-xs-3">
+                                                        <div class="img"
+                                                             style="background-image: url('@Url.Content(Model.Images[1])')"></div>
+                                                    </div>
+                                                    <div class="col-xs-3">
+                                                        <div class="img"
+                                                             style="background-image: url('@Url.Content(Model.Images[2])')"></div>
+                                                    </div>
+                                                    <div class="col-xs-3">
+                                                        <div class="img"
+                                                             style="background-image: url('@Url.Content(Model.Images[3])')"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal" id="lightbox" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="lightbox-img">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="img-wrapper">
+                                                                    <div class="img"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="lightbox-thumbnail">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="img-wrapper">
+                                                                    <div class="img"
+                                                                         style="background-image: url('../../dist/img/samples/slider-001.png')"></div>
+                                                                    <div class="img"
+                                                                         style="background-image: url('../../dist/img/samples/slider-002.png')"></div>
+                                                                    <div class="img"
+                                                                         style="background-image: url('../../dist/img/samples/slider-003.png')"></div>
+                                                                    <div class="img"
+                                                                         style="background-image: url('../../dist/img/samples/slider-004.png')"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="facilities">
+                                        <div class="facilities-blocks-wrapper">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="facilities-block">
+
+
+                                                        <div class="description-block">
+                                                            <div class="txt-left-plus-icon">
+                                                                <div class="icon-block">
+                                                                    <div class="icon icon-i-024"></div>
+                                                                </div>
+                                                                <p class="bold">ویژگی ها</p>
+                                                            </div>
+                                                            @foreach (var item in Model.ProjectFeatures)
+                                                            {
+                                                                <div class="text">
+                                                                    <h4>
+                                                                        @item.Title
+                                                                    </h4>
+                                                                </div>
+                                                                <div class="text">
+                                                                    @item.Description
+                                                                </div>
+                                                            }
+                                                            @*<div class="txt">
+                                                                    از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و
+                                                                    ارایه گرفته شده&zwnj;است. از آنجایی که طراحان عموما نویسنده
+                                                                    متن
+                                                                    نیستند و وظیفه رعایت حق تکثیر متون را ندارند و در همان حال
+                                                                    کار
+                                                                    آنها به نوعی وابسته به متن می&zwnj;باشد آنها با استفاده از
+                                                                    محتویات
+                                                                    ساختگی، صفحه گرافیکی خود را صفحه&zwnj;آرایی می&zwnj;کنند تا
+                                                                    مرحله طراحی و
+                                                                    صفحه&zwnj;بندی را به پایان برند.
+                                                                </div>*@
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--footer-->
+    <div class="footer">
+        <div class="footer-blocks-wrapper tbl">
+            <div class="footer-block footer-links tbl-row">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class=" tbl-cell">
+                                <div class="footer-inner-block-right">
+                                    <div class="link">
+
+                                        <ul>
+                                            <li class="title">
+                                                دسترسی سریع
+                                            </li>
+                                            <li>
+                                                <a href="/public/publicEstate">
+                                                    املاک
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/public/publicBid">
+                                                    مزایده ها
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/public/publicproject?type=1">
+                                                    پروژه های درحال اجرا
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/public/publicproject?type=2">
+                                                    پروژه های اجرا شده
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="link">
+
+                                        <ul>
+                                            <li class="title">
+                                                تماس باما
+                                            </li>
+                                            <li>
+                                                آدرس: میدان ونک، خیابان خدامی، پلاک ۶۲، طبقه ۴
+                                            </li>
+                                            <li>
+                                                تلفن: ۸۸۲۰۸۷۷۲
+                                            </li>
+                                            <li>ایمیل: info@behnadbana.ir</li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class=" tbl-cell">
+                                <div class="footer-inner-block-left">
+                                    <div class="inner">
+                                        از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه گرفته شده‌است. از
+                                        آنجایی که طراحان عموما نویسنده متن نیستند و وظیفه رعایت حق تکثیر متون را ندارند و در
+                                        همان حال کار آنها به نوعی وابسته به متن می‌باشد آنها با استفاده از محتویات ساختگی،
+                                        صفحه گرافیکی خود را صفحه‌آرایی می‌کنند تا مرحله طراحی و صفحه‌بندی را به پایان برند.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-block footer-rights tbl-row">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class=" tbl-cell">
+                                <div class="footer-inner-block-right">
+                                    <div class="inner">
+                                        <span>کلیه حقوق متعلق به شرکت آکو ساتراپ می باشد.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" tbl-cell">
+                                <div class="footer-inner-block-left">
+                                    <div class="inner">
+                                        <span>Copyright © 2006 - 2017 &nbsp; &nbsp; akosatrap.com</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-block footer-logo">
+                <div class="icon-block-local">
+                    <div class="icon"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

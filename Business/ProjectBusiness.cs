@@ -68,13 +68,23 @@ namespace Business
             {
                 return null;
             }
-            var result = new DateTime(
-                int.Parse(input.Substring(0, 4)),
-                int.Parse(input.Substring(4, 2)),
-                int.Parse(input.Substring(6, 2)),
-                new PersianCalendar());
-
-            return result;
+            if (input.Contains("/"))
+            {
+                var result = new DateTime(
+                    int.Parse(input.Substring(0, 4)),
+                    int.Parse(input.Substring(5, 2)),
+                    int.Parse(input.Substring(8, 2)),
+                    new PersianCalendar());
+                return result;
+            } else
+            {
+                var result = new DateTime(
+                    int.Parse(input.Substring(0, 4)),
+                    int.Parse(input.Substring(4, 2)),
+                    int.Parse(input.Substring(6, 2)),
+                    new PersianCalendar());
+                return result;
+            }
         }
 
         public static string ConvertGregorianToPersianDate(DateTime? input)
@@ -87,6 +97,105 @@ namespace Business
             var day = new PersianCalendar().GetDayOfMonth(input.Value).ToString().Length == 1 ? 0 + new PersianCalendar().GetDayOfMonth(input.Value).ToString() : new PersianCalendar().GetDayOfMonth(input.Value).ToString();
             var result = new PersianCalendar().GetYear(input.Value) + "/" + month + "/" + day;
             return result;
+        }
+
+        public List<ViewModel.ProjectFeatureModel> GetAllProjectDetail(int projectId)
+        {
+            var context = new DomainDeriven.AkoSatrapDb();
+            var projectFeatureList = context.ProjectFeatures.Include("ProjectFeatures2").Where(r => !r.IsEnglish.Value && r.ProjectId == projectId)
+                .Select(r => new ViewModel.ProjectFeatureModel
+                {
+                    Title = r.Title,
+                    EnTitle = r.ProjectFeature2.Title,
+                    Id = r.Id,
+                    EnId = r.EnId.Value,
+                    Description = r.Description,
+                    EnDescription = r.ProjectFeature2.Description,
+                    Order = r.Order.Value,
+                    ProjectId = r.ProjectId.Value
+                }).ToList();
+            return projectFeatureList;
+        }
+
+        public ViewModel.ReturnResult<bool> AddProjectDetail(ViewModel.ProjectFeatureModel projectFeature)
+        {
+            var returnResult = new ViewModel.ReturnResult<bool>();
+            try
+            {
+                var context = new DomainDeriven.AkoSatrapDb();
+
+                var project = context.Projects.Include("Project2").FirstOrDefault(r => r.Id == projectFeature.ProjectId);
+                if (project != null)
+                {
+                    var enProductFeatureDb = new DomainDeriven.ProjectFeature
+                    {
+                        Title = projectFeature.EnTitle,
+                        Description = projectFeature.EnDescription,
+                        Order = projectFeature.Order,
+                        ProjectId = project.Project2.Id,
+                        IsEnglish = true
+                    };
+
+                    var faProjectFeatureDb = new DomainDeriven.ProjectFeature
+                    {
+                        Title = projectFeature.Title,
+                        Description = projectFeature.Description,
+                        Order = projectFeature.Order,
+                        ProjectFeature2 = enProductFeatureDb,
+                        ProjectId = project.Id,
+                        IsEnglish = false
+                    };
+
+                    context.ProjectFeatures.Add(faProjectFeatureDb);
+
+                    context.SaveChanges();
+                }
+                else
+                {
+                    returnResult.SetError("محصول مورد نظر پیدا نشدُ");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                returnResult.SetError(ex.Message);
+            }
+
+            return returnResult;
+        }
+
+        public ViewModel.ReturnResult<bool> UpdateProjectFeature(ViewModel.ProjectFeatureModel projectFeature)
+        {
+            var returnResult = new ViewModel.ReturnResult<bool>();
+            try
+            {
+                var context = new DomainDeriven.AkoSatrapDb();
+
+                var dbProjectFeature = context.ProjectFeatures.Include("ProjectFeature2")
+                    .FirstOrDefault(r => !r.IsEnglish.Value && r.Id == projectFeature.Id);
+
+                if (dbProjectFeature != null)
+                {
+                    dbProjectFeature.Title = projectFeature.Title;
+                    dbProjectFeature.ProjectFeature2.Title = projectFeature.EnTitle;
+                    dbProjectFeature.Description = projectFeature.Description;
+                    dbProjectFeature.ProjectFeature2.Description = projectFeature.EnDescription;
+                    dbProjectFeature.Order = projectFeature.Order;
+                    dbProjectFeature.ProjectFeature2.Order = projectFeature.Order;
+                    context.SaveChanges();
+                }
+                else
+                {
+                    returnResult.SetError("جزییات محصول مورد نظر پیدا نشد");
+                }
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                returnResult.SetError(ex.Message);
+            }
+
+            return returnResult;
         }
 
         public List<ViewModel.ProjectModel> GetAllProject(bool isEnglish)
@@ -144,7 +253,20 @@ namespace Business
                 Id = project.Id,
                 ProjectCategoryId = project.ProjectCategoryId.Value,
                 Description = project.Description,
-                ImageFolderName = project.ImageFolderName
+                ImageFolderName = project.ImageFolderName,
+                City = project.City,
+                CompletionPercentage = project.CompletionPercentage,
+                CreateDate = project.CreateDate,
+                EndDate = ConvertGregorianToPersianDate(project.EndDate),
+                Province = project.Province,
+                Title = project.Title,
+                StartDate = ConvertGregorianToPersianDate(project.StartDate),
+                ProjectFeatures = project.ProjectFeatures.Select(x => new ViewModel.ProjectFeatureModel
+                {
+                    Id = x.Id,
+                    Description = x.Description,
+                    Title = x.Title
+                }).ToList()
             };
             return projectViewModel;
         }
@@ -165,6 +287,50 @@ namespace Business
                 dbProjectCategory.IsEnglish = false;
                 dbProjectCategory.ProjectCategory2 = enDbProjectCategory;
                 context.ProjectCategories.Add(dbProjectCategory);
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                returnResult.SetError(ex.Message);
+            }
+
+            return returnResult;
+        }
+
+        public ViewModel.ReturnResult<bool> UpdateProject(ViewModel.ProjectModel project)
+        {
+            var returnResult = new ViewModel.ReturnResult<bool>();
+            try
+            {
+                var context = new DomainDeriven.AkoSatrapDb();
+
+                var dbProjectCategory = context.Projects.Include("Project2").FirstOrDefault(r => r.IsEnglish == false && r.Id == project.Id);
+                if (dbProjectCategory != null)
+                {
+                    dbProjectCategory.Title = project.Title;
+                    dbProjectCategory.Description = project.Description;
+                    dbProjectCategory.CompletionPercentage = project.CompletionPercentage;
+                    dbProjectCategory.ProjectCategoryId = project.ProjectCategory.Id;
+                    dbProjectCategory.City = project.City;
+                    dbProjectCategory.Province = project.Province;
+                    dbProjectCategory.StartDate = ConvertPersianDateToGregorian(project.StartDate);
+                    dbProjectCategory.EndDate = ConvertPersianDateToGregorian(project.EndDate);
+
+                    dbProjectCategory.Project2.Title = project.EnTitle;
+                    dbProjectCategory.Project2.Description = project.EnDescription;
+                    dbProjectCategory.Project2.City = project.EnCity;
+                    dbProjectCategory.Project2.Province = project.EnProvince;
+                    dbProjectCategory.Project2.StartDate = ConvertPersianDateToGregorian(project.StartDate);
+                    dbProjectCategory.Project2.EndDate = ConvertPersianDateToGregorian(project.EndDate);
+                    dbProjectCategory.Project2.CompletionPercentage = project.CompletionPercentage;
+                    dbProjectCategory.Project2.ProjectCategoryId = project.ProjectCategory.Id;
+
+                    context.SaveChanges();
+                }
+                else
+                {
+                    returnResult.SetError("دسته بندی مورد نظر پیدا نشد");
+                }
                 context.SaveChanges();
             }
             catch (Exception ex)

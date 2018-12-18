@@ -51,12 +51,19 @@ namespace ViewModel
 
         public virtual ICollection<ProjectFeatureModel> ProjectFeatures { get; set; }
         public string EnTitle { get; set; }
-        public string EndDescription { get; set; }
+        //public string EndDescription { get; set; }
         public string EnProvince { get; set; }
         public string EnDescription { get; set; }
         public string EnCity { get; set; }
         public List<string> Images { get; set; }
         public string GridStartDate { get; set; }
         public string GridEndDate { get; set; }
+        public string GenerateSlug()
+        {
+            string result = Title;
+            result = result.Replace(' ', '-');
+
+            return result;
+        }
     }
 }

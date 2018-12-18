@@ -5,8 +5,8 @@
 }
 
 <style>
-    .error{
-        color:red;
+    .error {
+        color: red;
     }
 </style>
 <div class="container">
@@ -102,7 +102,7 @@
                                     </div>
 
                                     @Html.TextBoxFor(model => model.CaptchaInputText, new { @class = "form-control", autocomplete = "off" })
-                                    @Html.ValidationMessageFor(model => model.CaptchaInputText , "",  new { @class = "error" })
+                                    @Html.ValidationMessageFor(model => model.CaptchaInputText, "", new { @class = "error" })
                                 </div>
                             </div>
                         </div>
@@ -166,6 +166,4 @@
         }
         setup_file_input();
     </script>
-    @*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")*@
 }

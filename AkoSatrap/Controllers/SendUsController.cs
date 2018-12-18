@@ -35,10 +35,6 @@ namespace AkoSatrap.Controllers
             {
                 if (uploadFileModel.File != null && uploadFileModel.File.ContentLength > 0)
                 {
-                    //var fileName = Path.GetFileName(uploadFileModel.File.FileName);
-                    //var fileLocation = Path.Combine(Server.MapPath("~/UploadFile"), fileName);
-                    //uploadFileModel.File.SaveAs(fileLocation);
-
                     try
                     {
                         var fileType = uploadFileModel.FileType.GetDescription();
@@ -63,27 +59,19 @@ namespace AkoSatrap.Controllers
                         smtp.Credentials = new NetworkCredential("akosatrapiranian", "870943635");
                         smtp.EnableSsl = true;
                         smtp.Send(newmsg);
-
-
-                        //SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-                        //smtp.UseDefaultCredentials = false;
-                        //smtp.Credentials = new NetworkCredential("akosatrapiranian","870943635");
-                        //smtp.EnableSsl = true;
-                        //smtp.Send("akosatrapiranian@gamil.com", "en.mohsenjafari@gmail.com", "subject", "Email Body");
                     }
-                    catch
+                    catch(Exception ex)
                     {
-
+                        var s = "عملیات با خطا مواجه شد" + ex.Message.ToString();
+                        return View("Result", (object)s);
                     }
                 }
-                return View("Result");
+                return View("Result", (object)"فایل با موفقیت ارسال شد");
             }
             else
             {
                 return View(uploadFileModel);
             }
-
-            
         }
     }
 }

@@ -157,12 +157,16 @@
     <Content Include="app\pages\product\productController.js" />
     <Content Include="app\pages\product\productDetail.html" />
     <Content Include="app\pages\product\productDetailController.js" />
+    <Content Include="app\pages\project\projectDetail.html" />
+    <Content Include="app\pages\project\projectDetailController.js" />
     <Content Include="app\pages\project\project.html" />
     <Content Include="app\pages\project\projectController.js" />
     <Content Include="app\pages\project\projectCategory.html" />
     <Content Include="app\pages\project\projectCategoryController.js" />
     <Content Include="app\pages\shared\alertModal\alert.html" />
     <Content Include="app\pages\shared\alertModal\confirm.html" />
+    <Content Include="app\pages\siteContent\siteContent.html" />
+    <Content Include="app\pages\siteContent\siteContentController.js" />
     <Content Include="app\routing.js" />
     <Content Include="app\service\fileUploaderService.js" />
     <Content Include="app\service\postService.js" />
@@ -389,6 +393,7 @@
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\SendUsController.cs" />
+    <Compile Include="Controllers\SiteContentController.cs" />
     <Compile Include="ErrorData\ErrorAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -473,11 +478,14 @@
     <Content Include="Views\Activities\Engineeringsystem.cshtml" />
     <Content Include="Views\Project\ProjectDone.cshtml" />
     <Content Include="Views\Project\ProjectRunning.cshtml" />
+    <Content Include="Views\SendUs\Error.cshtml" />
+    <Content Include="Views\Project\Project.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -492,6 +500,10 @@
     <ProjectReference Include="..\Business\Business.csproj">
       <Project>{475a5f48-c70c-4187-a4ff-a3cf844250cd}</Project>
       <Name>Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DomainDeriven\DomainDeriven.csproj">
+      <Project>{8c30eb5e-6e19-4305-bb8d-fcb9383e511d}</Project>
+      <Name>DomainDeriven</Name>
     </ProjectReference>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj">
       <Project>{2bf9dd9f-821a-4e3f-a6ea-131266e286b2}</Project>

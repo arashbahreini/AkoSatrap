@@ -20,6 +20,7 @@ namespace DomainDeriven
         public virtual DbSet<ProjectCategory> ProjectCategories { get; set; }
         public virtual DbSet<ProjectFeature> ProjectFeatures { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<SiteContent> SiteContents { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

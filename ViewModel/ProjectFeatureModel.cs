@@ -8,5 +8,13 @@ namespace ViewModel
 {
     public class ProjectFeatureModel
     {
+        public int Id { get; set; }
+        public int EnId { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string EnTitle { get; set; }
+        public string EnDescription { get; set; }
+        public byte Order { get; set; }
+        public int ProjectId { get; set; }
     }
 }

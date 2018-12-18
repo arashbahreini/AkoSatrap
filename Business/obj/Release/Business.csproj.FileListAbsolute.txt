@@ -9,3 +9,17 @@ C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\Business\bin\Relea
 C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\Business\obj\Release\Business.csprojResolveAssemblyReference.cache
 C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\Business\obj\Release\Business.dll
 C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\Business\obj\Release\Business.pdb
+C:\work\AkoSatrap\Business\bin\Release\Business.dll
+C:\work\AkoSatrap\Business\bin\Release\Business.pdb
+C:\work\AkoSatrap\Business\bin\Release\DomainDeriven.dll
+C:\work\AkoSatrap\Business\bin\Release\EntityFramework.dll
+C:\work\AkoSatrap\Business\bin\Release\ViewModel.dll
+C:\work\AkoSatrap\Business\bin\Release\DomainDeriven.pdb
+C:\work\AkoSatrap\Business\bin\Release\DomainDeriven.dll.config
+C:\work\AkoSatrap\Business\bin\Release\ViewModel.pdb
+C:\work\AkoSatrap\Business\bin\Release\EntityFramework.xml
+C:\work\AkoSatrap\Business\obj\Release\Business.csprojAssemblyReference.cache
+C:\work\AkoSatrap\Business\obj\Release\Business.csproj.CoreCompileInputs.cache
+C:\work\AkoSatrap\Business\obj\Release\Business.csproj.CopyComplete
+C:\work\AkoSatrap\Business\obj\Release\Business.dll
+C:\work\AkoSatrap\Business\obj\Release\Business.pdb
