@@ -81,7 +81,14 @@ namespace AkoSatrap.Controllers
         [HttpPost]
         public JsonResult AddImage(FileAttachment fileAttachment, int id)
         {
-            ViewModel.ReturnResult<bool> returnResult = new ViewModel.ReturnResult<bool>();
+            var returnResult = new ViewModel.ReturnResult<bool>();
+
+            if (fileAttachment.Attachment.ContentLength > 2097152)
+            {
+                returnResult.SetError("حجم فایل نمیتواند بیشتر از 2 مگابایت باشد");
+                return Json(returnResult);
+            }
+
             Business.ProductBusiness business = new Business.ProductBusiness();
             var product = business.GetProductById(id);
             var path = Server.MapPath($"~/AkoSatrapImages/{product.ImageFolderName}/");
