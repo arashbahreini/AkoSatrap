@@ -114,17 +114,6 @@
                { field: "EnTitle", title: "به لاتین", width: "240px" },
                {
                    command: {
-                       text: "حذف", click: function (e) {
-                           e.preventDefault();
-                           var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-                           $scope.dataItem = dataItem;
-                           messageFactory.showConfirmModal("آیا برای حذف سیستمی مطمئن هستید؟", function () { $scope.confirmDelete(); });
-                           $scope.$apply();
-                       }
-                   }, title: " ", width: "80px"
-               },
-               {
-                   command: {
                        text: "ویرایش"
                        , click: function (e) {
                            e.preventDefault();

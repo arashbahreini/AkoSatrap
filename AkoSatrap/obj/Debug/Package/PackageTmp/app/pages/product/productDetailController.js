@@ -18,6 +18,16 @@
             $scope.product = result[0];
         });
 
+        $scope.deleteFeature = function (id) {
+            messageFactory.showConfirmModal("آیا برای حذف سیستمی مطمئن هستید؟",
+                function () {
+                    $scope.myPromise = invokeServerService.Post('/PProduct/DeleteFeature', { id: id }).success(function (result) {
+                        messageFactory.showAlert('عملیات با موفقیت انجام شد', 'success');
+                        $scope.getProductDetails();
+                    });
+                });
+        }
+
         $scope.addProductFeature = function () {
             $scope.productDetail.ProductId = $scope.product.Id;
             $scope.myPromise = invokeServerService.Post('/PProduct/AddProductFeature', { productFeature: $scope.productDetail }).success(function (result) {
@@ -32,6 +42,7 @@
                     $("#navInformation").addClass("active");
 
                     $scope.productDetail = null;
+                    $scope.getProductDetails();
                 }
                 else {
                     messageFactory.showAlert(result.Message, 'danger');
@@ -54,6 +65,7 @@
 
                     $scope.isUpdate = false;
                     $scope.productDetail = null;
+                    $scope.getProductDetails();
                 }
                 else {
                     messageFactory.showAlert(result.Message, 'danger');

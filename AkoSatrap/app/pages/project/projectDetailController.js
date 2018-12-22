@@ -32,6 +32,7 @@
                     $("#navInformation").addClass("active");
 
                     $scope.projectDetail = null;
+                    $scope.getProjectDetails();
                 }
                 else {
                     messageFactory.showAlert(result.Message, 'danger');
@@ -54,11 +55,22 @@
 
                     $scope.isUpdate = false;
                     $scope.projectDetail = null;
+                    $scope.getProjectDetails();
                 }
                 else {
                     messageFactory.showAlert(result.Message, 'danger');
                 }
             });
+        }
+
+        $scope.deleteFeature = function (id) {
+            messageFactory.showConfirmModal("آیا برای حذف سیستمی مطمئن هستید؟",
+                function () {
+                    $scope.myPromise = invokeServerService.Post('/PProject/DeleteFeature', { id: id }).success(function (result) {
+                        messageFactory.showAlert('عملیات با موفقیت انجام شد', 'success');
+                        $scope.getProjectDetails();
+                    });
+                });
         }
 
         $scope.newProjectFeature = function () {

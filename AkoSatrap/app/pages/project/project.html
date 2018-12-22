@@ -79,8 +79,8 @@
                                         <td>{{project.StartDate}}</td>
                                         <td>{{project.CompletionPercentage}}</td>
                                         <td style="text-align:center">
-                                            <a class="fa fa-trash" style="margin-left:5px;"></a>
-                                            <a class="fa fa-pencil" ng-click="editProject(project)"></a>
+                                            <a class="fa fa-trash btn btn-danger" ng-click="deleteProject(project.Id)" style="color:white;margin-left:5px;"></a>
+                                            <a class="fa fa-pencil btn btn-primary" style="color:white" ng-click="editProject(project)"></a>
                                         </td>
                                     </tr>
                                 </tbody>
