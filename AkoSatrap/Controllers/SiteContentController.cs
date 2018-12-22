@@ -1,6 +1,8 @@
-﻿using DomainDeriven;
+﻿using AkoSatrap.UIHelper;
+using DomainDeriven;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,7 +19,47 @@ namespace AkoSatrap.Controllers
                 var result = dbContext.SiteContents.Where(x => x.PageId == model.PageId).FirstOrDefault();
                 return Json(result);
             }
-            
+
+        }
+
+        public JsonResult GetImages()
+        {
+            var returnResult = new ViewModel.ReturnResult<List<string>>();
+            var path = System.Web.Hosting.HostingEnvironment.MapPath($"~/AkoSatrapImages/abilities/");
+            if (Directory.Exists(path))
+            {
+                returnResult.Data = new List<string>();
+                if (Directory.GetFiles(path).Any())
+                    returnResult.Data = Directory.GetFiles(path).Select(r => Path.GetFileName(r)).ToList();
+            }
+            return Json(returnResult);
+        }
+
+        public JsonResult DeleteImage(string fileName)
+        {
+            ViewModel.ReturnResult<bool> returnResult = new ViewModel.ReturnResult<bool>();
+            System.IO.File.Delete(Server.MapPath($"~/AkoSatrapImages/abilities/{fileName}"));
+            return Json(returnResult);
+        }
+
+        public JsonResult AddImage(FileAttachment fileAttachment, int id)
+        {
+            var returnResult = new ViewModel.ReturnResult<bool>();
+
+            if (fileAttachment.Attachment.ContentLength > 2097152)
+            {
+                returnResult.SetError("حجم فایل نمیتواند بیشتر از 2 مگابایت باشد");
+                return Json(returnResult);
+            }
+
+            var path = Server.MapPath($"~/AkoSatrapImages/abilities/");
+            if (!System.IO.Directory.Exists(path))
+            {
+                System.IO.Directory.CreateDirectory(path);
+            }
+            fileAttachment.Attachment.SaveAs($"{path}/{Guid.NewGuid()}.{fileAttachment.Attachment.FileName.Split('.')[1].ToString()}");
+
+            return Json(returnResult);
         }
 
         public JsonResult SaveContent(SiteContentModel model)

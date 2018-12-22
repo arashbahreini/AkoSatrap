@@ -16,11 +16,42 @@
         setup_file_input();
 
         $scope.getSiteContent = function (page) {
-            $scope.myPromise = invokeServerService.Post('/SiteContent/GetContent', { PageId: page.Page.PageId }).success(function (result) {
-                $scope.content.Body = result.Body;
-                $scope.content.Title = result.Title;
+            if (page.Page.PageId === 6) {
+                $scope.getImages();
+            }
+            else {
+                $scope.myPromise = invokeServerService.Post('/SiteContent/GetContent', { PageId: page.Page.PageId }).success(function (result) {
+                    $scope.content.Body = result.Body;
+                    $scope.content.Title = result.Title;
+                });
+            }
+        };
+
+        $scope.getImages = function () {
+            $scope.myPromise = invokeServerService.Post('/SiteContent/GetImages').success(function (result) {
+                $scope.pageImages = result.Data;
             });
-        }
+        };
+
+        $scope.deletePhoto = function (x) {
+            $scope.myPromise = invokeServerService.Post('/SiteContent/DeleteImage', { fileName: x }).success(function (result) {
+                $scope.pageImages = result.Data;
+                $scope.getImages();
+            });
+        };
+
+        $scope.uploadFile = function (attachment) {
+            $scope.myPromise = fileUploaderService.uploadFileToUrl(attachment, '/SiteContent/AddImage', $scope.content.Page.PageId)
+                .then(function (result) {
+                    if (result.Success) {
+                        messageFactory.showAlert(result.Message, 'success');
+                        $scope.getImages();
+                    }
+                    else {
+                        messageFactory.showAlert(result.Message, 'dangers');
+                    }
+                }, function () { });
+        };
 
         $scope.saveContent = function () {
             $scope.content.PageId = $scope.content.Page.PageId;

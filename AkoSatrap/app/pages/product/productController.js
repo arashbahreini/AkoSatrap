@@ -192,7 +192,7 @@
 
                     }
                     else {
-                        messageFactory.showAlert(result.Message, 'success');
+                        messageFactory.showAlert(result.Message, 'danger');
                     }
                 }
                     , function () {

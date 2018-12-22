@@ -47,12 +47,58 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="category" class="form-control-label">صفحه</label>
-                                        <select id="category" ng-options="item as item.name for item in pages" 
-                                               ng-change="getSiteContent(content)" ng-model="content.Page" class="form-control form-control-sm custom-select"></select>
+                                        <select id="category" ng-options="item as item.name for item in pages"
+                                                ng-change="getSiteContent(content)" ng-model="content.Page" class="form-control form-control-sm custom-select"></select>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="tab-pane" id="tabPhoto" role="tabpanel" ng-if="content.Page.PageId === 6">
+                                <div class="page-sub-header">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6 class="text-muted mt-3">افزودن تصویر</h6>
+                                            <div class="clearfix"></div>
+                                            <hr />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label">انتخاب فایل</label>
+                                            <label class="custom-file">
+                                                <input id="FDID" class="custom-file-input" type="file" name="attachment" accept=".jpg,.jpeg" data-ak-file-model="fileAttachment.attachment">
+                                                <span class="custom-file-control"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row mt-2 mb-2 text-left">
+                                    <div class="col-12">
+
+                                        <input type="button" value="افزودن تصویر" class="btn btn-sm btn-success mb-3"
+                                               ng-click="uploadFile(fileAttachment)" ng-disabled="!fileAttachment" />
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-md-3" ng-repeat="x in pageImages">
+                                        <div class="form-group">
+                                            <img class="col-md-12" src="../../../AkoSatrapImages/abilities/{{x}}" />
+                                            <a class="btn btn-sm btn-success mb-3" role="button" ng-click="deletePhoto(x)" style="color:white">
+                                                حذف تصویر
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" ng-if="content.Page.PageId !== 6">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="title" class="form-control-label">عنوان </label>
@@ -66,10 +112,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mt-2 mb-2 text-left">
+                            <div class="row mt-2 mb-2 text-left" ng-if="content.Page.PageId !== 6">
                                 <div class="col-12">
                                     <input type="button" value="ذخیره" class="btn btn-sm btn-success mb-3"
-                                           ng-click="saveContent()"/>
+                                           ng-click="saveContent()" />
                                 </div>
                             </div>
                         </div>
