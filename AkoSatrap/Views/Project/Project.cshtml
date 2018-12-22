@@ -1,4 +1,6 @@
 ﻿@{
+    /**/
+
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -275,3 +277,55 @@
         </div>
     </div>
 </div>
+<script src="../../dist/js/libraries/jquery.min.js"></script>
+
+<!--Local-->
+<script src="../../dist/js/general/script.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var galleryImg = $(".gallery-img .img");
+
+        function applyBackImg(from, to) {
+            to.css('background-image', from.css('background-image'));
+        }
+
+        $('.gallery-thumbnail .img').click(function () {
+            applyBackImg($(this), galleryImg)
+        });
+
+        $('#lightbox').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var lightbox = $(this);
+            var lightboxImg = lightbox.find('.lightbox-img .img');
+            var lightboxThumbnail = lightbox.find('.lightbox-thumbnail .img');
+
+            applyBackImg(button, lightboxImg);
+
+            lightboxThumbnail.click(function () {
+                applyBackImg($(this), lightboxImg);
+            })
+
+        })
+    });
+
+
+</script>
+<script>
+    function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+    }
+    function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+    }
+    function myAccFunc() {
+        var x = document.getElementById("demoAcc");
+        if (x.className.indexOf(" bar-show") == -1) {
+            x.className += " bar-show";
+            x.previousElementSibling.className += " bar-blue";
+        } else {
+            x.className = x.className.replace(" bar-show", "");
+            x.previousElementSibling.className =
+                x.previousElementSibling.className.replace(" bar-blue", "");
+        }
+    }
+</script>
