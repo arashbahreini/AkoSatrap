@@ -1,0 +1,356 @@
+﻿<style>
+    #collapseTitle:hover {
+        cursor: pointer;
+    }
+
+    .btn-info {
+        color: #fff !important;
+    }
+
+    .btn-success {
+        color: #fff !important;
+    }
+
+    .fa {
+        cursor:pointer;
+    }
+</style>
+
+<div ng-controller="productController" ng-form="formProduct">
+    <div cg-busy="{promise:myPromise,message:'لطفا تا بارگذاری کامل صفحه شکیبا باشید',backdrop:true,delay:300,minDuration:700}">
+
+        <div class="card" style="margin-bottom:10px;">
+            <div class="card-header">
+                <ul id="myTab" class="nav nav-tabs card-header-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="navAllProduct" role="tab" data-toggle="tab" data-target="#tabAllProduct" style="cursor: pointer;">
+                            <i class="fa fa-info-circle fa-fw fa-flex ml-2" aria-hidden="true"></i>
+                            محصولات موجود
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " id="navInsertUpdate" role="tab" data-toggle="tab" data-target="#tabInsertUpdate" style="cursor: pointer;">
+                            <i class="fa fa-edit fa-fw fa-flex ml-2" aria-hidden="true"></i>
+                            ایجاد/ویرایش
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " id="navPhoto" role="tab" data-toggle="tab" data-target="#tabPhoto" style="cursor: pointer;">
+                            <i class="fa fa-photo fa-fw fa-flex ml-2" aria-hidden="true"></i>
+                            عکس ها
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-block">
+                <div class="tab-content">
+
+                    <div class="tab-pane active" id="tabAllProduct" role="tabpanel">
+                        <div class="page-sub-header">
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="text-muted mt-3">محصولات ثبت شده</h6>
+                                    <div class="clearfix"></div>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<div class="k-rtl row">
+        <div class="col-md-12">
+            <kendo-grid options="productGridOption">
+            </kendo-grid>
+        </div>
+    </div>-->
+
+                        <div style="text-align:center">
+                            <table class="table table-hover text-center">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">عنوان</th>
+                                        <th scope="col">برند</th>
+                                        <th scope="col">عنوان</th>
+                                        <th scope="col">برند</th>
+                                        <th scope="col" style="text-align:center">
+                                            <a class="fa fa-refresh" ng-click="getProducts()"></a>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="product in products">
+                                        <td>{{product.Title}}</td>
+                                        <td>{{product.Brand}}</td>
+                                        <td>{{product.EnTitle}}</td>
+                                        <td>{{product.EnBrand}}</td>
+                                        <td style="text-align:center">
+                                            <a class="fa fa-trash btn btn-danger" ng-click="deleteProduct(product.Id)" style="color:white;margin-left:5px;"></a>
+                                            <a class="fa fa-pencil btn btn-primary" style="color:white" ng-click="editProduct(product)"></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane" id="tabInsertUpdate" role="tabpanel">
+                        <div class="page-sub-header">
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="text-muted mt-3">مشخصات دسته بندی محصولات</h6>
+                                    <div class="clearfix"></div>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="category" class="form-control-label">گروه</label>
+                                    <select id="category" ng-options="item as item.Title for item in productCategoryDataSource track by item.Id"
+                                            ng-model="product.Category" class="form-control form-control-sm custom-select"></select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="Title" class="form-control-label">عنوان محصول</label>
+                                    <input id="Title" name="Title" ng-model="product.Title" class="form-control form-control-sm" type="text"
+                                           placeholder="عنوان محصول" required ng-pattern="persianPattern">
+                                    <div class="has-danger" ng-messages="formProduct.Title.$error">
+                                        <small ng-message="required">عنوان اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر فارسی استفاده نمایید</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="EnTitle" class="form-control-label">عنوان محصول به انگلیسی</label>
+                                    <input id="EnTitle" name="EnTitle" ng-model="product.EnTitle" class="form-control form-control-sm" type="text"
+                                           placeholder="عنوان محصول" required ng-pattern="englishPattern">
+                                    <div class="has-danger" ng-messages="formProduct.EnTitle.$error">
+                                        <small ng-message="required">برند انگلیسی اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر لاتین استفاده نمایید</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="FA5">توضیحات</label>
+                                    <textarea class="form-control form-control-sm" name="Description" id="FA5" rows="7" ng-model="product.Description" required ng-pattern="persianPattern"></textarea>
+                                    <div class="has-danger" ng-messages="formProduct.Description.$error">
+                                        <small ng-message="required">توضیحات اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر فارسی استفاده نمایید</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="FA6">توضیحات به انگلیسی</label>
+                                    <textarea class="form-control form-control-sm" id="FA6" name="EnDescription" rows="7"
+                                              ng-model="product.EnDescription" required ng-pattern="englishPattern"></textarea>
+                                    <div class="has-danger" ng-messages="formProduct.EnDescription.$error">
+                                        <small ng-message="required">توضیحات انگلیسی اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر لاتین استفاده نمایید</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="Brand" class="form-control-label">برند </label>
+                                    <input id="Brand" name="Brand" ng-model="product.Brand" class="form-control form-control-sm" type="text"
+                                           placeholder="برند محصول" required ng-pattern="persianPattern">
+                                    <div class="has-danger" ng-messages="formProduct.Brand.$error">
+                                        <small ng-message="required">برند اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر فارسی استفاده نمایید</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="EnBrand" class="form-control-label">برند به انگلیسی</label>
+                                    <input id="EnBrand" name="EnBrand" ng-model="product.EnBrand" class="form-control form-control-sm" type="text"
+                                           placeholder="برند محصول" required ng-pattern="englishPattern">
+                                    <div class="has-danger" ng-messages="formProduct.EnBrand.$error">
+                                        <small ng-message="required">برند انگلیسی اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر لاتین استفاده نمایید</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="FA1">نکته مهم اول</label>
+                                    <textarea class="form-control form-control-sm" id="FA1" rows="3" ng-model="product.ImportantTip1"
+                                              name="ImportantTip1" required ng-pattern="persianPattern" ng-minlength="180" ng-maxlength="220"></textarea>
+                                    <div class="has-danger" ng-messages="formProduct.ImportantTip1.$error">
+                                        <small ng-message="required">نکته  اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر فارسی استفاده نمایید</small>
+                                        <small ng-message="minlength">طول نکته باید بین 285 تا 220 کاراکتر باشد</small>
+                                        <small ng-message="maxlength">طول نکته باید بین 285 تا 220 کاراکتر باشد</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="FA2">نکته مهم اول به انگلیسی</label>
+                                    <textarea class="form-control form-control-sm" id="FA2" rows="3" ng-model="product.EnImportantTip1"
+                                              name="EnImportantTip1" required ng-pattern="englishPattern" ng-minlength="180" ng-maxlength="220"></textarea>
+                                    <div class="has-danger" ng-messages="formProduct.EnImportantTip1.$error">
+                                        <small ng-message="required">نکته  اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر لاتین استفاده نمایید</small>
+                                        <small ng-message="minlength">طول نکته باید بین 285 تا 220 کاراکتر باشد</small>
+                                        <small ng-message="maxlength">طول نکته باید بین 285 تا 220 کاراکتر باشد</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="FA3">نکته دوم اول</label>
+                                    <textarea class="form-control form-control-sm" id="FA3" rows="3" ng-model="product.ImportantTip2"
+                                              name="ImportantTip2" required ng-pattern="persianPattern" ng-minlength="180" ng-maxlength="220"></textarea>
+                                    <div class="has-danger" ng-messages="formProduct.ImportantTip2.$error">
+                                        <small ng-message="required">نکته  اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر فارسی استفاده نمایید</small>
+                                        <small ng-message="minlength">طول نکته باید بین 285 تا 220 کاراکتر باشد</small>
+                                        <small ng-message="maxlength">طول نکته باید بین 285 تا 220 کاراکتر باشد</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="FA4">نکته مهم دوم به انگلیسی</label>
+                                    <textarea class="form-control form-control-sm" id="FA4" rows="3" ng-model="product.EnImportantTip2"
+                                              name="EnImportantTip2" required ng-pattern="englishPattern" ng-minlength="180" ng-maxlength="220"></textarea>
+                                    <div class="has-danger" ng-messages="formProduct.EnImportantTip2.$error">
+                                        <small ng-message="required">نکته  اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر لاتین استفاده نمایید</small>
+                                        <small ng-message="minlength">طول نکته باید بین 285 تا 220 کاراکتر باشد</small>
+                                        <small ng-message="maxlength">طول نکته باید بین 285 تا 220 کاراکتر باشد</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="FA5">نکته مهم سوم</label>
+                                    <textarea class="form-control form-control-sm" id="FA5" rows="3" ng-model="product.ImportantTip3"
+                                              name="ImportantTip3" required ng-pattern="persianPattern" ng-minlength="180" ng-maxlength="220"></textarea>
+                                    <div class="has-danger" ng-messages="formProduct.ImportantTip3.$error">
+                                        <small ng-message="required">نکته  اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر فارسی استفاده نمایید</small>
+                                        <small ng-message="minlength">طول نکته باید بین 285 تا 220 کاراکتر باشد</small>
+                                        <small ng-message="maxlength">طول نکته باید بین 285 تا 220 کاراکتر باشد</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="FA6">نکته مهم سوم به انگلیسی</label>
+                                    <textarea class="form-control form-control-sm" id="FA6" rows="3" ng-model="product.EnImportantTip3"
+                                              name="EnImportantTip3" required ng-pattern="englishPattern" ng-minlength="180" ng-maxlength="220"></textarea>
+                                    <div class="has-danger" ng-messages="formProduct.EnImportantTip3.$error">
+                                        <small ng-message="required">نکته  اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر لاتین استفاده نمایید</small>
+                                        <small ng-message="minlength">طول نکته باید بین 285 تا 220 کاراکتر باشد</small>
+                                        <small ng-message="maxlength">طول نکته باید بین 285 تا 220 کاراکتر باشد</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row mt-2 mb-2 text-left">
+                            <div class="col-12">
+                                <input type="button" value="ثبت" class="btn btn-sm btn-success mb-3"
+                                       ng-disabled="formProduct.$invalid" ng-click="addProduct()" ng-show="!isUpdate" />
+
+                                <input type="button" value="بروزرسانی" class="btn btn-sm btn-success mb-3"
+                                       ng-disabled="formProduct.$invalid" ng-click="updateProduct()" ng-show="isUpdate" />
+
+                                <input type="button" value="دسته بندی جدید" class="btn btn-sm btn-info mb-3"
+                                       ng-click="newProduct()" ng-show="isUpdate" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tabPhoto" role="tabpanel">
+                        <div class="page-sub-header">
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="text-muted mt-3">افزودن تصویر</h6>
+                                    <div class="clearfix"></div>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">انتخاب فایل</label>
+                                    <label class="custom-file">
+                                        <input id="FDID" class="custom-file-input" type="file" name="attachment" accept=".jpg,.jpeg" data-ak-file-model="fileAttachment.attachment">
+                                        <span class="custom-file-control"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row mt-2 mb-2 text-left">
+                            <div class="col-12">
+
+                                <input type="button" value="افزودن تصویر" class="btn btn-sm btn-success mb-3"
+                                       ng-click="uploadFile(fileAttachment)" ng-disabled="!isUpdate" />
+
+                                
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+
+                            <div class="col-md-3" ng-repeat="x in product.Images">
+                                <div class="form-group">
+                                    <img class="col-md-12" src="../../../AkoSatrapImages/{{product.ImageFolderName}}/{{x}}" />
+                                    <a class="btn btn-sm btn-success mb-3" role="button" ng-click="deletePhoto(x)" style="color:white">
+                                        حذف تصویر
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

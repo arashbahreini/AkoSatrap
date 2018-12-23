@@ -158,40 +158,40 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2018 19:05:15</publishTime>
     </File>
     <File Include="app/pages/product/product.html">
-      <publishTime>12/16/2018 20:01:18</publishTime>
+      <publishTime>12/18/2018 19:11:04</publishTime>
     </File>
     <File Include="app/pages/product/productCategory.html">
       <publishTime>12/02/2018 19:05:15</publishTime>
     </File>
     <File Include="app/pages/product/productCategoryController.js">
-      <publishTime>12/02/2018 19:05:15</publishTime>
+      <publishTime>12/18/2018 19:17:08</publishTime>
     </File>
     <File Include="app/pages/product/productController.js">
-      <publishTime>12/03/2018 20:03:03</publishTime>
+      <publishTime>12/18/2018 19:16:44</publishTime>
     </File>
     <File Include="app/pages/product/productDetail.html">
-      <publishTime>12/03/2018 22:19:58</publishTime>
+      <publishTime>12/18/2018 19:13:35</publishTime>
     </File>
     <File Include="app/pages/product/productDetailController.js">
-      <publishTime>12/03/2018 22:19:29</publishTime>
+      <publishTime>12/18/2018 19:14:45</publishTime>
     </File>
     <File Include="app/pages/project/project.html">
-      <publishTime>12/17/2018 22:40:07</publishTime>
+      <publishTime>12/18/2018 19:08:44</publishTime>
     </File>
     <File Include="app/pages/project/projectCategory.html">
       <publishTime>12/02/2018 19:05:15</publishTime>
     </File>
     <File Include="app/pages/project/projectCategoryController.js">
-      <publishTime>12/02/2018 19:27:23</publishTime>
+      <publishTime>12/18/2018 19:09:47</publishTime>
     </File>
     <File Include="app/pages/project/projectController.js">
-      <publishTime>12/05/2018 20:11:30</publishTime>
+      <publishTime>12/18/2018 18:58:12</publishTime>
     </File>
     <File Include="app/pages/project/projectDetail.html">
-      <publishTime>12/05/2018 17:08:32</publishTime>
+      <publishTime>12/18/2018 19:07:55</publishTime>
     </File>
     <File Include="app/pages/project/projectDetailController.js">
-      <publishTime>12/05/2018 17:08:12</publishTime>
+      <publishTime>12/18/2018 19:04:17</publishTime>
     </File>
     <File Include="app/pages/shared/alertModal/alert.html">
       <publishTime>12/02/2018 19:05:15</publishTime>
@@ -218,10 +218,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2018 19:05:15</publishTime>
     </File>
     <File Include="bin/AkoSatrap.dll">
-      <publishTime>12/17/2018 22:42:59</publishTime>
+      <publishTime>12/19/2018 19:50:21</publishTime>
     </File>
     <File Include="bin/AkoSatrap.pdb">
-      <publishTime>12/17/2018 22:42:59</publishTime>
+      <publishTime>12/19/2018 19:50:21</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>12/02/2018 19:05:16</publishTime>
@@ -230,10 +230,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2018 19:05:16</publishTime>
     </File>
     <File Include="bin/Business.dll">
-      <publishTime>12/17/2018 22:21:26</publishTime>
+      <publishTime>12/19/2018 19:50:18</publishTime>
     </File>
     <File Include="bin/Business.pdb">
-      <publishTime>12/17/2018 22:21:26</publishTime>
+      <publishTime>12/19/2018 19:50:18</publishTime>
     </File>
     <File Include="bin/DomainDeriven.dll">
       <publishTime>12/15/2018 20:36:36</publishTime>
@@ -1133,7 +1133,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/16/2018 19:52:25</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>12/16/2018 19:59:28</publishTime>
+      <publishTime>12/19/2018 20:07:14</publishTime>
     </File>
     <File Include="Views/Home/TestIndex.cshtml">
       <publishTime>02/13/2018 01:03:10</publishTime>
@@ -1169,13 +1169,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/20/2018 17:45:10</publishTime>
     </File>
     <File Include="Views/Project/Project.cshtml">
-      <publishTime>12/17/2018 22:53:13</publishTime>
+      <publishTime>12/19/2018 19:50:57</publishTime>
     </File>
     <File Include="Views/Project/ProjectDone.cshtml">
       <publishTime>12/17/2018 21:40:21</publishTime>
     </File>
     <File Include="Views/Project/ProjectRunning.cshtml">
-      <publishTime>12/17/2018 21:42:38</publishTime>
+      <publishTime>12/19/2018 19:00:48</publishTime>
     </File>
     <File Include="Views/SendUs/Error.cshtml">
       <publishTime>12/05/2018 18:04:55</publishTime>
@@ -1187,7 +1187,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/05/2018 18:10:40</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>12/16/2018 19:54:56</publishTime>
+      <publishTime>12/19/2018 18:56:55</publishTime>
     </File>
     <File Include="Views/Shared/_PanelLayout.cshtml">
       <publishTime>12/15/2018 20:57:00</publishTime>

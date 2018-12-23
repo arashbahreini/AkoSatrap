@@ -20,6 +20,16 @@
 
         });
 
+        $scope.deleteProduct = function (id) {
+            messageFactory.showConfirmModal("آیا برای حذف سیستمی مطمئن هستید؟",
+                function () {
+                    $scope.myPromise = invokeServerService.Post('/PProduct/DeleteProduct', { id: id }).success(function (result) {
+                        messageFactory.showAlert('عملیات با موفقیت انجام شد', 'success');
+                        $scope.getProducts();
+                    });
+                });
+        }
+
         $scope.addProduct = function () {
             $scope.myPromise = invokeServerService.Post('/PProduct/AddProduct', { product: $scope.product }).success(function (result) {
                 if (result.Success) {
@@ -83,95 +93,6 @@
             })
         }
         $scope.getProducts();
-        //var gridDataSource = new kendo.data.DataSource({
-        //    transport: {
-        //        read: "/PProduct/GetProductList",
-        //        parameterMap: function (data, type) {
-
-        //            if (type == "read") {
-        //                // send take as "$top" and skip as "$skip"                    
-        //                return {
-        //                    //   documentDetail: angular.toJson($scope.document),
-        //                    pageSize: data.pageSize,
-        //                    page: data.page
-        //                }
-        //            }
-        //        }
-        //    },
-        //    schema: {
-        //        total: function (response) {
-
-        //            return response.Total; // total is returned in the "total" field of the response
-        //        },
-        //        data: function (response) {
-
-        //            return response.Data; // total is returned in the "total" field of the response
-        //        }
-        //    },
-        //    pageSize: 5,
-        //    serverPaging: true,
-        //    serverSorting: true
-        //});
-
-        //$scope.productGridOption = {
-        //    dataSource: gridDataSource,
-        //    sortable: true,
-        //    //pageable: true,
-        //    pageable: {
-        //        messages: {
-        //            empty: "رکوردی وجود ندارد"
-        //        }
-        //    },
-        //    // scrollable: true,
-        //    //dataBound: function () {
-        //    //    this.expandRow(this.tbody.find("tr.k-master-row"));
-        //    //},
-        //    //dataBound: function () {
-        //    //    
-        //    //    var data = this.dataSource.data();
-        //    //    $(data).each(function (i, row) {
-        //    //        if (row.get("temporaryData") == true && row.get("hasError") == true) {
-        //    //            var element = $('tr[data-uid="' + row.uid + '"] ');
-        //    //            element.addClass("error-row");
-        //    //        }
-        //    //    });
-        //    //},
-        //    columns: [
-        //        { field: "Id", hidden: true },
-        //        { field: "Title", title: "عنوان", width: "140px" },
-        //        { field: "Brand", title: "برند", width: "140px" },
-        //        { field: "EnTitle", title: "عنوان", width: "140px" },
-        //        { field: "EnBrand", title: "برند", width: "140px" },
-
-        //        {
-        //            command: {
-        //                text: "حذف", click: function (e) {
-        //                    e.preventDefault();
-        //                    var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-        //                    $scope.dataItem = dataItem;
-        //                    messageFactory.showConfirmModal("آیا برای حذف سیستمی مطمئن هستید؟", function () { $scope.confirmDelete(); });
-        //                    $scope.$apply();
-        //                }
-        //            }, title: " ", width: "80px"
-        //        },
-        //        {
-        //            command: {
-        //                text: "ویرایش"
-        //                , click: function (e) {
-        //                    e.preventDefault();
-        //                    var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-        //                    $scope.product = dataItem;
-        //                    $("#tabInsertUpdate").addClass("active");
-        //                    $("#navInsertUpdate").addClass("active");
-        //                    $scope.isUpdate = true;
-        //                    $("#tabAllProduct").removeClass("active");
-        //                    $("#navAllProduct").removeClass("active");
-        //                    $scope.$apply();
-        //                }
-        //            }, title: "بروزرسانی", width: "100px", locked: true
-        //        }
-        //    ]
-        //};
 
         $scope.editProduct = function (item) {
             $scope.product = item;

@@ -12,7 +12,7 @@ namespace Business
         {
             DomainDeriven.AkoSatrapDb context = new DomainDeriven.AkoSatrapDb();
             var result = context.ProjectCategories.Include("ProjectCategory2").Where(r => r.IsEnglish == false)
-                .Select(r => new ViewModel.ProjectCategoryModel{ Title = r.Title, EnTitle = r.ProjectCategory2.Title, Id = r.Id, EnId = r.EnId.Value }).ToList();
+                .Select(r => new ViewModel.ProjectCategoryModel { Title = r.Title, EnTitle = r.ProjectCategory2.Title, Id = r.Id, EnId = r.EnId.Value }).ToList();
             return result;
         }
 
@@ -34,7 +34,7 @@ namespace Business
                 enDbProject.StartDate = ConvertPersianDateToGregorian(project.StartDate);
                 enDbProject.EndDate = ConvertPersianDateToGregorian(project.EndDate);
                 enDbProject.CompletionPercentage = project.CompletionPercentage;
-                enDbProject.ProjectCategoryId = project.ProjectCategory != null? project.ProjectCategory.EnId : 0;
+                enDbProject.ProjectCategoryId = project.ProjectCategory != null ? project.ProjectCategory.EnId : 0;
                 enDbProject.IsEnglish = true;
                 enDbProject.ImageFolderName = Guid.NewGuid().ToString();
 
@@ -43,7 +43,7 @@ namespace Business
                 dbProject.Province = project.Province;
                 dbProject.City = project.City;
                 dbProject.CreateDate = DateTime.Now;
-                dbProject.StartDate =ConvertPersianDateToGregorian(project.StartDate);
+                dbProject.StartDate = ConvertPersianDateToGregorian(project.StartDate);
                 dbProject.EndDate = ConvertPersianDateToGregorian(project.EndDate);
                 dbProject.CompletionPercentage = project.CompletionPercentage;
                 dbProject.ProjectCategoryId = project.ProjectCategory != null ? project.ProjectCategory.Id : 0;
@@ -76,7 +76,8 @@ namespace Business
                     int.Parse(input.Substring(8, 2)),
                     new PersianCalendar());
                 return result;
-            } else
+            }
+            else
             {
                 var result = new DateTime(
                     int.Parse(input.Substring(0, 4)),
@@ -222,7 +223,7 @@ namespace Business
                     ImageFolderName = r.ImageFolderName,
                     Id = r.Id,
                     Description = r.Description,
-                    CreateDate  = r.CreateDate,
+                    CreateDate = r.CreateDate,
                     CompletionPercentage = r.CompletionPercentage,
                     City = r.City,
                     EndDate = ConvertGregorianToPersianDate(r.EndDate),
@@ -261,6 +262,11 @@ namespace Business
                 Province = project.Province,
                 Title = project.Title,
                 StartDate = ConvertGregorianToPersianDate(project.StartDate),
+                ProjectCategory = new ViewModel.ProjectCategoryModel
+                {
+                    Title = project.ProjectCategory.Title,
+                    Id = project.Id
+                },
                 ProjectFeatures = project.ProjectFeatures.Select(x => new ViewModel.ProjectFeatureModel
                 {
                     Id = x.Id,

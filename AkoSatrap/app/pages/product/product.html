@@ -83,8 +83,8 @@
                                         <td>{{product.EnTitle}}</td>
                                         <td>{{product.EnBrand}}</td>
                                         <td style="text-align:center">
-                                            <a class="fa fa-trash" style="margin-left:5px;"></a>
-                                            <a class="fa fa-pencil" ng-click="editProduct(product)"></a>
+                                            <a class="fa fa-trash btn btn-danger" ng-click="deleteProduct(product.Id)" style="color:white;margin-left:5px;"></a>
+                                            <a class="fa fa-pencil btn btn-primary" style="color:white" ng-click="editProduct(product)"></a>
                                         </td>
                                     </tr>
                                 </tbody>

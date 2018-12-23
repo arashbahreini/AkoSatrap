@@ -1,4 +1,5 @@
 ﻿using AkoSatrap.UIHelper;
+using DomainDeriven;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -36,6 +37,58 @@ namespace AkoSatrap.Controllers
                 returnResult.Data = Directory.GetFiles(path).Select(r => Path.GetFileName(r)).ToList();
             }
             return Json(returnResult);
+        }
+
+        [HttpPost]
+        public JsonResult DeleteFeature(int id)
+        {
+            var result = new ReturnResult<bool>();
+            using (var dbContext = new AkoSatrapDb())
+            {
+                var feature = dbContext.ProjectFeatures.Find(id);
+                dbContext.ProjectFeatures.Remove(feature);
+                dbContext.SaveChanges();
+            }
+            return Json(result);
+        }
+
+        [HttpPost]
+        public JsonResult DeleteImage(string imageFolderName, string fileName)
+        {
+            ViewModel.ReturnResult<bool> returnResult = new ViewModel.ReturnResult<bool>();
+
+            System.IO.File.Delete(Server.MapPath($"~/AkoSatrapImages/{imageFolderName}/{fileName}"));
+
+            return Json(returnResult);
+        }
+
+        [HttpPost]
+        public JsonResult DeleteProject(int id)
+        {
+            var result = new ReturnResult<bool>();
+            using (var dbContext = new AkoSatrapDb())
+            {
+                var features = dbContext.ProjectFeatures.Where(x => x.ProjectId == id).ToList();
+                if (features.Any())
+                {
+                    foreach (var item in features)
+                    {
+                        dbContext.ProjectFeatures.Remove(item);
+                    }
+                }
+                dbContext.SaveChanges();
+
+                var project = dbContext.Projects.Find(id);
+                dbContext.Projects.Remove(project);
+                dbContext.SaveChanges();
+
+                var path = Server.MapPath($"~/AkoSatrapImages/{project.ImageFolderName}/");
+                if (Directory.Exists(path))
+                {
+                    Directory.Delete(path, true);
+                }
+            }
+            return Json(result);
         }
 
         [HttpPost]

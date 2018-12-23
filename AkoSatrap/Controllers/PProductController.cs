@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.IO;
 using ViewModel;
+using DomainDeriven;
 
 namespace AkoSatrap.Controllers
 {
@@ -111,6 +112,48 @@ namespace AkoSatrap.Controllers
             System.IO.File.Delete(Server.MapPath($"~/AkoSatrapImages/{imageFolderName}/{fileName}"));
 
             return Json(returnResult);
+        }
+
+        [HttpPost]
+        public JsonResult DeleteFeature(int id)
+        {
+            var result = new ReturnResult<bool>();
+            using (var dbContext = new AkoSatrapDb())
+            {
+                var feature = dbContext.ProductFeatures.Find(id);
+                dbContext.ProductFeatures.Remove(feature);
+                dbContext.SaveChanges();
+            }
+            return Json(result);
+        }
+
+        [HttpPost]
+        public JsonResult DeleteProduct(int id)
+        {
+            var result = new ReturnResult<bool>();
+            using (var dbContext = new AkoSatrapDb())
+            {
+                var features = dbContext.ProductFeatures.Where(x => x.ProductId == id).ToList();
+                if (features.Any())
+                {
+                    foreach (var item in features)
+                    {
+                        dbContext.ProductFeatures.Remove(item);
+                    }
+                }
+                dbContext.SaveChanges();
+
+                var product = dbContext.Products.Find(id);
+                dbContext.Products.Remove(product);
+                dbContext.SaveChanges();
+
+                var path = Server.MapPath($"~/AkoSatrapImages/{product.ImageFolderName}/");
+                if (Directory.Exists(path))
+                {
+                    Directory.Delete(path, true);
+                }
+            }
+            return Json(result);
         }
 
         [HttpPost]
