@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="offcanvas">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSS -->
+    <link href="~/Core/SiteCore/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Core/Telerik/styles/kendo.common.core.min.css" rel="stylesheet" />
+    <link href="~/Core/Telerik/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Core/Telerik/styles/kendo.rtl.min.css" rel="stylesheet" />
+
+    <link href="~/Core/Telerik/styles/kendo.material.min.css" rel="stylesheet" />
+    @*<link href="~/Core/Telerik/styles/kendo.common-material.core.min" rel="stylesheet" />*@
+
+    <link href="~/Core/other/PersianDate/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/Core/other/loadbar/loading-bar.css" rel="stylesheet" />
+    <link href="~/Core/other/busy/angular-busy.min.css" rel="stylesheet" />
+    <link href="~/app/other/persianDate/bootstrap-datepicker.css" rel="stylesheet"/>
+
+
+</head>
+<body ng-app="mainApp">
+    <div ng-controller="sharedController">
+
+        <!--modal-->
+        <!--**************-->
+        <div class="bg-inverse mb-3">
+            <div class="container">
+                <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse px-0 rtl-lg">
+                    <a class="navbar-brand" href="#">
+                        <img src="../Core/SiteCore/img/logo-inverse.png" alt="Iran Kish Co">
+                    </a>
+                    <div id="tms-menu" class="collapse navbar-collapse mt-2 mt-lg-0">
+
+                        <ul class="navbar-nav ml-auto mr-lg-3">
+                            <!--Menu Item-->
+                            <li class="nav-item active">
+                                <a class="nav-link" ui-sref="home">صفحه اصلی</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0" id="formLogout" action="~/PAuthentication/Logout" method="post">
+                            <button class="btn btn-sm btn-outline-success my-2 my-sm-0" type="submit" href="#" id="btnSubmit">خروج</button>
+                        </form>
+
+                    </div>
+                    <button data-target="#tms-menu" aria-controls="tms-menu" class="navbar-toggler navbar-toggler-right "
+                            type="button"
+                            data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+        <!--**************-->
+        <div class="container">
+            <div class="row row-offcanvas row-offcanvas-right">
+                <div class="col-12 col-md-9">
+                    <!--Mobile view menu button-->
+                    <p class="float-right hidden-md-up">
+                        <button type="button" class="btn btn-success btn-sm btn-block" data-toggle="offcanvas">
+                            <i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i>
+                            <i class="fa fa-arrow-right fa-fw" aria-hidden="true"></i>
+                        </button>
+                    </p>
+                    <div class="clearfix"></div>
+                    <div id="page-content">
+                        <div class="page-header">
+                            <div class="row">
+                                <div class="col">
+                                    <h4><i class="fa fa-fw ml-2 fa-cube" aria-hidden="true"></i>@RenderSection("PageName", true)</h4>
+                                    <div class="clearfix"></div>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                        <!--************-->
+                        <!--Page content-->
+
+                        @RenderBody()
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-3 sidebar-offcanvas" id="sidebar">
+                    <!--***************-->
+                    <div class="list-group">
+                        <div class="menu-list-group-item">
+                            <div class="list-group-item profile" aria-expanded="false">
+                                <img class="profile-img" src="../Core/SiteCore/img/nobody_profile.jpg" alt="">
+                                <span class="profile-name text-center">@RenderSection("UserName", true)</span>
+                                <span class="profile-description text-center">@RenderSection("PositionTitle", true)</span>
+                            </div>
+                        </div>
+                        <!--Menu Item-->
+                        <div class="menu-list-group-item">
+                            <a class="list-group-item" data-target="#FDID-2" aria-controls="FDID-2" data-toggle="collapse"
+                               aria-expanded="false" style="cursor: pointer;">
+                                <i class="fa fa-link fa-fw fa-flex ml-2" aria-hidden="true"></i>
+                                محصولات
+                                <i class="fa fa-chevron-down fa-flex mr-auto" aria-hidden="true"></i>
+                            </a>
+                            <div id="FDID-2" class="collapse">
+                                <!--SubMenu Item-->
+                                <a class="list-group-item" ui-sref="productCategory">دسته بندی</a>
+                                <a class="list-group-item" ui-sref="product">محصولات</a>
+                                <a class="list-group-item" ui-sref="productFeature">ویژگی محصولات</a>
+                            </div>
+                        </div>
+                        <div class="menu-list-group-item">
+                            <a class="list-group-item" data-target="#FDID-3" aria-controls="FDID-3" data-toggle="collapse"
+                               aria-expanded="false" style="cursor: pointer;">
+                                <i class="fa fa-link fa-fw fa-flex ml-2" aria-hidden="true"></i>
+                                پروژه ها
+                                <i class="fa fa-chevron-down fa-flex mr-auto" aria-hidden="true"></i>
+                            </a>
+                            <div id="FDID-3" class="collapse">
+                                <!--SubMenu Item-->
+                                <a class="list-group-item" ui-sref="projectCategory">دسته بندی</a>
+                                <a class="list-group-item" ui-sref="project">پروژه ها</a>
+                                <a class="list-group-item" ui-sref="projectFeature">ویژگی پروژه ها</a>
+                            </div>
+                        </div>
+                        <div class="menu-list-group-item">
+                            <a class="list-group-item" data-target="#FDID-4" aria-controls="FDID-4" data-toggle="collapse"
+                               aria-expanded="false" style="cursor: pointer;">
+                                <i class="fa fa-link fa-fw fa-flex ml-2" aria-hidden="true"></i>
+                                مدیریت
+                                <i class="fa fa-chevron-down fa-flex mr-auto" aria-hidden="true"></i>
+                            </a>
+                            <div id="FDID-4" class="collapse">
+                                <!--SubMenu Item-->
+                                <a class="list-group-item" ui-sref="SiteContentManagement">مدیریت محتوای صفحات</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--***************-->
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <span class="text-white">Copyright © 2017 Iran Kish</span>
+            </div>
+        </footer>
+
+        <script src="~/Core/JQuery/jQuery-2.2.0.min.js"></script>
+
+        <script src="~/Core/Angular/angular.min.js"></script>
+        <script src="~/Core/Angular/angular-ui-router.min.js"></script>
+        <script src="~/Core/Angular/angular-messages.min.js"></script>
+        <script src="~/Core/Angular/angular-animate.min.js"></script>
+        <script src="~/Core/Angular/script.min.js"></script>
+        <script src="~/Core/Angular/angular-ui-utils.min.js"></script>
+
+        <script src="~/Core/angular-ui-date.js"></script>
+
+        <script src="~/Core/Telerik/js/kendo.all.min.js"></script>
+
+        <script src="~/Core/SiteCore/js/tether.min.js"></script>
+        <script src="~/Core/SiteCore/js/bootstrap.min.js"></script>
+        <script src="~/Core/SiteCore/js/main.js"></script>
+
+        <script src="~/Core/other/bootstrap-tpl/ui-bootstrap-tpls-0.11.0.js"></script>
+        <script src="~/Core/other/PersianDate/bootstrap-datepicker.js"></script>
+        <script src="~/Core/other/PersianDate/bootstrap-datepicker.fa.js"></script>
+
+        <script src="~/Core/other/loadbar/loading-bar.js"></script>
+        <script src="~/Core/other/busy/angular-busy.min.js"></script>
+        @*<script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+            <script src="~/signalr/hubs"></script>
+            <script src="~/Scripts/mmsSignalR.js"></script>*@
+
+
+        @RenderSection("Scripts", false)
+
+        <script>
+            $('a#btnSubmit').click(function () {
+                $('form#formLogout').submit();
+            });
+        </script>
+
+    </div>
+</body>
+</html>

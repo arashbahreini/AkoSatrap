@@ -110,12 +110,12 @@
                         messageFactory.showAlert(result.Message, 'success');
                         updateProjectImage();
 
-                    }
-                    else {
-                        messageFactory.showAlert(result.Message, 'success');
-                    }
-                }
-                    , function () {
+                   }
+                   else {
+                       messageFactory.showAlert(result.Message, 'danger');
+                   }
+               }
+               , function () {
 
                     });
         };

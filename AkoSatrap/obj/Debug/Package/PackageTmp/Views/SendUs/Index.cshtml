@@ -1,0 +1,169 @@
+﻿@model AkoSatrap.UIHelper.UploadFileModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<style>
+    .error {
+        color: red;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+
+            <div id="loadBar" class="loading-container ">
+
+                @using (Html.BeginForm("Index", "Sendus", FormMethod.Post, new { enctype = "multipart/form-data", id = "ajaxForm" }))
+                {
+                    <div class="loading-wrapper">
+                        <div class="cssload-loader-inner">
+                            <div class="cssload-cssload-loader-line-wrap-wrap">
+                                <div class="cssload-loader-line-wrap"></div>
+                            </div>
+                            <div class="cssload-cssload-loader-line-wrap-wrap">
+                                <div class="cssload-loader-line-wrap"></div>
+                            </div>
+                            <div class="cssload-cssload-loader-line-wrap-wrap">
+                                <div class="cssload-loader-line-wrap"></div>
+                            </div>
+                            <div class="cssload-cssload-loader-line-wrap-wrap">
+                                <div class="cssload-loader-line-wrap"></div>
+                            </div>
+                            <div class="cssload-cssload-loader-line-wrap-wrap">
+                                <div class="cssload-loader-line-wrap"></div>
+                            </div>
+                        </div>
+                    </div>
+                    @Html.ValidationSummary(true)
+                    @Html.AntiForgeryToken()
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+
+
+                                <label>نوع ارسال</label>
+                                @*@Html.DropDownListFor(r => r.FileType, new SelectList(Enum.GetValues(typeof(AkoSatrap.UIHelper.FileType)), new { @class = "form-control" }))*@
+                                <select class="form-control" name="FileType" required>
+
+                                    <option value="1">صورتحساب</option>
+                                    <option value="2">رزومه</option>
+                                    <option value="3">سایر</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>عنوان</label>
+                                @*<input type="text" class="form-control" name="Title" required>*@
+                                @Html.TextBoxFor(r => r.Title, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Title, "", new { @class = "error" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>توضیحات</label>
+                                <textarea class="form-control" rows="4" name="Description"></textarea>
+                                @*@Html.ValidationMessageFor(m => m.Description)*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label>بارگذاری فایل</label>
+                            <div class="form-group">
+                                <div class="custom-file">
+                                    <input class="custom-file-input" type="file" name="@Html.NameFor(x => x.File)" id="@Html.IdFor(x => x.File)">
+                                    <span class="custom-file-control"></span>
+                                    @Html.ValidationMessageFor(m => m.File, "", new { @class = "error" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="captcha">
+                                    <label>عبارت موجود در تصویر را تایپ نمایید</label>
+
+                                    <div class="captcha-img-wrapper">
+                                        <img class="captcha-img" src="@Url.Action("CaptchaImage", "Default", routeValues: new{ rdnDate = DateTime.Now.Ticks })" />
+                                        <button id="refresh" type="button" class="btn captcha-btn">
+                                            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+
+                                    @Html.TextBoxFor(model => model.CaptchaInputText, new { @class = "form-control", autocomplete = "off" })
+                                    @Html.ValidationMessageFor(model => model.CaptchaInputText, "", new { @class = "error" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>&nbsp;</label>
+                            <button id="submitt" class="btn btn-success btn-block" style="margin-bottom: 40px" type="submit">
+                                ثبت<span class="glyphicon glyphicon-ok left pull-right" aria-hidden="true"></span>
+                            </button>
+
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section PageName
+{
+    ارسال به ما
+}
+
+@section Scripts
+{
+    <script>
+        $('#refresh').on('click', function (e) {
+
+            e.preventDefault();
+            $('.captcha-img').attr('src', "@Url.Action("CaptchaImage", "Default")" + "?t=" + new Date().getTime());
+
+        });
+
+        $('#submitt').click(function () { $('#loadBar').addClass('loading'); });
+
+        function setup_file_input() {
+            $(':file').change(function () {
+                var _this = $(this),
+                    _numFiles = _this.get(0).files.length,
+                    _this_form_group = _this.closest('.form-group'),
+                    _text_location = _this_form_group.find('.custom-file-control'),
+                    _image_location = _this_form_group.find('img');
+
+                if (_numFiles > 0) {
+                    var _label = _this.val().replace(/\\/g, '/').replace(/.*\//, ''),
+                        _log = _numFiles > 1 ? _numFiles + ' files selected' : _label,
+                        reader = new FileReader();
+                    _text_location.addClass("filled").text(_log);
+
+                    reader.onload = function (e) {
+                        _image_location.attr('src', e.target.result).removeClass('hidden-xs-up');
+                        _this_form_group.addClass('has-img');
+                    };
+                    reader.readAsDataURL(this.files[0]);
+
+                } else {
+                    _text_location.removeClass("filled").text('');
+                    _image_location.attr('src', '').addClass('hidden-xs-up');
+                    _this_form_group.removeClass('has-img');
+                }
+            })
+        }
+        setup_file_input();
+    </script>
+}
