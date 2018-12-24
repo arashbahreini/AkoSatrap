@@ -157,8 +157,14 @@
     </div>
 </div>
 
+@section PageName
+{
+    @Model.Title
+}
+
+<script src="../../dist/js/libraries/jquery.min.js"></script>
+
 <!--Local-->
-@*<script src="../../dist/js/general/script.min.js"></script>*@
 <script>
     $(document).ready(function () {
         var galleryImg = $(".gallery-img .img");
