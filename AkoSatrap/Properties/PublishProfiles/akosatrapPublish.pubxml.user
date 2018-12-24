@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\Administrator\Desktop\ako</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\a.bahreini\Desktop\ako</_PublishTargetUrl>
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAalaZpRhJfUuT0T987RPq+QAAAAACAAAAAAAQZgAAAAEAACAAAAAqONUO3HCW14250T6pP/TlKuaxzwRPCjVMoo3dsF0j+AAAAAAOgAAAAAIAACAAAAAej3R5pusz7RsXYmYixxPuOFaY2ZEtUYSY9iaIQAj2mCAAAACbtFPLORHqw8/Nc6IxnaWME03qh8LvDXxyZtxWJBOYDUAAAAD+74tKs6A8WwZWugFWusWlnGvdq7eZjz+Dil3xZw8J5tRl0cBqhXAgoD8AXsNvqPaKfR3EoJNCFZxgXn9M7wwh</EncryptedPassword>
   </PropertyGroup>
   <ItemGroup>
@@ -218,10 +218,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2018 19:05:15</publishTime>
     </File>
     <File Include="bin/AkoSatrap.dll">
-      <publishTime>12/22/2018 23:36:48</publishTime>
+      <publishTime>12/24/2018 20:19:16</publishTime>
     </File>
     <File Include="bin/AkoSatrap.pdb">
-      <publishTime>12/22/2018 23:36:48</publishTime>
+      <publishTime>12/24/2018 20:19:18</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>12/02/2018 19:05:16</publishTime>
@@ -230,19 +230,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2018 19:05:16</publishTime>
     </File>
     <File Include="bin/Business.dll">
-      <publishTime>12/22/2018 23:36:45</publishTime>
+      <publishTime>12/24/2018 20:19:20</publishTime>
     </File>
     <File Include="bin/Business.pdb">
-      <publishTime>12/22/2018 23:36:45</publishTime>
+      <publishTime>12/24/2018 20:19:23</publishTime>
     </File>
     <File Include="bin/DomainDeriven.dll">
-      <publishTime>12/22/2018 23:36:45</publishTime>
+      <publishTime>12/24/2018 20:19:25</publishTime>
     </File>
     <File Include="bin/DomainDeriven.dll.config">
       <publishTime>12/02/2018 19:05:16</publishTime>
     </File>
     <File Include="bin/DomainDeriven.pdb">
-      <publishTime>12/22/2018 23:36:45</publishTime>
+      <publishTime>12/24/2018 20:19:27</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>12/02/2018 19:05:16</publishTime>
@@ -317,10 +317,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2018 19:05:16</publishTime>
     </File>
     <File Include="bin/ViewModel.dll">
-      <publishTime>12/22/2018 23:36:45</publishTime>
+      <publishTime>12/24/2018 20:19:29</publishTime>
     </File>
     <File Include="bin/ViewModel.pdb">
-      <publishTime>12/22/2018 23:36:45</publishTime>
+      <publishTime>12/24/2018 20:19:32</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>12/02/2018 19:05:17</publishTime>
@@ -1109,7 +1109,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2018 19:05:15</publishTime>
     </File>
     <File Include="Views/AboutUs/Abilities.cshtml">
-      <publishTime>12/22/2018 23:54:15</publishTime>
+      <publishTime>12/24/2018 21:44:32</publishTime>
     </File>
     <File Include="Views/AboutUs/AboutCompany.cshtml">
       <publishTime>12/16/2018 19:20:12</publishTime>
@@ -1130,10 +1130,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2018 19:05:15</publishTime>
     </File>
     <File Include="Views/Home/ContactUs.cshtml">
-      <publishTime>12/16/2018 19:52:25</publishTime>
+      <publishTime>12/24/2018 20:13:24</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>12/19/2018 20:07:14</publishTime>
+      <publishTime>12/24/2018 20:14:15</publishTime>
     </File>
     <File Include="Views/Home/TestIndex.cshtml">
       <publishTime>02/13/2018 01:03:10</publishTime>
@@ -1169,7 +1169,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/20/2018 17:45:10</publishTime>
     </File>
     <File Include="Views/Project/Project.cshtml">
-      <publishTime>12/22/2018 23:53:54</publishTime>
+      <publishTime>12/24/2018 20:46:07</publishTime>
     </File>
     <File Include="Views/Project/ProjectDone.cshtml">
       <publishTime>12/17/2018 21:40:21</publishTime>
@@ -1187,7 +1187,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/05/2018 18:10:40</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>12/19/2018 18:56:55</publishTime>
+      <publishTime>12/24/2018 20:15:05</publishTime>
     </File>
     <File Include="Views/Shared/_PanelLayout.cshtml">
       <publishTime>12/15/2018 20:57:00</publishTime>
@@ -1196,7 +1196,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2018 19:05:15</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/22/2018 23:55:44</publishTime>
+      <publishTime>12/24/2018 21:46:32</publishTime>
     </File>
   </ItemGroup>
 </Project>
