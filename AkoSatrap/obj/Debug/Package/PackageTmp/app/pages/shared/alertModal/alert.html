@@ -1,0 +1,20 @@
+﻿<div id="messageModal" class="modal fade" role="dialog" aria-labelledby="messageModal" aria-hidden="true"
+     tabindex="-1">
+    <div class="modal-dialog modal-lg alert-modal" role="document">
+        <div class="modal-content">
+            <!--Body-->
+            <div class="modal-body">
+                <div class="row alert-row">
+                    <div class="col">
+                        <div class="alert show {{messageType}}" role="alert">
+                            <i class="fa {{messageIcon}} fa-fw ml-3" aria-hidden="true"></i>{{message}}
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

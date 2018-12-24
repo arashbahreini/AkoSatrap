@@ -42,8 +42,6 @@ namespace AkoSatrap.UIHelper
 
         public FileType FileType { get; set; }
 
-        [Required(ErrorMessage = "لطفا کد امنیتی را وارد نمائید")]
-        [Display(Name = "کد امنیتی (به عدد)")]
         public string CaptchaInputText { get; set; }
     }
 

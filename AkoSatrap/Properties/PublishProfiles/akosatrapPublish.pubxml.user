@@ -158,7 +158,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2018 19:05:15</publishTime>
     </File>
     <File Include="app/pages/product/product.html">
-      <publishTime>12/18/2018 19:11:04</publishTime>
+      <publishTime>12/22/2018 23:33:29</publishTime>
     </File>
     <File Include="app/pages/product/productCategory.html">
       <publishTime>12/02/2018 19:05:15</publishTime>
@@ -167,7 +167,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/18/2018 19:17:08</publishTime>
     </File>
     <File Include="app/pages/product/productController.js">
-      <publishTime>12/18/2018 19:16:44</publishTime>
+      <publishTime>12/22/2018 23:33:29</publishTime>
     </File>
     <File Include="app/pages/product/productDetail.html">
       <publishTime>12/18/2018 19:13:35</publishTime>
@@ -185,7 +185,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/18/2018 19:09:47</publishTime>
     </File>
     <File Include="app/pages/project/projectController.js">
-      <publishTime>12/18/2018 18:58:12</publishTime>
+      <publishTime>12/22/2018 23:34:10</publishTime>
     </File>
     <File Include="app/pages/project/projectDetail.html">
       <publishTime>12/18/2018 19:07:55</publishTime>
@@ -200,10 +200,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2018 19:05:15</publishTime>
     </File>
     <File Include="app/pages/siteContent/siteContent.html">
-      <publishTime>12/16/2018 19:17:33</publishTime>
+      <publishTime>12/22/2018 23:33:29</publishTime>
     </File>
     <File Include="app/pages/siteContent/siteContentController.js">
-      <publishTime>12/16/2018 19:12:48</publishTime>
+      <publishTime>12/22/2018 23:33:29</publishTime>
     </File>
     <File Include="app/routing.js">
       <publishTime>12/15/2018 20:57:20</publishTime>
@@ -218,10 +218,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2018 19:05:15</publishTime>
     </File>
     <File Include="bin/AkoSatrap.dll">
-      <publishTime>12/19/2018 19:50:21</publishTime>
+      <publishTime>12/22/2018 23:36:48</publishTime>
     </File>
     <File Include="bin/AkoSatrap.pdb">
-      <publishTime>12/19/2018 19:50:21</publishTime>
+      <publishTime>12/22/2018 23:36:48</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>12/02/2018 19:05:16</publishTime>
@@ -230,19 +230,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2018 19:05:16</publishTime>
     </File>
     <File Include="bin/Business.dll">
-      <publishTime>12/19/2018 19:50:18</publishTime>
+      <publishTime>12/22/2018 23:36:45</publishTime>
     </File>
     <File Include="bin/Business.pdb">
-      <publishTime>12/19/2018 19:50:18</publishTime>
+      <publishTime>12/22/2018 23:36:45</publishTime>
     </File>
     <File Include="bin/DomainDeriven.dll">
-      <publishTime>12/15/2018 20:36:36</publishTime>
+      <publishTime>12/22/2018 23:36:45</publishTime>
     </File>
     <File Include="bin/DomainDeriven.dll.config">
       <publishTime>12/02/2018 19:05:16</publishTime>
     </File>
     <File Include="bin/DomainDeriven.pdb">
-      <publishTime>12/15/2018 20:36:36</publishTime>
+      <publishTime>12/22/2018 23:36:45</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>12/02/2018 19:05:16</publishTime>
@@ -317,10 +317,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2018 19:05:16</publishTime>
     </File>
     <File Include="bin/ViewModel.dll">
-      <publishTime>12/17/2018 21:57:04</publishTime>
+      <publishTime>12/22/2018 23:36:45</publishTime>
     </File>
     <File Include="bin/ViewModel.pdb">
-      <publishTime>12/17/2018 21:57:04</publishTime>
+      <publishTime>12/22/2018 23:36:45</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>12/02/2018 19:05:17</publishTime>
@@ -1109,7 +1109,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2018 19:05:15</publishTime>
     </File>
     <File Include="Views/AboutUs/Abilities.cshtml">
-      <publishTime>12/16/2018 19:20:01</publishTime>
+      <publishTime>12/22/2018 23:54:15</publishTime>
     </File>
     <File Include="Views/AboutUs/AboutCompany.cshtml">
       <publishTime>12/16/2018 19:20:12</publishTime>
@@ -1148,7 +1148,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2018 19:05:15</publishTime>
     </File>
     <File Include="Views/Home/TestProjects.cshtml">
-      <publishTime>12/02/2018 19:05:15</publishTime>
+      <publishTime>12/22/2018 23:49:33</publishTime>
     </File>
     <File Include="Views/Home/underConstractionIndex.cshtml">
       <publishTime>12/02/2018 19:05:15</publishTime>
@@ -1169,7 +1169,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/20/2018 17:45:10</publishTime>
     </File>
     <File Include="Views/Project/Project.cshtml">
-      <publishTime>12/19/2018 19:50:57</publishTime>
+      <publishTime>12/22/2018 23:53:54</publishTime>
     </File>
     <File Include="Views/Project/ProjectDone.cshtml">
       <publishTime>12/17/2018 21:40:21</publishTime>
@@ -1196,7 +1196,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2018 19:05:15</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/17/2018 19:15:40</publishTime>
+      <publishTime>12/22/2018 23:55:44</publishTime>
     </File>
   </ItemGroup>
 </Project>
