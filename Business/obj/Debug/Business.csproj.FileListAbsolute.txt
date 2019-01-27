@@ -12,17 +12,3 @@ C:\work\AkoSatrap\AkoSatrap\Business\obj\Debug\Business.csproj.CoreCompileInputs
 C:\work\AkoSatrap\AkoSatrap\Business\obj\Debug\Business.csproj.CopyComplete
 C:\work\AkoSatrap\AkoSatrap\Business\obj\Debug\Business.dll
 C:\work\AkoSatrap\AkoSatrap\Business\obj\Debug\Business.pdb
-C:\Work\AkoSatrap\Business\bin\Debug\Business.dll
-C:\Work\AkoSatrap\Business\bin\Debug\Business.pdb
-C:\Work\AkoSatrap\Business\bin\Debug\DomainDeriven.dll
-C:\Work\AkoSatrap\Business\bin\Debug\EntityFramework.dll
-C:\Work\AkoSatrap\Business\bin\Debug\ViewModel.dll
-C:\Work\AkoSatrap\Business\bin\Debug\DomainDeriven.pdb
-C:\Work\AkoSatrap\Business\bin\Debug\DomainDeriven.dll.config
-C:\Work\AkoSatrap\Business\bin\Debug\ViewModel.pdb
-C:\Work\AkoSatrap\Business\bin\Debug\EntityFramework.xml
-C:\Work\AkoSatrap\Business\obj\Debug\Business.csprojAssemblyReference.cache
-C:\Work\AkoSatrap\Business\obj\Debug\Business.csproj.CoreCompileInputs.cache
-C:\Work\AkoSatrap\Business\obj\Debug\Business.csproj.CopyComplete
-C:\Work\AkoSatrap\Business\obj\Debug\Business.dll
-C:\Work\AkoSatrap\Business\obj\Debug\Business.pdb
