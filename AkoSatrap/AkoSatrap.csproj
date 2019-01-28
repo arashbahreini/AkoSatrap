@@ -144,6 +144,8 @@
     <Content Include="app\other\persianDate\bootstrap-datepicker.css" />
     <Content Include="app\other\persianDate\bootstrap-datepicker.fa.js" />
     <Content Include="app\other\persianDate\bootstrap-datepicker.js" />
+    <Content Include="app\pages\banner\banner.html" />
+    <Content Include="app\pages\banner\bannerController.js" />
     <Content Include="app\pages\directive\persianDateDirective.js" />
     <Content Include="app\pages\download\download.html" />
     <Content Include="app\pages\download\downloadController.js" />
@@ -381,6 +383,7 @@
     <Compile Include="AuthData\CustomPrincipal.cs" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\ActivitiesController.cs" />
+    <Compile Include="Controllers\BannerController.cs" />
     <Compile Include="Controllers\Default1Controller.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

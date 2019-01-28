@@ -140,5 +140,22 @@
                     return deferred.promise;
                 }]
             }
-        });;
+        }).state('Banner', {
+            url: '/Banner',
+            templateUrl: '../app/pages/Banner/Banner.html',
+            resolve: {
+                fileDeps: ['$q', '$rootScope', function ($q, $rootScope) {
+                    var deferred = $q.defer();
+                    var deps = [
+                        '../app/pages/Banner/bannerController.js',
+                    ];
+                    $script(deps, function () {
+                        $rootScope.$apply(function () {
+                            deferred.resolve();
+                        });
+                    });
+                    return deferred.promise;
+                }]
+            }
+        });
 }]);
