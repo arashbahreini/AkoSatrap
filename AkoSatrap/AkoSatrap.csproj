@@ -332,7 +332,6 @@
     <Content Include="dist\img\img-group-icons.png" />
     <Content Include="dist\img\loading.gif" />
     <Content Include="dist\img\logo-light.png" />
-    <Content Include="dist\img\logo.png" />
     <Content Include="dist\img\logo2.png" />
     <Content Include="dist\js\general\script.min.js" />
     <Content Include="dist\js\libraries\jquery.min.js" />
