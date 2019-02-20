@@ -19,17 +19,12 @@
             $scope.myPromise = fileUploaderService.uploadFileToUrl(attachment, '/Banner/SetBanner', bannerName)
                 .then(function (result) {
                     if (result.Success) {
-
                         messageFactory.showAlert(result.Message, 'success');
-                        updateProductImage();
-
-                    }
-                    else {
+                        $scope.getBanners();
+                        location.reload(true);
+                    } else {
                         messageFactory.showAlert(result.Message, 'danger');
-                    }
-                }
-                    , function () {
-
+                    }}, function () {
                     });
         };
     }]);

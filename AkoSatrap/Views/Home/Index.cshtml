@@ -71,7 +71,7 @@
     <div class="new-sidebar animate-left" style="display:none;z-index:999;" id="mySidebar">
         <span class="bar-wrapper">
             <button onclick="w3_close()" class="close-item">&times;</button>
-            <a href="" class="change-lang">english</a>
+            @*<a href="" class="change-lang">english</a>*@
         </span>
         @Html.ActionLink("صفحه نخست", "Index", new { controller = "Home" }, new {@class = "bar-button" })
 
@@ -169,9 +169,9 @@
 
                     <div class=" navbar-left">
                         <ul class="nav navbar-nav navbar-left">
-                            <li><a href="#">english</a></li>
+                            @*<li><a href="#">english</a></li>*@
                         </ul>
-                        <p class="navbar-text navbar-left line">|</p>
+                        @*<p class="navbar-text navbar-left line">|</p>*@
                         <p class="navbar-text navbar-left">
                             <span class="glyphicon glyphicon-earphone"
                                   style="color: #d6ba91;margin-left: 10px;"
