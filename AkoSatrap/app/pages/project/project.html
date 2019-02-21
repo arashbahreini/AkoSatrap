@@ -1,0 +1,323 @@
+﻿<style>
+    #collapseTitle:hover {
+        cursor: pointer;
+    }
+
+    .btn-info {
+        color: #fff !important;
+    }
+
+    .btn-success {
+        color: #fff !important;
+    }
+
+    a:hover {
+        cursor: pointer;
+    }
+</style>
+<link href="~/app/other/persianDate/bootstrap-datepicker.css" rel="stylesheet" />
+
+<div ng-controller="projectController" ng-form="formProject">
+    <div cg-busy="{promise:myPromise,message:'لطفا تا بارگذاری کامل صفحه شکیبا باشید',backdrop:true,delay:300,minDuration:700}">
+
+        <div class="card" style="margin-bottom:10px;">
+            <div class="card-header">
+                <ul id="myTab" class="nav nav-tabs card-header-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="navAllProject" role="tab" data-toggle="tab" data-target="#tabAllProject" style="cursor: pointer;">
+                            <i class="fa fa-info-circle fa-fw fa-flex ml-2" aria-hidden="true"></i>
+                            پروژهات موجود
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " id="navInsertUpdate" role="tab" data-toggle="tab" data-target="#tabInsertUpdate" style="cursor: pointer;">
+                            <i class="fa fa-edit fa-fw fa-flex ml-2" aria-hidden="true"></i>
+                            ایجاد/ویرایش
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " id="navPhoto" role="tab" data-toggle="tab" data-target="#tabPhoto" style="cursor: pointer;">
+                            <i class="fa fa-photo fa-fw fa-flex ml-2" aria-hidden="true"></i>
+                            عکس ها
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-block">
+                <div class="tab-content">
+
+                    <div class="tab-pane active" id="tabAllProject" role="tabpanel">
+                        <div class="page-sub-header">
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="text-muted mt-3">پروژهات ثبت شده</h6>
+                                    <div class="clearfix"></div>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="text-align:center">
+                            <table class="table table-hover text-center">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">عنوان</th>
+                                        <th scope="col">استان</th>
+                                        <th scope="col">شهر</th>
+                                        <th scope="col">تاریخ شروع</th>
+                                        <th scope="col">درصد پیشرفت</th>
+                                        <th scope="col" style="text-align:center">
+                                            <a class="fa fa-refresh" ng-click="getProjects()"></a>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="project in projects">
+                                        <td>{{project.Title}}</td>
+                                        <td>{{project.Province}}</td>
+                                        <td>{{project.City}}</td>
+                                        <td>{{project.StartDate}}</td>
+                                        <td>{{project.CompletionPercentage}}</td>
+                                        <td style="text-align:center">
+                                            <a class="fa fa-trash btn btn-danger" ng-click="deleteProject(project.Id)" style="color:white;margin-left:5px;"></a>
+                                            <a class="fa fa-pencil btn btn-primary" style="color:white" ng-click="editProject(project)"></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!--<div class="k-rtl row">
+                            <div class="col-md-12">
+                                <kendo-grid options="projectGridOption">
+                                </kendo-grid>
+                            </div>
+                        </div>-->
+
+                    </div>
+
+                    <div class="tab-pane" id="tabInsertUpdate" role="tabpanel">
+                        <div class="page-sub-header">
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="text-muted mt-3">مشخصات دسته بندی پروژه ها</h6>
+                                    <div class="clearfix"></div>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="category" class="form-control-label">گروه</label>
+                                    <select id="category" ng-options="item as item.Title for item in projectCategoryDataSource track by item.Id"
+                                            ng-model="project.ProjectCategory" class="form-control form-control-sm custom-select"></select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="Title" class="form-control-label">عنوان پروژه</label>
+                                    <input id="Title" name="Title" ng-model="project.Title" class="form-control form-control-sm" type="text"
+                                           placeholder="عنوان پروژه" required ng-pattern="persianPattern">
+                                    <div class="has-danger" ng-messages="formProject.Title.$error">
+                                        <small ng-message="required">عنوان اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر فارسی استفاده نمایید</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="EnTitle" class="form-control-label">عنوان پروژه به انگلیسی</label>
+                                    <input id="EnTitle" name="EnTitle" ng-model="project.EnTitle" class="form-control form-control-sm" type="text"
+                                           placeholder="عنوان پروژه" required ng-pattern="englishPattern">
+                                    <div class="has-danger" ng-messages="formProject.EnTitle.$error">
+                                        <small ng-message="required">برند انگلیسی اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر لاتین استفاده نمایید</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="Description">توضیحات</label>
+                                    <textarea class="form-control form-control-sm" name="Description" id="Description" rows="7" ng-model="project.Description" required ng-pattern="persianPattern"></textarea>
+                                    <div class="has-danger" ng-messages="formProject.Description.$error">
+                                        <small ng-message="required">توضیحات اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر فارسی استفاده نمایید</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="EnDescription">توضیحات به انگلیسی</label>
+                                    <textarea class="form-control form-control-sm" id="EnDescription" name="EnDescription" rows="7"
+                                              ng-model="project.EnDescription" required ng-pattern="englishPattern"></textarea>
+                                    <div class="has-danger" ng-messages="formProject.EnDescription.$error">
+                                        <small ng-message="required">توضیحات انگلیسی اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر لاتین استفاده نمایید</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="City" class="form-control-label">شهر </label>
+                                    <input id="City" name="City" ng-model="project.City" class="form-control form-control-sm" type="text"
+                                           placeholder="شهر پروژه" required ng-pattern="persianPattern">
+                                    <div class="has-danger" ng-messages="formProject.City.$error">
+                                        <small ng-message="required">شهر اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر فارسی استفاده نمایید</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="EnCity" class="form-control-label">شهر به انگلیسی</label>
+                                    <input id="EnCity" name="EnCity" ng-model="project.EnCity" class="form-control form-control-sm" type="text"
+                                           placeholder="برند پروژه" required ng-pattern="englishPattern">
+                                    <div class="has-danger" ng-messages="formProject.EnCity.$error">
+                                        <small ng-message="required">شهر انگلیسی اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر لاتین استفاده نمایید</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="CompletionPercentage" class="form-control-label">درصد پیشرفت</label>
+                                    <input id="CompletionPercentage" name="CompletionPercentage" ng-model="project.CompletionPercentage" class="form-control form-control-sm" type="number"
+                                           placeholder="درصد پیشرفت پروژه" required ng-pattern="percentagePattern">
+                                    <div class="has-danger" ng-messages="formProject.CompletionPercentage.$error">
+                                        <small ng-message="required">درصد پیشرفت اجباری می باشد</small>
+                                        <small ng-message="pattern">درصد پیشرفت صحیح نمیباشد</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="Province" class="form-control-label">استان </label>
+                                    <input id="Province" name="Province" ng-model="project.Province" class="form-control form-control-sm" type="text"
+                                           placeholder="شهر پروژه" required ng-pattern="persianPattern">
+                                    <div class="has-danger" ng-messages="formProject.Province.$error">
+                                        <small ng-message="required">استان اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر فارسی استفاده نمایید</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="EnProvince" class="form-control-label">استان به انگلیسی</label>
+                                    <input id="EnProvince" name="EnProvince" ng-model="project.EnProvince" class="form-control form-control-sm" type="text"
+                                           placeholder="برند پروژه" required ng-pattern="englishPattern">
+                                    <div class="has-danger" ng-messages="formProject.EnProvince.$error">
+                                        <small ng-message="required">استان انگلیسی اجباری می باشد</small>
+                                        <small ng-message="pattern">از کاراکتر لاتین استفاده نمایید</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="StartDate" class="form-control-label">تاریخ شروع </label>
+                                    <input date-p ui-mask="9999/99/99" id="StartDate" name="StartDate" ng-model="project.StartDate" class="form-control form-control-sm" type="text"
+                                           required>
+                                    <div class="has-danger" ng-messages="formProject.StartDate.$error">
+                                        <small ng-message="required">تاریخ شروع اجباری می باشد</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="EndDate" class="form-control-label">تاریخ پایان </label>
+                                    <input date-p ui-mask="9999/99/99" id="EndDate" name="EndDatw" ng-model="project.EndDate" class="form-control form-control-sm" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row mt-2 mb-2 text-left">
+                            <div class="col-12">
+                                <!--<input type="button" value="ثبت" class="btn btn-sm btn-success mb-3"
+                                ng-disabled="formProject.$invalid" ng-click="addProject()" ng-show="!isUpdate" />-->
+                                <input type="button" value="ثبت" class="btn btn-sm btn-success mb-3"
+                                       ng-click="addProject()" ng-show="!isUpdate" />
+                                <input type="button" value="بروزرسانی" class="btn btn-sm btn-success mb-3"
+                                       ng-disabled="formProject.$invalid" ng-click="updateProject()" ng-show="isUpdate" />
+                                <input type="button" value="دسته بندی جدید" class="btn btn-sm btn-info mb-3"
+                                       ng-click="newProject()" ng-show="isUpdate" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tabPhoto" role="tabpanel">
+                        <div class="page-sub-header">
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="text-muted mt-3">افزودن تصویر</h6>
+                                    <div class="clearfix"></div>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">انتخاب فایل</label>
+                                    <label class="custom-file">
+                                        <input id="FDID" class="custom-file-input" type="file" name="attachment" accept=".jpg,.jpeg" data-ak-file-model="fileAttachment.attachment">
+                                        <span class="custom-file-control"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2 mb-2 text-left">
+                            <div class="col-12">
+
+                                <input type="button" value="افزودن تصویر" class="btn btn-sm btn-success mb-3"
+                                       ng-click="uploadFile(fileAttachment)" ng-disabled="!isUpdate" />
+
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3" ng-repeat="x in project.Images">
+                                <div class="form-group">
+                                    <img class="col-md-12" src="../../../AkoSatrapImages/{{project.ImageFolderName}}/{{x}}" />
+                                    <a class="btn btn-sm btn-success mb-3" role="button" ng-click="deletePhoto(x)" style="color:white">
+                                        حذف تصویر
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

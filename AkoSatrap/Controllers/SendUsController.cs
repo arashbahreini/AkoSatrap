@@ -28,62 +28,43 @@ namespace AkoSatrap.Controllers
             return new CaptchaImageResult();
         }
 
-        [HttpPost, ValidateCaptcha, ValidateAntiForgeryToken]
+        [HttpPost]
         public ActionResult Index(UploadFileModel uploadFileModel)
         {
-            if (ModelState.IsValid)
+            if (uploadFileModel.File != null && uploadFileModel.File.ContentLength > 0)
             {
-                if (uploadFileModel.File != null && uploadFileModel.File.ContentLength > 0)
+                try
                 {
-                    //var fileName = Path.GetFileName(uploadFileModel.File.FileName);
-                    //var fileLocation = Path.Combine(Server.MapPath("~/UploadFile"), fileName);
-                    //uploadFileModel.File.SaveAs(fileLocation);
+                    var fileType = uploadFileModel.FileType.GetDescription();
+                    MailAddress mailfrom = new MailAddress("akosatrapiranian@gmail.com");
+                    MailAddress mailto = new MailAddress(System.Configuration.ConfigurationManager.AppSettings["mailto"].ToString());
+                    MailMessage newmsg = new MailMessage(mailfrom, mailto);
 
-                    try
-                    {
-                        var fileType = uploadFileModel.FileType.GetDescription();
-                        MailAddress mailfrom = new MailAddress("akosatrapiranian@gmail.com");
-                        MailAddress mailto = new MailAddress(System.Configuration.ConfigurationManager.AppSettings["mailto"].ToString());
-                        MailMessage newmsg = new MailMessage(mailfrom, mailto);
-
-                        newmsg.Subject = $"ارسال از سایت:{fileType}-{uploadFileModel.Title}";
-                        string body = $"{uploadFileModel.Description}";
-                        body += $"{Environment.NewLine} سیستم ارسال به ما- سایت آکو ساتراپ ایرانیان";
+                    newmsg.Subject = $"ارسال از سایت:{fileType}-{uploadFileModel.Title}";
+                    string body = $"{uploadFileModel.Description}";
+                    body += $"{Environment.NewLine} سیستم ارسال به ما- سایت آکو ساتراپ ایرانیان";
 
 
-                        newmsg.Body = body;
-                        newmsg.BodyEncoding = Encoding.UTF8;
+                    newmsg.Body = body;
+                    newmsg.BodyEncoding = Encoding.UTF8;
 
-                        //For File Attachment, more file can also be attached
-                        Attachment att = new Attachment(uploadFileModel.File.InputStream, Path.GetFileName(uploadFileModel.File.FileName));
-                        newmsg.Attachments.Add(att);
+                    //For File Attachment, more file can also be attached
+                    Attachment att = new Attachment(uploadFileModel.File.InputStream, Path.GetFileName(uploadFileModel.File.FileName));
+                    newmsg.Attachments.Add(att);
 
-                        SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-                        smtp.UseDefaultCredentials = false;
-                        smtp.Credentials = new NetworkCredential("akosatrapiranian", "870943635");
-                        smtp.EnableSsl = true;
-                        smtp.Send(newmsg);
-
-
-                        //SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-                        //smtp.UseDefaultCredentials = false;
-                        //smtp.Credentials = new NetworkCredential("akosatrapiranian","870943635");
-                        //smtp.EnableSsl = true;
-                        //smtp.Send("akosatrapiranian@gamil.com", "en.mohsenjafari@gmail.com", "subject", "Email Body");
-                    }
-                    catch
-                    {
-
-                    }
+                    SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new NetworkCredential("akosatrapiranian", "870943635");
+                    smtp.EnableSsl = true;
+                    smtp.Send(newmsg);
                 }
-                return View("Result");
+                catch (Exception ex)
+                {
+                    var s = "عملیات با خطا مواجه شد" + ex.Message.ToString();
+                    return View("Result", (object)s);
+                }
             }
-            else
-            {
-                return View(uploadFileModel);
-            }
-
-            
+            return View("Result", (object)"فایل با موفقیت ارسال شد");
         }
     }
 }

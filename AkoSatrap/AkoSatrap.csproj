@@ -141,6 +141,12 @@
     <Content Include="app\factory\messageFactory.js" />
     <Content Include="app\factory\stateCityRegionFactory.js" />
     <Content Include="app\factory\validationFactory.js" />
+    <Content Include="app\other\persianDate\bootstrap-datepicker.css" />
+    <Content Include="app\other\persianDate\bootstrap-datepicker.fa.js" />
+    <Content Include="app\other\persianDate\bootstrap-datepicker.js" />
+    <Content Include="app\pages\banner\banner.html" />
+    <Content Include="app\pages\banner\bannerController.js" />
+    <Content Include="app\pages\directive\persianDateDirective.js" />
     <Content Include="app\pages\download\download.html" />
     <Content Include="app\pages\download\downloadController.js" />
     <Content Include="app\pages\driver\driver.html" />
@@ -153,10 +159,16 @@
     <Content Include="app\pages\product\productController.js" />
     <Content Include="app\pages\product\productDetail.html" />
     <Content Include="app\pages\product\productDetailController.js" />
+    <Content Include="app\pages\project\projectDetail.html" />
+    <Content Include="app\pages\project\projectDetailController.js" />
+    <Content Include="app\pages\project\project.html" />
+    <Content Include="app\pages\project\projectController.js" />
     <Content Include="app\pages\project\projectCategory.html" />
     <Content Include="app\pages\project\projectCategoryController.js" />
     <Content Include="app\pages\shared\alertModal\alert.html" />
     <Content Include="app\pages\shared\alertModal\confirm.html" />
+    <Content Include="app\pages\siteContent\siteContent.html" />
+    <Content Include="app\pages\siteContent\siteContentController.js" />
     <Content Include="app\routing.js" />
     <Content Include="app\service\fileUploaderService.js" />
     <Content Include="app\service\postService.js" />
@@ -320,12 +332,12 @@
     <Content Include="dist\img\img-group-icons.png" />
     <Content Include="dist\img\loading.gif" />
     <Content Include="dist\img\logo-light.png" />
-    <Content Include="dist\img\logo.png" />
     <Content Include="dist\img\logo2.png" />
     <Content Include="dist\js\general\script.min.js" />
     <Content Include="dist\js\libraries\jquery.min.js" />
     <Content Include="dist\js\libraries\justgage.js" />
     <Content Include="dist\js\libraries\nouislider.min.js" />
+    <Content Include="dist\js\libraries\project-raphael-2.1.4.min.js" />
     <Content Include="dist\js\libraries\raphael-2.1.4.min.js" />
     <Content Include="fa-IR\ako-index.html" />
     <Content Include="fa-IR\data6\images\banner1.jpg" />
@@ -370,6 +382,7 @@
     <Compile Include="AuthData\CustomPrincipal.cs" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\ActivitiesController.cs" />
+    <Compile Include="Controllers\BannerController.cs" />
     <Compile Include="Controllers\Default1Controller.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -382,10 +395,12 @@
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\SendUsController.cs" />
+    <Compile Include="Controllers\SiteContentController.cs" />
     <Compile Include="ErrorData\ErrorAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIHelper\Captcha\CacheManager.cs" />
     <Compile Include="UIHelper\Captcha\CaptchaHelpers.cs" />
@@ -463,19 +478,21 @@
     <Content Include="Views\Activities\Contracting.cshtml" />
     <Content Include="Views\Activities\FireStations.cshtml" />
     <Content Include="Views\Activities\Engineeringsystem.cshtml" />
-    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\Project\ProjectDone.cshtml" />
     <Content Include="Views\Project\ProjectRunning.cshtml" />
+    <Content Include="Views\SendUs\Error.cshtml" />
+    <Content Include="Views\Project\Project.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AkoSatrapImages\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="obj\" />
     <Folder Include="UploadFile\" />
     <Folder Include="Views\Default1\" />
@@ -485,6 +502,10 @@
     <ProjectReference Include="..\Business\Business.csproj">
       <Project>{475a5f48-c70c-4187-a4ff-a3cf844250cd}</Project>
       <Name>Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DomainDeriven\DomainDeriven.csproj">
+      <Project>{8c30eb5e-6e19-4305-bb8d-fcb9383e511d}</Project>
+      <Name>DomainDeriven</Name>
     </ProjectReference>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj">
       <Project>{2bf9dd9f-821a-4e3f-a6ea-131266e286b2}</Project>

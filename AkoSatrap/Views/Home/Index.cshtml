@@ -71,7 +71,7 @@
     <div class="new-sidebar animate-left" style="display:none;z-index:999;" id="mySidebar">
         <span class="bar-wrapper">
             <button onclick="w3_close()" class="close-item">&times;</button>
-            <a href="" class="change-lang">english</a>
+            @*<a href="" class="change-lang">english</a>*@
         </span>
         @Html.ActionLink("صفحه نخست", "Index", new { controller = "Home" }, new {@class = "bar-button" })
 
@@ -111,7 +111,7 @@
         </button>
         <div id="demoAcc3" class=" bar-hide bar-white bar-card">
             <a href="@Url.Action("ProjectRunning", "Project")" class="bar-button">درحال اجرا</a>
-            <a href="@Url.Action("Index", "Project")" class="bar-button">اجرا شده</a>
+            <a href="@Url.Action("ProjectDone", "Project")" class="bar-button">اجرا شده</a>
         </div>
         <a href="@Url.Action("Index", "Product")" class="bar-button">محصولات</a>
         @Html.ActionLink("ارسال به ما", "Index", new { controller = "SendUs" }, new { @class = "bar-button" })
@@ -158,8 +158,8 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">پروژه ها<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("ProjectRunning", "Project")">پروژه های اجرا شده</a></li>
-                                <li><a href="@Url.Action("Index", "Project")">پروژه های درحال اجرا</a></li>
+                                <li><a href="@Url.Action("ProjectDone", "Project")">پروژه های اجرا شده</a></li>
+                                <li><a href="@Url.Action("ProjectRunning", "Project")">پروژه های درحال اجرا</a></li>
                             </ul>
                         </li>
                         <li class="active"><a href="@Url.Action("Index", "Product")">محصولات</a></li>
@@ -169,9 +169,9 @@
 
                     <div class=" navbar-left">
                         <ul class="nav navbar-nav navbar-left">
-                            <li><a href="#">english</a></li>
+                            @*<li><a href="#">english</a></li>*@
                         </ul>
-                        <p class="navbar-text navbar-left line">|</p>
+                        @*<p class="navbar-text navbar-left line">|</p>*@
                         <p class="navbar-text navbar-left">
                             <span class="glyphicon glyphicon-earphone"
                                   style="color: #d6ba91;margin-left: 10px;"
@@ -216,7 +216,7 @@
                     <div class="tbl">
                         <div class="tbl-row">
                             <div class="tbl-cell">
-                                <a href="">
+                                <a href="/Project/ProjectDone">
                                     <div class="icon-wrapper">
                                         <div class="icon i-3"></div>
                                     </div>
@@ -224,7 +224,7 @@
                                 </a>
                             </div>
                             <div class="tbl-cell">
-                                <a href="">
+                                <a href="/Product/2/پوشش-های-ضد-حریق">
                                     <div class="icon-wrapper">
                                         <div class="icon i-2"></div>
                                     </div>
@@ -232,19 +232,19 @@
                                 </a>
                             </div>
                             <div class="tbl-cell">
-                                <a href="">
+                                <a href="/Abilities/صلاحیت-های-ساتراپ">
                                     <div class="icon-wrapper">
                                         <div class="icon i-1"></div>
                                     </div>
-                                    <h4>در حال بروزرسانی</h4>
+                                    <h4>صلاحیت ها</h4>
                                 </a>
                             </div>
                             <div class="tbl-cell">
-                                <a href="">
+                                <a href="/Activities/Engineeringsystem">
                                     <div class="icon-wrapper">
                                         <div class="icon i-4"></div>
                                     </div>
-                                    <h4>در حال بروزرسانی</h4>
+                                    <h4>نظام مهندسی</h4>
                                 </a>
                             </div>
                         </div>
@@ -443,7 +443,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="@Url.Action("Index", "Project")">
+                                                <a href="@Url.Action("ProjectDone", "Project")">
                                                     پروژه های اجرا شده
                                                 </a>
                                             </li>
@@ -460,9 +460,12 @@
                                                 آدرس: تهران، بزرگراه رسالت، بعد از چهارراه سرسبز، پلاک ۶۰۰، طبقه سوم
                                             </li>
                                             <li>
+                                                کد پستی : ۱۶۴۹۶۴۵۵۱۳
+                                            </li>
+                                            <li>
                                                 تلفن: ۷۷۲۰۹۶۰۰ - ۷۷۲۰۹۵۰۰
                                             </li>
-                                            <li>ایمیل: AkoSatrapIranian@mail.com</li>
+                                            <li>ایمیل: Ako.Satrap@mail.com</li>
                                         </ul>
                                     </div>
 

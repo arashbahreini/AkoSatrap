@@ -89,5 +89,73 @@
                     return deferred.promise;
                 }]
             }
+        }).state('project', {
+            url: '/project',
+            templateUrl: '../app/pages/project/project.html',
+            resolve: {
+                fileDeps: ['$q', '$rootScope', function ($q, $rootScope) {
+                    var deferred = $q.defer();
+                    var deps = [
+                        '../app/pages/project/projectController.js',
+                    ];
+                    $script(deps, function () {
+                        $rootScope.$apply(function () {
+                            deferred.resolve();
+                        });
+                    });
+                    return deferred.promise;
+                }]
+            }
+        }).state('projectFeature', {
+            url: '/projectFeature',
+            templateUrl: '../app/pages/project/projectDetail.html',
+            resolve: {
+                fileDeps: ['$q', '$rootScope', function ($q, $rootScope) {
+                    var deferred = $q.defer();
+                    var deps = [
+                        '../app/pages/project/projectDetailController.js',
+                    ];
+                    $script(deps, function () {
+                        $rootScope.$apply(function () {
+                            deferred.resolve();
+                        });
+                    });
+                    return deferred.promise;
+                }]
+            }
+        }).state('SiteContentManagement', {
+            url: '/SiteContentManagement',
+            templateUrl: '../app/pages/siteContent/siteContent.html',
+            resolve: {
+                fileDeps: ['$q', '$rootScope', function ($q, $rootScope) {
+                    var deferred = $q.defer();
+                    var deps = [
+                        '../app/pages/siteContent/siteContentController.js',
+                    ];
+                    $script(deps, function () {
+                        $rootScope.$apply(function () {
+                            deferred.resolve();
+                        });
+                    });
+                    return deferred.promise;
+                }]
+            }
+        }).state('Banner', {
+            url: '/Banner',
+            templateUrl: '../app/pages/Banner/Banner.html',
+            resolve: {
+                fileDeps: ['$q', '$rootScope', function ($q, $rootScope) {
+                    var deferred = $q.defer();
+                    var deps = [
+                        '../app/pages/Banner/bannerController.js',
+                    ];
+                    $script(deps, function () {
+                        $rootScope.$apply(function () {
+                            deferred.resolve();
+                        });
+                    });
+                    return deferred.promise;
+                }]
+            }
         });
 }]);

@@ -4,7 +4,7 @@
        $rootScope.pageTitle = 'مدیریت دسته بندی پروژه ها';
 
        $scope.persianPattern = /^[\u0600-\u06FF\s]+$/;
-       $scope.englishPattern = /^[a-z\u0590-\u05fe]+$/i;
+       $scope.englishPattern = /^[a-z\u0590-\u05fe\s]+$/i;
        $scope.numberPattern = /^\+?\d+$/;
        $scope.phonePattern = /^[0-9-]*$/;
        $scope.englishWithNumber = /^[a-zA-Z0-9]*$/;
@@ -107,17 +107,6 @@
                { field: "Id", hidden: true },
                { field: "Title", title: "دسته بندی", width: "240px" },
                { field: "EnTitle", title: "به لاتین", width: "240px" },
-               {
-                   command: {
-                       text: "حذف", click: function (e) {
-                           e.preventDefault();
-                           var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-                           $scope.dataItem = dataItem;
-                           messageFactory.showConfirmModal("آیا برای حذف سیستمی مطمئن هستید؟", function () { $scope.confirmDelete(); });
-                           $scope.$apply();
-                       }
-                   }, title: " ", width: "80px"
-               },
                {
                    command: {
                        text: "ویرایش"

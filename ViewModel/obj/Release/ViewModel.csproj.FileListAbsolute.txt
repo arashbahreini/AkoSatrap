@@ -3,3 +3,9 @@ C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\ViewModel\bin\Rele
 C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\ViewModel\obj\Release\ViewModel.csprojResolveAssemblyReference.cache
 C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\ViewModel\obj\Release\ViewModel.dll
 C:\Users\ASUS\Documents\Visual Studio 2015\Projects\AkoSatrap\ViewModel\obj\Release\ViewModel.pdb
+C:\work\AkoSatrap\ViewModel\bin\Release\ViewModel.dll
+C:\work\AkoSatrap\ViewModel\bin\Release\ViewModel.pdb
+C:\work\AkoSatrap\ViewModel\obj\Release\ViewModel.csprojAssemblyReference.cache
+C:\work\AkoSatrap\ViewModel\obj\Release\ViewModel.csproj.CoreCompileInputs.cache
+C:\work\AkoSatrap\ViewModel\obj\Release\ViewModel.dll
+C:\work\AkoSatrap\ViewModel\obj\Release\ViewModel.pdb

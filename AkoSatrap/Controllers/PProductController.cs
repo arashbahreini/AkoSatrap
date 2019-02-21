@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.IO;
+using ViewModel;
+using DomainDeriven;
 
 namespace AkoSatrap.Controllers
 {
@@ -12,7 +14,7 @@ namespace AkoSatrap.Controllers
     {
         // GET: PProduct
         [HttpPost]
-        public JsonResult AddProductCategory(ViewModel.ProductCategoty productCategory)
+        public JsonResult AddProductCategory(ViewModel.ProductCategotyModel productCategory)
         {
             Business.ProductBusiness business = new Business.ProductBusiness();
             var returnResult = business.AddProductCategory(productCategory);
@@ -20,7 +22,7 @@ namespace AkoSatrap.Controllers
         }
 
         [HttpPost]
-        public JsonResult UpdateProductCategory(ViewModel.ProductCategoty productCategory)
+        public JsonResult UpdateProductCategory(ViewModel.ProductCategotyModel productCategory)
         {
             Business.ProductBusiness business = new Business.ProductBusiness();
             var returnResult = business.UpdateProductCategory(productCategory);
@@ -33,7 +35,7 @@ namespace AkoSatrap.Controllers
             int pageNumber = Convert.ToInt32(Request.QueryString["page"]);
             int pageSize = Convert.ToInt32(Request.QueryString["pageSize"]);
 
-            GridResult<ViewModel.ProductCategoty> gridResult = new GridResult<ViewModel.ProductCategoty>();
+            GridResult<ViewModel.ProductCategotyModel> gridResult = new GridResult<ViewModel.ProductCategotyModel>();
             var allCategory = new Business.ProductBusiness().GetAllProductCategory();
 
             gridResult.Data = allCategory.OrderByDescending(r => r.Id).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
@@ -45,14 +47,12 @@ namespace AkoSatrap.Controllers
         [HttpPost]
         public JsonResult GetProductCategoryListForDropDown()
         {
-
             var allCategory = new Business.ProductBusiness().GetAllProductCategory();
-
             return Json(allCategory, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public JsonResult AddProduct(ViewModel.Product product)
+        public JsonResult AddProduct(ViewModel.ProductModel product)
         {
             var business = new Business.ProductBusiness();
             var returnResult = business.AddProduct(product);
@@ -62,20 +62,17 @@ namespace AkoSatrap.Controllers
         [HttpGet]
         public JsonResult GetProductList()
         {
-            int pageNumber = Convert.ToInt32(Request.QueryString["page"]);
-            int pageSize = Convert.ToInt32(Request.QueryString["pageSize"]);
-
-            GridResult<ViewModel.Product> gridResult = new GridResult<ViewModel.Product>();
+            GridResult<ViewModel.ProductModel> gridResult = new GridResult<ViewModel.ProductModel>();
             var allProduct = new Business.ProductBusiness().GetAllProduct();
 
-            gridResult.Data = allProduct.OrderByDescending(r => r.Id).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            gridResult.Data = allProduct.OrderByDescending(r => r.Id).ToList();
             gridResult.Total = allProduct.Count;
 
             return Json(gridResult, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public JsonResult UpdateProduct(ViewModel.Product product)
+        public JsonResult UpdateProduct(ViewModel.ProductModel product)
         {
             Business.ProductBusiness business = new Business.ProductBusiness();
             var returnResult = business.UpdateProduct(product);
@@ -85,7 +82,14 @@ namespace AkoSatrap.Controllers
         [HttpPost]
         public JsonResult AddImage(FileAttachment fileAttachment, int id)
         {
-            ViewModel.ReturnResult<bool> returnResult = new ViewModel.ReturnResult<bool>();
+            var returnResult = new ViewModel.ReturnResult<bool>();
+
+            if (fileAttachment.Attachment.ContentLength > 2097152)
+            {
+                returnResult.SetError("حجم فایل نمیتواند بیشتر از 2 مگابایت باشد");
+                return Json(returnResult);
+            }
+
             Business.ProductBusiness business = new Business.ProductBusiness();
             var product = business.GetProductById(id);
             var path = Server.MapPath($"~/AkoSatrapImages/{product.ImageFolderName}/");
@@ -111,6 +115,48 @@ namespace AkoSatrap.Controllers
         }
 
         [HttpPost]
+        public JsonResult DeleteFeature(int id)
+        {
+            var result = new ReturnResult<bool>();
+            using (var dbContext = new AkoSatrapDb())
+            {
+                var feature = dbContext.ProductFeatures.Find(id);
+                dbContext.ProductFeatures.Remove(feature);
+                dbContext.SaveChanges();
+            }
+            return Json(result);
+        }
+
+        [HttpPost]
+        public JsonResult DeleteProduct(int id)
+        {
+            var result = new ReturnResult<bool>();
+            using (var dbContext = new AkoSatrapDb())
+            {
+                var features = dbContext.ProductFeatures.Where(x => x.ProductId == id).ToList();
+                if (features.Any())
+                {
+                    foreach (var item in features)
+                    {
+                        dbContext.ProductFeatures.Remove(item);
+                    }
+                }
+                dbContext.SaveChanges();
+
+                var product = dbContext.Products.Find(id);
+                dbContext.Products.Remove(product);
+                dbContext.SaveChanges();
+
+                var path = Server.MapPath($"~/AkoSatrapImages/{product.ImageFolderName}/");
+                if (Directory.Exists(path))
+                {
+                    Directory.Delete(path, true);
+                }
+            }
+            return Json(result);
+        }
+
+        [HttpPost]
         public JsonResult GetProductImages(string imageFolderName)
         {
             ViewModel.ReturnResult<List<string>> returnResult = new ViewModel.ReturnResult<List<string>>();
@@ -125,30 +171,32 @@ namespace AkoSatrap.Controllers
         [HttpPost]
         public JsonResult GetProductListForDropDown()
         {
-
-            var allProduct = new Business.ProductBusiness().GetAllProduct();
-
+            var allProduct = new List<ProductModel>();
+            allProduct.Add(new ProductModel
+            {
+                Title = "",
+                Id = 0
+            });
+            allProduct.AddRange(new Business.ProductBusiness().GetAllProduct());
             return Json(allProduct, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
-        public JsonResult GetProductDetail()
+        [HttpPost]
+        public JsonResult GetProductDetail(int productId)
         {
-            int pageNumber = Convert.ToInt32(Request.QueryString["page"]);
-            int pageSize = Convert.ToInt32(Request.QueryString["pageSize"]);
-            var productId = Convert.ToInt32(Request.QueryString["productId"]);
+            //var productId = Convert.ToInt32(Request.QueryString["productId"]);
 
-            GridResult<ViewModel.ProductFeature> gridResult = new GridResult<ViewModel.ProductFeature>();
+            GridResult<ViewModel.ProductFeatureModel> gridResult = new GridResult<ViewModel.ProductFeatureModel>();
             var allDetail = new Business.ProductBusiness().GetAllProductDetail(productId);
 
-            gridResult.Data = allDetail.OrderByDescending(r => r.Id).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            gridResult.Data = allDetail.OrderByDescending(r => r.Id).ToList();
             gridResult.Total = allDetail.Count;
 
             return Json(gridResult, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public JsonResult AddProductFeature(ViewModel.ProductFeature productFeature)
+        public JsonResult AddProductFeature(ViewModel.ProductFeatureModel productFeature)
         {
             Business.ProductBusiness business = new Business.ProductBusiness();
             var returnResult = business.AddProductDetail(productFeature);
@@ -156,7 +204,7 @@ namespace AkoSatrap.Controllers
         }
 
         [HttpPost]
-        public JsonResult UpdateProductDetail(ViewModel.ProductFeature productFeature)
+        public JsonResult UpdateProductDetail(ViewModel.ProductFeatureModel productFeature)
         {
             Business.ProductBusiness business = new Business.ProductBusiness();
             var returnResult = business.UpdateProductFeature(productFeature);

@@ -1,0 +1,212 @@
+﻿@{
+    /**/
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="../../dist/js/libraries/jquery.min.js"></script>
+
+<div class="property">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="tbl">
+                    <div class="tbl-row">
+                        <div class="tbl-cell main-content">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="main-detail">
+
+                                        <div class="main-detail-blocks-wrapper">
+
+                                            <div class="main-detail-block main-detail-body">
+                                                <div class="txt">
+                                                    <h4 class="txt-brand-color-lightviolet">@Model.Title</h4>
+                                                    <dl class="dl-horizontal">
+                                                        <dt>دسته بندی</dt>
+                                                        <dd>@Model.ProjectCategory.Title</dd>
+                                                        <dt>استان</dt>
+                                                        <dd>@Model.Province</dd>
+                                                        <dt>شهر</dt>
+                                                        <dd>@Model.City</dd>
+                                                        <dt>تاریخ شروع</dt>
+                                                        <dd>@Model.StartDate</dd>
+                                                        <dt>تاریخ پایان</dt>
+                                                        <dd>@Model.EndDate</dd>
+                                                        <dt>توضیحات</dt>
+                                                        <dd>@Model.Description</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="gallery">
+                                        <div class="gallery-blocks-wrapper">
+                                            <div class="gallery-block gallery-img">
+                                                <div class="img"
+                                                     style="background-image: url('@Url.Content(Model.Images[0])')"
+                                                     data-toggle="modal"></div>
+                                            </div>
+                                            <div class="gallery-block gallery-thumbnail">
+                                                <div class="row">
+                                                    <div class="col-xs-3">
+                                                        <div class="img"
+                                                             style="background-image: url('@Url.Content(Model.Images[0])')"></div>
+                                                    </div>
+                                                    <div class="col-xs-3">
+                                                        <div class="img"
+                                                             style="background-image: url('@Url.Content(Model.Images[1])')"></div>
+                                                    </div>
+                                                    <div class="col-xs-3">
+                                                        <div class="img"
+                                                             style="background-image: url('@Url.Content(Model.Images[2])')"></div>
+                                                    </div>
+                                                    <div class="col-xs-3">
+                                                        <div class="img"
+                                                             style="background-image: url('@Url.Content(Model.Images[3])')"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal" id="lightbox" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="lightbox-img">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="img-wrapper">
+                                                                    <div class="img"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="lightbox-thumbnail">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="img-wrapper">
+                                                                    <div class="img"
+                                                                         style="background-image: url('../../dist/img/samples/slider-001.png')"></div>
+                                                                    <div class="img"
+                                                                         style="background-image: url('../../dist/img/samples/slider-002.png')"></div>
+                                                                    <div class="img"
+                                                                         style="background-image: url('../../dist/img/samples/slider-003.png')"></div>
+                                                                    <div class="img"
+                                                                         style="background-image: url('../../dist/img/samples/slider-004.png')"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="facilities">
+                                        <div class="facilities-blocks-wrapper">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="facilities-block">
+                                                        <div class="description-block">
+                                                            <div class="txt-left-plus-icon">
+                                                                <div class="icon-block">
+                                                                    <div class="icon icon-i-024"></div>
+                                                                </div>
+                                                                <p class="bold">ویژگی ها</p>
+                                                            </div>
+                                                            @foreach (var item in Model.ProjectFeatures)
+                                                            {
+                                                                <div class="text">
+                                                                    <h4>
+                                                                        @item.Title
+                                                                    </h4>
+                                                                </div>
+                                                                <div class="text">
+                                                                    @item.Description
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageName
+{
+    @Model.Title
+}
+
+<script src="../../dist/js/libraries/jquery.min.js"></script>
+
+<!--Local-->
+<script>
+    $(document).ready(function () {
+        var galleryImg = $(".gallery-img .img");
+
+        function applyBackImg(from, to) {
+            to.css('background-image', from.css('background-image'));
+        }
+
+        $('.gallery-thumbnail .img').click(function () {
+            applyBackImg($(this), galleryImg)
+        });
+
+        $('#lightbox').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var lightbox = $(this);
+            var lightboxImg = lightbox.find('.lightbox-img .img');
+            var lightboxThumbnail = lightbox.find('.lightbox-thumbnail .img');
+
+            applyBackImg(button, lightboxImg);
+
+            lightboxThumbnail.click(function () {
+                applyBackImg($(this), lightboxImg);
+            })
+
+        })
+    });
+
+
+</script>
+<script>
+    function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+    }
+    function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+    }
+    function myAccFunc() {
+        var x = document.getElementById("demoAcc");
+        if (x.className.indexOf(" bar-show") == -1) {
+            x.className += " bar-show";
+            x.previousElementSibling.className += " bar-blue";
+        } else {
+            x.className = x.className.replace(" bar-show", "");
+            x.previousElementSibling.className =
+                x.previousElementSibling.className.replace(" bar-blue", "");
+        }
+    }
+</script>

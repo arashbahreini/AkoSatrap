@@ -1,0 +1,84 @@
+﻿<style>
+    #collapseTitle:hover {
+        cursor: pointer;
+    }
+
+    .btn-info {
+        color: #fff !important;
+    }
+
+    .btn-success {
+        color: #fff !important;
+    }
+
+    a:hover {
+        cursor: pointer;
+    }
+</style>
+<link href="~/app/other/persianDate/bootstrap-datepicker.css" rel="stylesheet" />
+
+<div ng-controller="projectController" ng-form="formProject">
+    <div cg-busy="{promise:myPromise,message:'لطفا تا بارگذاری کامل صفحه شکیبا باشید',backdrop:true,delay:300,minDuration:700}">
+
+        <div class="card" style="margin-bottom:10px;">
+            <div class="card-header">
+                <ul id="myTab" class="nav nav-tabs card-header-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="navAllProject" role="tab" data-toggle="tab" data-target="#tabAllProject" style="cursor: pointer;">
+                            <i class="fa fa-info-circle fa-fw fa-flex ml-2" aria-hidden="true"></i>
+                            پروژهات موجود
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-block">
+                <div class="tab-content">
+
+                    <div class="tab-pane active" id="tabAllProject" role="tabpanel">
+                        <div class="page-sub-header">
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="text-muted mt-3">پروژهات ثبت شده</h6>
+                                    <div class="clearfix"></div>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="text-align:center">
+                            <table class="table table-hover text-center">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">تصویر فعلی</th>
+                                        <th scope="col">تصویر جدید</th>
+                                        <th scope="col" style="text-align:center">
+                                            <a class="fa fa-refresh" ng-click="getBanners()"></a>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody ng-if="banners.length > 0">
+                                    <tr ng-repeat="banner in banners">
+                                        <td style="text-align:center;width:26%">
+                                            <img style="width:200px;height:8vh" class="col-md-12" src="../../../fa-ir/data6/images/{{banner}}" />
+                                        </td>
+                                        <td>
+                                            <label class="form-control-label">انتخاب فایل</label>
+                                            <label class="custom-file">
+                                                <input id="FDID" class="custom-file-input" type="file" name="attachment" accept=".jpg,.jpeg, " data-ak-file-model="fileAttachment.attachment">
+                                                <span class="custom-file-control"></span>
+                                            </label>
+                                        </td>
+                                        <td style="text-align:center;padding-top:30px">
+                                            <button ng-disabled="!fileAttachment" class="fa fa-save btn btn-primary" style="color:white" ng-click="uploadFile(banner,fileAttachment)"></button>
+                                            <a href="../../../fa-ir/data6/images/{{banner}}" download class="fa fa-download btn btn-primary"></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

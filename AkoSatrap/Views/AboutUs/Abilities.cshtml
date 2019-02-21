@@ -1,21 +1,141 @@
-﻿
-@{
-    ViewBag.Title = "Abilities";
+﻿@{
+    /**/
+
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="property">
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-            <h4>  با عرض پوزش، صفحه در حال بروزرسانی می باشد </h4>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="tbl">
+                    <div class="tbl-row">
+                        <div class="tbl-cell main-content">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="gallery">
+                                        <div class="gallery-blocks-wrapper">
+                                            <div class="gallery-block gallery-img">
+                                                <div class="img"
+                                                     style="height: 100vh;background-size:contain;background-image: url('@Url.Content(Model[0])')"
+                                                     data-toggle="modal"></div>
+                                            </div>
+
+                                            <div class="gallery-block gallery-thumbnail">
+                                                <div class="row">
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <div class="col-xs-3">
+                                                            <div class="img"
+                                                                 style="background-image: url('@Url.Content(item)')"></div>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal" id="lightbox" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="lightbox-img">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="img-wrapper">
+                                                                    <div class="img"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="lightbox-thumbnail">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="img-wrapper">
+                                                                    <div class="img"
+                                                                         style="background-image: url('../../dist/img/samples/slider-001.png')"></div>
+                                                                    <div class="img"
+                                                                         style="background-image: url('../../dist/img/samples/slider-002.png')"></div>
+                                                                    <div class="img"
+                                                                         style="background-image: url('../../dist/img/samples/slider-003.png')"></div>
+                                                                    <div class="img"
+                                                                         style="background-image: url('../../dist/img/samples/slider-004.png')"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 @section PageName
 {
-   صلاحیت ها
+    صلاحیت ها
 }
-@section Scripts
-{
-}
+<script src="../../dist/js/libraries/jquery.min.js"></script>
+
+<!--Local-->
+<script>
+    $(document).ready(function () {
+        var galleryImg = $(".gallery-img .img");
+
+        function applyBackImg(from, to) {
+            to.css('background-image', from.css('background-image'));
+        }
+
+        $('.gallery-thumbnail .img').click(function () {
+            applyBackImg($(this), galleryImg)
+        });
+
+        $('#lightbox').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var lightbox = $(this);
+            var lightboxImg = lightbox.find('.lightbox-img .img');
+            var lightboxThumbnail = lightbox.find('.lightbox-thumbnail .img');
+
+            applyBackImg(button, lightboxImg);
+
+            lightboxThumbnail.click(function () {
+                applyBackImg($(this), lightboxImg);
+            })
+
+        })
+    });
+
+
+</script>
+<script>
+    function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+    }
+    function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+    }
+    function myAccFunc() {
+        var x = document.getElementById("demoAcc");
+        if (x.className.indexOf(" bar-show") == -1) {
+            x.className += " bar-show";
+            x.previousElementSibling.className += " bar-blue";
+        } else {
+            x.className = x.className.replace(" bar-show", "");
+            x.previousElementSibling.className =
+                x.previousElementSibling.className.replace(" bar-blue", "");
+        }
+    }
+</script>

@@ -10,6 +10,10 @@
     .btn-success {
         color: #fff !important;
     }
+
+    .fa {
+        cursor:pointer;
+    }
 </style>
 
 <div ng-controller="productController" ng-form="formProduct">
@@ -52,11 +56,39 @@
                             </div>
                         </div>
 
-                        <div class="k-rtl row">
-                            <div class="col-md-12">
-                                <kendo-grid options="productGridOption">
-                                </kendo-grid>
-                            </div>
+                        <!--<div class="k-rtl row">
+        <div class="col-md-12">
+            <kendo-grid options="productGridOption">
+            </kendo-grid>
+        </div>
+    </div>-->
+
+                        <div style="text-align:center">
+                            <table class="table table-hover text-center">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">عنوان</th>
+                                        <th scope="col">برند</th>
+                                        <th scope="col">عنوان</th>
+                                        <th scope="col">برند</th>
+                                        <th scope="col" style="text-align:center">
+                                            <a class="fa fa-refresh" ng-click="getProducts()"></a>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="product in products">
+                                        <td>{{product.Title}}</td>
+                                        <td>{{product.Brand}}</td>
+                                        <td>{{product.EnTitle}}</td>
+                                        <td>{{product.EnBrand}}</td>
+                                        <td style="text-align:center">
+                                            <a class="fa fa-trash btn btn-danger" ng-click="deleteProduct(product.Id)" style="color:white;margin-left:5px;"></a>
+                                            <a class="fa fa-pencil btn btn-primary" style="color:white" ng-click="editProduct(product)"></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
 
                     </div>
@@ -169,7 +201,7 @@
                                     <div class="has-danger" ng-messages="formProduct.ImportantTip1.$error">
                                         <small ng-message="required">نکته  اجباری می باشد</small>
                                         <small ng-message="pattern">از کاراکتر فارسی استفاده نمایید</small>
-                                        <small ng-message="minlength">طولکتر باشد</small>
+                                        <small ng-message="minlength">طول نکته باید بین 285 تا 220 کاراکتر باشد</small>
                                         <small ng-message="maxlength">طول نکته باید بین 285 تا 220 کاراکتر باشد</small>
                                     </div>
                                 </div>
@@ -296,12 +328,8 @@
 
                                 <input type="button" value="افزودن تصویر" class="btn btn-sm btn-success mb-3"
                                        ng-click="uploadFile(fileAttachment)" ng-disabled="!isUpdate" />
-
-                                
                             </div>
                         </div>
-
-
 
                         <div class="row">
 
