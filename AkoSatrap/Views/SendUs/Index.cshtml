@@ -89,18 +89,27 @@
                     </div>
                     <div class="row">
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <div class="captcha">
-                                    <label>عبارت موجود در تصویر را تایپ نمایید</label>
+                                @*<div class="captcha">
+                                        <label>عبارت موجود در تصویر را تایپ نمایید</label>
 
-                                    <div class="captcha-img-wrapper">
-                                        <img class="captcha-img" src="@Url.Action("CaptchaImage", "Default", routeValues: new{ rdnDate = DateTime.Now.Ticks })" />
-                                        <button id="refresh" type="button" class="btn captcha-btn">
-                                            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-                                        </button>
-                                    </div>
+                                        <div class="captcha-img-wrapper">
+                                            <img class="captcha-img" src="@Url.Action("CaptchaImage", "Default", routeValues: new{ rdnDate = DateTime.Now.Ticks })" />
+                                            <button id="refresh" type="button" class="btn captcha-btn">
+                                                <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
 
+                                        @Html.TextBoxFor(model => model.CaptchaInputText, new { @class = "form-control", autocomplete = "off" })
+                                        @Html.ValidationMessageFor(model => model.CaptchaInputText, "", new { @class = "error" })
+                                    </div>*@
+                                <div class="form-group">
+                                    <button id="refresh" type="button" class="btn captcha-btn">
+                                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                                    </button>
+                                    @Html.LabelFor(model => model.CaptchaInputText)
+                                    <img alt="Captcha" id="imgcpatcha" src="@Url.Action("CaptchaImage", "Captcha")" style="" />
                                     @Html.TextBoxFor(model => model.CaptchaInputText, new { @class = "form-control", autocomplete = "off" })
                                     @Html.ValidationMessageFor(model => model.CaptchaInputText, "", new { @class = "error" })
                                 </div>
@@ -127,13 +136,31 @@
 
 @section Scripts
 {
+    <script type="text/javascript">
+        $(function () {
+            $('#refresh').click(function () {
+
+
+                $.ajax({
+                        url: '@Url.Action("CaptchaImage","Captcha")',
+                        type: "GET",
+                        data: null
+                    })
+                    .done(function (functionResult) {
+                        $("#imgcpatcha").attr("src", "/Captcha/CaptchaImage?" + functionResult);
+                    });
+
+            });
+        });
+    </script>
+
     <script>
-        $('#refresh').on('click', function (e) {
+        @*$('#refresh').on('click', function (e) {
 
             e.preventDefault();
             $('.captcha-img').attr('src', "@Url.Action("CaptchaImage", "Default")" + "?t=" + new Date().getTime());
 
-        });
+        });*@
 
         $('#submitt').click(function () { $('#loadBar').addClass('loading'); });
 

@@ -31,6 +31,17 @@ namespace AkoSatrap.Controllers
         [HttpPost]
         public ActionResult Index(UploadFileModel uploadFileModel)
         {
+            if (Session["Captcha"] == null || Session["Captcha"].ToString() != uploadFileModel.CaptchaInputText)
+            {
+                ModelState.AddModelError("CaptchaInputText", "مجموع اشتباه است");
+                return View(uploadFileModel);
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(uploadFileModel);
+            }
+
             if (uploadFileModel.File != null && uploadFileModel.File.ContentLength > 0)
             {
                 try

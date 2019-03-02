@@ -42,6 +42,8 @@ namespace AkoSatrap.UIHelper
 
         public FileType FileType { get; set; }
 
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [Display(Name = "حاصل جمع")]
         public string CaptchaInputText { get; set; }
     }
 
