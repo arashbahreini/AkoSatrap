@@ -27,39 +27,39 @@
 
 
     <style>
-                /* Paste this css to your style sheet file or under head tag */
-                /* This only works with JavaScript,
+        /* Paste this css to your style sheet file or under head tag */
+        /* This only works with JavaScript,
         if it's not present, don't show loader */
-                .no-js #loader {
-                    display: none;
-                }
+        .no-js #loader {
+            display: none;
+        }
 
-                .js #loader {
-                    display: block;
-                    position: absolute;
-                    left: 100px;
-                    top: 0;
-                }
+        .js #loader {
+            display: block;
+            position: absolute;
+            left: 100px;
+            top: 0;
+        }
 
-                .se-pre-con {
-                    position: fixed;
-                    left: 0px;
-                    top: 0px;
-                    width: 100%;
-                    height: 100%;
-                    z-index: 999999999;
-                    background: url(/dist/img/loading.gif) center no-repeat #fff;
-                }
+        .se-pre-con {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 999999999;
+            background: url(/dist/img/loading.gif) center no-repeat #fff;
+        }
     </style>
     <script src="~/Core/JQuery/jQuery-2.2.0.min.js"></script>
     <script src="~/Core/JQuery/modernizr.js"></script>
     <script>
-	//paste this code under head tag or in a seperate js file.
-	// Wait for window load
-	$(window).load(function() {
-		// Animate loader off screen
-	    $(".se-pre-con").delay(2000).fadeOut("slow");;
-	});
+        //paste this code under head tag or in a seperate js file.
+        // Wait for window load
+        $(window).load(function () {
+            // Animate loader off screen
+            $(".se-pre-con").delay(2000).fadeOut("slow");;
+        });
     </script>
 </head>
 <body class="homepage">
@@ -73,10 +73,10 @@
             <button onclick="w3_close()" class="close-item">&times;</button>
             @*<a href="" class="change-lang">english</a>*@
         </span>
-        @Html.ActionLink("صفحه نخست", "Index", new { controller = "Home" }, new {@class = "bar-button" })
+        @Html.ActionLink("صفحه نخست", "Index", new { controller = "Home" }, new { @class = "bar-button" })
 
         <button class="bar-button bar-block" onclick="myAccFunc()">
-           درباره ما
+            درباره ما
             <span class="glyphicon glyphicon-triangle-bottom"></span>
         </button>
         <div id="demoAcc" class=" bar-hide bar-white bar-card">
@@ -96,14 +96,14 @@
         </div>
 
         @*<button class="bar-button bar-block" onclick="myAccFunc()">
-            درباره ما
-            <span class="glyphicon glyphicon-triangle-bottom"></span>
-        </button>
-        <div id="demoAcc" class=" bar-hide bar-white bar-card">
-            <a href="@Url.Action("CeoMessage", "AboutUs", new { seoName = "پیام-مدیرعامل-ساتراپ" })">پیام مدیرعامل</a>
-            <a href="@Url.Action("AboutCompany", "AboutUs", new { seoName = "درباره-ساتراپ" })">معرفی شرکت</a>
-            <a href="@Url.Action("Abilities", "AboutUs", new { seoName = "صلاحیت-های-ساتراپ" })">صلاحیت ها</a>
-        </div>*@
+                درباره ما
+                <span class="glyphicon glyphicon-triangle-bottom"></span>
+            </button>
+            <div id="demoAcc" class=" bar-hide bar-white bar-card">
+                <a href="@Url.Action("CeoMessage", "AboutUs", new { seoName = "پیام-مدیرعامل-ساتراپ" })">پیام مدیرعامل</a>
+                <a href="@Url.Action("AboutCompany", "AboutUs", new { seoName = "درباره-ساتراپ" })">معرفی شرکت</a>
+                <a href="@Url.Action("Abilities", "AboutUs", new { seoName = "صلاحیت-های-ساتراپ" })">صلاحیت ها</a>
+            </div>*@
 
         <button class="bar-button bar-block" onclick="myAccFunc3()">
             پروژه ها
@@ -192,7 +192,7 @@
                 <ul>
                     <li>
                         <img src="~/fa-IR/data6/images/banner1.jpg" alt="آکو ساتراپ ایرانیان"
-                             title="آکو ساتراپ ایرانیان" id="wows0_0" />
+                             id="wows0_0" />
                     </li>
                 </ul>
             </div>
@@ -320,21 +320,29 @@
                                 <div class="tbl">
                                     <div class="tbl-row">
                                         <div class="tbl-cell hidden-xs hidden-xs-sm ">
-                                                <div class="icon-wrapper">
-                                                    <div class="icon i-2"></div>
-                                                </div>
-                                                <h2 class="counter-value" data-count="500"></h2>
-                                                <h5>واحد</h5>
-                                                <h5>سازه ساخته شده</h5>
+                                            <div class="icon-wrapper">
+                                                <div class="icon i-2"></div>
                                             </div>
-                                            <div class="tbl-cell">
-                                                <div class="icon-wrapper">
-                                                    <div class="icon i-1"></div>
-                                                </div>
-                                                <h2 class="counter-value" data-count="50"></h2>
-                                                <h5>واحد</h5>
-                                                <h5>ایمن شده با پوشش ضد حریق</h5>
+                                            @*<h2 class="counter-value" data-count="500"></h2>
+                                            <h5>واحد</h5>
+                                            <h5>سازه ساخته شده</h5>*@
+                                            <h5>طراح و مجری </h5>
+                                            <h5>پروژه های ساختمانی</h5>
+                                        </div>
+                                        <div class="tbl-cell">
+                                            <div class="icon-wrapper">
+                                                <div class="icon i-1"></div>
                                             </div>
+                                            @*<h2 class="counter-value" data-count="50"></h2>
+                                            <h5>واحد</h5>
+                                            <h5>ایمن شده با پوشش ضد حریق</h5>*@
+                                            <h5>
+                                                مجری پوشش های 
+                                            </h5>
+                                            <h5>
+                                                ضد حریق ساختمان
+                                            </h5>
+                                        </div>
                                     </div>
                                     <div class="tbl-row hidden-sm hidden-md hidden-lg">
                                         <div class="tbl-cell " id="counter">
@@ -399,7 +407,7 @@
                                         </div>
                                         <div class="tbl-cell">
                                             <img src="~/dist/img/customers-logos/03.png" alt="">
-                                        </div>                                        
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -560,7 +568,7 @@
                     x.previousElementSibling.className.replace(" bar-blue", "");
             }
         }
-   
+
         var a = 0;
         $(window).scroll(function () {
             var oTop = $('#counter').offset().top - window.innerHeight;
